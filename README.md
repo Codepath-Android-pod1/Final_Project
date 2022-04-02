@@ -1,6 +1,7 @@
 # Project Name
 
-# Description
+# Description: 
+This App allow users to find event based on their location and interest. Events include professional and social events. The user can search for a specific event. They can also search for event at a specific location.
 
 ## Data Model
 
