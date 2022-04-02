@@ -6,12 +6,13 @@ This App allow users to find event based on their location and interest. Events 
 ## Data Model
 
 | Property(Key) | Type          | Description  |
-| ------------- |:-------------:| ------------:|
+| ------------- |-------------  | ------------ |
 | Users         | Users         |              |
 | Event         | Boolean       |              |
 | Opportunity   | Boolean       |              |
 | Description   | String        |              |
 | Distance      | Int/String    |              |
+| Time          | String        |              |
 | Title         | String        |              |
 
 
@@ -25,9 +26,10 @@ Delete ->
 # API usage
 
 - Google Maps
-- Indeed API
+- Eventbrite
+- Ticketmaster
 - Twilio??
-- Back4Apps
+- Back4App
 
 # Databases
 
