@@ -1,13 +1,18 @@
 # Project Name
 
+# Description
 
 ## Data Model
 
 | Property(Key) | Type          | Description  |
 | ------------- |:-------------:| ------------:|
-| col 3 is      | right-aligned | $1600        |
-| col 2 is      | centered      |   $12        |
-| zebra stripes | are neat      |    $1        |
+| Users         | Users         |              |
+| Event         | Boolean       |              |
+| Opportunity   | Boolean       |              |
+| Description   | String        |              |
+| Distance      | Int/String    |              |
+| Title         | String        |              |
+
 
 ## CRUD
 
@@ -15,3 +20,16 @@ Create ->
 Read ->  
 Update ->   
 Delete ->  
+
+# API usage
+
+- Google Maps
+- Indeed API
+- Twilio??
+- Back4Apps
+
+# Databases
+
+- Back4Apps
+- Firebases ??
+- MongoDB ??
