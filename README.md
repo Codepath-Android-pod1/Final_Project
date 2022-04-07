@@ -12,23 +12,24 @@ This App allow users to find event based on their location and interest. Events 
 | Opportunity   | Boolean       |              |
 | Description   | String        |              |
 | Distance      | Int/String    |              |
+| Location      | String?       |              |
 | Time          | String        |              |
 | Title         | String        |              |
 
 
 ## CRUD
 
-Create ->  
-Read ->  
-Update ->   
-Delete ->  
+Create -> Users will be able to create new Events given specific set of informations, like short description of the event, the distances/Location
+Read -> Read Event information such as: Event Description, the distances away, Time of event Title of event etc.
+Update -> Edit Events and profiles.
+Delete -> Users will be able to delete the event they posted.
 
 # API usage
 
 - Google Maps
 - Eventbrite
 - Ticketmaster
-- Twilio??
+- Twilio (Phone Notification)
 - Back4App
 
 # Databases
@@ -36,6 +37,12 @@ Delete ->
 - Back4Apps
 - Firebases ??
 - MongoDB ??
+
+# Optional
+
+- Chat Features
+- Notifying the user through Twilio
+- Google Map API
 
 # Design (Figma)
 
