@@ -8,7 +8,7 @@
 
 ## Overview
 ### Description: 
-This App allow users to find event based on their location and interest. Events include professional and social events. The user can search for a specific event through filters, such as the distance from me, the type of opportunity, the host of the event and etc.
+Allows users to find events based on their location and interests. Events include professional and social events. The user can search for a specific event through filters, such as the user's current location, the type of event (social/professional), the organizer of the event, etc.
 
 ### App Evaluation
 - **Category:**
