@@ -22,7 +22,10 @@ This App allow users to find event based on their location and interest. Events 
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
-- Example story
+- Create: Users will be able to create new Events given specific set of informations, like short description of the event, the distances/Location  
+- Read: Read Event information such as: Event Description, the distances away, Time of event Title of event etc.  
+- Update: Edit Events and profiles  
+- Delete: Users will be able to delete the event they posted.
 
 **Optional Nice-to-have Stories**
 - Chat Features
@@ -33,10 +36,8 @@ This App allow users to find event based on their location and interest. Events 
 ### Design (Figma)
 https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 
-### Networking
-#### List of network requests by screen
-
-## Data Model
+## Schema 
+### Models
 
 | Property(Key) | Type          | Description  |
 | ------------- |-------------  | ------------ |
@@ -49,24 +50,13 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 | Time          | String        |              |
 | Title         | String        |              |
 
-
-## CRUD
-
-Create -> Users will be able to create new Events given specific set of informations, like short description of the event, the distances/Location  
-Read -> Read Event information such as: Event Description, the distances away, Time of event Title of event etc.  
-Update -> Edit Events and profiles  
-Delete -> Users will be able to delete the event they posted.
+### Networking
+#### List of network requests by screen
 
 ## API usage
 
 - Google Maps
-- Eventbrite
+- Meetup
 - Ticketmaster
 - Twilio (Phone Notification)
 - Back4App
-
-## Databases
-
-- Back4Apps
-- Firebases ??
-- MongoDB ??
