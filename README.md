@@ -53,10 +53,5 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 ### Networking
 #### List of network requests by screen
 
-## API usage
-
-- Google Maps
 - Meetup
 - Ticketmaster
-- Twilio (Phone Notification)
-- Back4App
