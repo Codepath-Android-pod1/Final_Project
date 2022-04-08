@@ -1,4 +1,4 @@
-# App Name (To be Decided)
+# Eventful
 
 ## Table of Contents
 1. [Overview](#Overview)
