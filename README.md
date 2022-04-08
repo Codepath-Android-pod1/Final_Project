@@ -1,4 +1,4 @@
-# Project Name (To be Decided)
+# App Name (To be Decided)
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -32,6 +32,21 @@ This App allow users to find event based on their location and interest. Events 
 - Notifying the user through Twilio
 - Google Maps API
 
+### 2. Screen Archetypes
+1. Login
+2. Register
+3. ...
+
+### 3. Navigation
+
+**Tab Navigation** (Tab to Screen)
+- First tab
+- ...
+
+**Flow Navigation** (Screen to Screen)
+- First screen
+- ...
+
 ## Wireframes
 ### Design (Figma)
 https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
@@ -53,5 +68,6 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 ### Networking
 #### List of network requests by screen
 
-- Meetup
-- Ticketmaster
+#### Existing API Endpoints
+##### Meetup
+##### Ticketmaster
