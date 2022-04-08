@@ -1,7 +1,40 @@
 # Project Name (To be Decided)
 
-# Description: 
+## Table of Contents
+1. [Overview](#Overview)
+1. [Product Spec](#Product-Spec)
+1. [Wireframes](#Wireframes)
+1. [Schema](#Schema)
+
+## Overview
+### Description: 
 This App allow users to find event based on their location and interest. Events include professional and social events. The user can search for a specific event through filters, such as the distance from me, the type of opportunity, the host of the event and etc.
+
+### App Evaluation
+- **Category:**
+- **Mobile:**
+- **Story:**
+- **Market:**
+- **Habit:**
+- **Scope:**
+
+## Product Spec
+### 1. User Stories (Required and Optional)
+
+**Required Must-have Stories**
+- Example story
+
+**Optional Nice-to-have Stories**
+- Chat Features
+- Notifying the user through Twilio
+- Google Maps API
+
+## Wireframes
+### Design (Figma)
+https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
+
+### Networking
+#### List of network requests by screen
 
 ## Data Model
 
@@ -24,7 +57,7 @@ Read -> Read Event information such as: Event Description, the distances away, T
 Update -> Edit Events and profiles  
 Delete -> Users will be able to delete the event they posted.
 
-# API usage
+## API usage
 
 - Google Maps
 - Eventbrite
@@ -32,18 +65,8 @@ Delete -> Users will be able to delete the event they posted.
 - Twilio (Phone Notification)
 - Back4App
 
-# Databases
+## Databases
 
 - Back4Apps
 - Firebases ??
 - MongoDB ??
-
-# Optional
-
-- Chat Features
-- Notifying the user through Twilio
-- Google Map API
-
-# Design (Figma)
-
-https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
