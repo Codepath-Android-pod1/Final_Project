@@ -69,16 +69,12 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 ### Networking
 #### List of network requests by screen
  - Home Feed Screen
-    - (Read/GET) Query all events near by.
-    - (Read/GET) Pictures and profile of the user. 
-    - (Read/GET) Bring pop up that shows the event's image and description.
+    - (Read/GET) Query events based on filters
  - Chat Feed Screen
-    - (Read/GET) Receive the chat logs. 
-    - (Read/GET) Person's photo and bring the pop up of showing profile of friend
-    - (Create/POST) Able to send and type to organizer. 
+    - (Read/GET) Query logged in user Chat objects
+    - (Create/POST) Send message
  - Create Event Feed Screen  
-    - (Create/POST) Save and upload the event.
-    - (Delete) Delete and reset the everything the person wrote.
+    - (Create/POST) Create a new event object
 
 #### Existing API Endpoints
 ##### Meetup
