@@ -53,17 +53,17 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 
 ## Schema 
 ### Models
+#### Event
 *tilted* values are **required to update** in the future.
 | Property(Key) | Type          | Description  |
 | ------------- |-------------  | ------------ |
-| Users         | Users         | *Saves the user's overall value that will store.*              |
-| Event         | Boolean       | Stores the value if there is event or not.             |
-| Opportunity   | Boolean       | Stores the value if there is oppurtunity to join the event or not             |
-| Description   | String        | Stores the description of the event.            |
-| Distance      | Int/String    | Stores the distance between event and me.             |
-| Location      | String?       | Stores the value where the user is currently right now.             |
-| Time          | String        | Stores what time is the event is.             |
-| Title         | String        | Stores the title of the event.             |
+| eventId       | String        | unique id for the event | 
+| organizer     | Pointer to User | Event organizer |
+| eventName     | String        | Name of the event|
+| description   | String        | Description of the event|
+| distance      | Int/String    | Distance between event and user|
+| location      | String        | Latitude and longitude values of the user|
+| time          | String        | Start and end times of the event|
 
 ### Networking
 #### List of network requests by screen
