@@ -89,4 +89,4 @@ Using [Apollo Kotlin](https://www.apollographql.com/docs/kotlin) client to gener
 
  HTTP Verb | Endpoint | Description
  ----------|----------|------------
-  `GET`    | /events.json?apikey={apikey}&{params} | gets all cities (parameters include `keyword`, `geoPoint`, `postalCode`, `radius`, `unit`)
+  `GET`    | /events.json?apikey={apikey}&{params} | gets all cities (parameters include `keyword`, `geoPoint`, `postalCode`, `radius`, `unit`, etc)
