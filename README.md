@@ -79,7 +79,7 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
     - (Create/POST) Create a new event object
 
 #### Existing API Endpoints
-##### Meetup
+##### Meetup API (GraphQL)
 https://www.meetup.com/api/schema/#Event
 
 https://www.meetup.com/api/schema/#Venue
