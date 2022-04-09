@@ -51,14 +51,15 @@ Allows users to find events based on their location and interests. Events includ
 ### Design (Figma)
 https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 <img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/20220408_211545.png' />
+
 ## Schema 
 ### Models
 #### Event
-*tilted* values are **required to update** in the future.
+
 | Property(Key) | Type          | Description  |
 | ------------- |-------------  | ------------ |
-| eventId       | String        | unique id for the event | 
-| organizer     | Pointer to User | Event organizer |
+| eventId       | String        | Unique id for the event |
+| organizer     | String        | Event organizer |
 | eventName     | String        | Name of the event|
 | description   | String        | Description of the event|
 | distance      | Int/String    | Distance between event and user|
@@ -67,7 +68,25 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 
 ### Networking
 #### List of network requests by screen
+- Home Feed Screen
+  - (Read/GET) Query all events based on current location
+- Create Post Screen
+  - (Create/POST) Create a new event object
+- Chat Screen
+  - (Read/GET) Query logged in user Chat objects
+  - (Create/POST) Send message
 
 #### Existing API Endpoints
 ##### Meetup
-##### Ticketmaster
+https://www.meetup.com/api/schema/#Event
+
+https://www.meetup.com/api/schema/#Venue
+
+Using [Apollo Kotlin](https://www.apollographql.com/docs/kotlin) client to generate Kotlin models from GraphQL queries
+
+##### Ticketmaster Discovery API
+- Base URL - [https://app.ticketmaster.com/discovery/v2/](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/)
+
+ HTTP Verb | Endpoint | Description
+ ----------|----------|------------
+  `GET`    | /events.json?apikey={apikey}&{params} | gets all cities (parameters include `keyword`, `geoPoint`, `postalCode`, `radius`, `unit`)
