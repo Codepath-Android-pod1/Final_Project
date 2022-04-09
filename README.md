@@ -70,6 +70,8 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 #### List of network requests by screen
  - Home Feed Screen
     - (Read/GET) Query events based on filters
+ - Organizer List Feed Screen
+    - (Read/GET) Query list of Organizers
  - Chat Feed Screen
     - (Read/GET) Query logged in user Chat objects
     - (Create/POST) Send message
