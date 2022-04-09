@@ -50,7 +50,7 @@ Allows users to find events based on their location and interests. Events includ
 ## Wireframes
 ### Design (Figma)
 https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
-<img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/20220408_211545.png' />
+<img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/WireFrame2.png' />
 
 ## Schema 
 ### Models
