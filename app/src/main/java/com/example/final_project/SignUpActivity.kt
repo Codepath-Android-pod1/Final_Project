@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.parse.ParseUser
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -19,7 +20,6 @@ class SignUpActivity : AppCompatActivity() {
             val username = findViewById<EditText>(R.id.Signup_Username).text.toString()
             val password = findViewById<EditText>(R.id.Signup_Password).text.toString()
             signUpUser(username, password)
-            loginUser(username, password)
             goToMain()
         }
 
@@ -39,7 +39,7 @@ class SignUpActivity : AppCompatActivity() {
         user.signUpInBackground { e ->
             if (e == null) {
                 // successfully signed in
-                goToMainActivity()
+                goToMain()
                 Toast.makeText(this, "Successfully Created", Toast.LENGTH_SHORT).show()
             } else {
                 e.printStackTrace()
@@ -47,19 +47,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun loginUser(username: String, password: String) {
-        ParseUser.logInInBackground(username, password, ({ user, e ->
-            if (user != null) {
-                Log.i(LoginActivity.TAG, "Successfully logged in user")
-                goToMainActivity()
-            } else {
-                e.printStackTrace()
-                Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
-            }})
-        )
-    }
-
 
     private fun goToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
@@ -72,6 +59,8 @@ class SignUpActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+
     companion object {
         const val TAG = "SIGNUP ACTIVITY"
     }
