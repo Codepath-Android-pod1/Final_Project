@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Signup_Username" />
 
     <Button
-        android:id="@+id/Signup_Login"
+        android:id="@+id/Signup_SignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Signup"
@@ -43,12 +43,12 @@
         app:layout_constraintTop_toBottomOf="@+id/Signup_Password" />
 
     <Button
-        android:id="@+id/Signup_SignUp"
+        android:id="@+id/Signup_Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Signup_Login" />
+        app:layout_constraintTop_toBottomOf="@+id/Signup_SignUp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
