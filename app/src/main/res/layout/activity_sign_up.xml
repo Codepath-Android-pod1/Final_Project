@@ -9,37 +9,46 @@
 
     <EditText
         android:id="@+id/Signup_Username"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Username"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="91dp" />
+        android:inputType="textPersonName"
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Signup_Password"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Passowrd"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="140dp"
-        android:hint="Passowrd"/>
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Signup_Username" />
 
     <Button
-        android:id="@+id/Signup_signup"
+        android:id="@+id/Signup_Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Signup"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="371dp" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Signup_Password" />
 
     <Button
-        android:id="@+id/Signup_back"
+        android:id="@+id/Signup_SignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Back"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="435dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Signup_Login" />
 </androidx.constraintlayout.widget.ConstraintLayout>
