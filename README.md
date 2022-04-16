@@ -52,6 +52,11 @@ Allows users to find events based on their location and interests. Events includ
 https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 <img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/WireFrame3.png' />
 
+## Video Walkthrough
+Breifly shows the current progress of the project.
+<img src='<img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/CP-1.gif' />' />
+
+
 ## Schema 
 ### Models
 #### Event
