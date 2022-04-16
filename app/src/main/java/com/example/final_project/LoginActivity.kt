@@ -27,9 +27,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
          findViewById<Button>(R.id.LoginActivity_SignUp).setOnClickListener{
-             val intent = Intent(this@LoginActivity, SignUpActivity::class.java)
-             startActivity(intent)
-             finish()
+             gotToSignUp()
         }
     }
 
@@ -69,6 +67,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun goToMainActivity() {
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun gotToSignUp(){
+        val intent = Intent(this, SignUpActivity::class.java)
         startActivity(intent)
         finish()
     }
