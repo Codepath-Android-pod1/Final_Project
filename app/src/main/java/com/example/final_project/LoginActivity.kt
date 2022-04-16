@@ -31,28 +31,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-
-
-    private fun signUpUser(username: String, password: String){
-        // Create the ParseUser
-        val user = ParseUser()
-
-        // Set fields for the user to be created
-        user.setUsername(username)
-        user.setPassword(password)
-
-        user.signUpInBackground { e ->
-            if (e == null) {
-                // successfully signed in
-                goToMainActivity()
-                Toast.makeText(this, "Successfully Created", Toast.LENGTH_SHORT).show()
-            } else {
-                e.printStackTrace()
-                Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
     private fun loginUser(username: String, password: String) {
         ParseUser.logInInBackground(username, password, ({ user, e ->
             if (user != null) {
