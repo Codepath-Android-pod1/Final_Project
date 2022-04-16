@@ -1,5 +1,6 @@
 package com.example.final_project
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +14,9 @@ import com.example.final_project.fragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import com.parse.Parse
 import com.parse.ParseObject
+import com.parse.ParseUser
 
 
 class MainActivity : AppCompatActivity() {
@@ -48,7 +51,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             if(fragmentToshow != null) {
-                fragmentManager.beginTransaction().replace(R.id.FragmentContainer, fragmentToshow).commit()
+                fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.FragmentContainer, fragmentToshow)
+                    .commit()
             }
             true
         }
@@ -56,7 +62,34 @@ class MainActivity : AppCompatActivity() {
 
         // Generalize Tool bar (We could move it to individual Fragment and have specialize toolbar
         // Actually we might have to us e Toolbar for each Fragments
+        val toolbar = findViewById<Toolbar>(R.id.Main_Toolbar)
         setSupportActionBar(findViewById(R.id.Main_Toolbar))
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        when(id){
+            R.id.Testing ->{
+                ParseUser.logOut()
+                goToLogin()
+                Toast.makeText(this, "Testing Complete", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun goToLogin(){
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     companion object {

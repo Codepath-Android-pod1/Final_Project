@@ -1,15 +1,12 @@
 package com.example.final_project.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import androidx.fragment.app.Fragment
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toolbar
-import com.example.final_project.MainActivity
+import androidx.fragment.app.Fragment
 import com.example.final_project.R
-import com.parse.ParseUser
 
 class HomeFragment : Fragment() {
 
@@ -26,8 +23,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
