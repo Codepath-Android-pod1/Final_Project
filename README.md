@@ -85,13 +85,6 @@ Breifly shows the current progress of the project.
     - (Create/POST) Create a new event object
 
 #### Existing API Endpoints
-##### Eventbrite API
-- Base URL - [https://www.eventbriteapi.com/v3/](https://www.eventbriteapi.com/v3/)
-
-HTTP Verb | Endpoint | Description
- ---------|----------|------------
-  `GET`    |  |
-  
 ##### Ticketmaster Discovery API
 - Base URL - [https://app.ticketmaster.com/discovery/v2/](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/)
 
