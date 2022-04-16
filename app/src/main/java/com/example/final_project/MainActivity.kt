@@ -1,18 +1,21 @@
 package com.example.final_project
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.final_project.fragments.ChatFragment
 import com.example.final_project.fragments.EditFragment
 import com.example.final_project.fragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import com.parse.Parse
+import com.parse.ParseObject
 import com.parse.ParseUser
 
 
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val fragmentManager: FragmentManager = supportFragmentManager
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->
             var fragmentToshow: Fragment? = null
-            when (item.itemId) {
+            when(item.itemId) {
                 R.id.action_Home -> {
                     fragmentToshow = HomeFragment()
                 }
@@ -48,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                     fragmentToshow = ChatFragment()
                 }
             }
-            if (fragmentToshow != null) {
+            if(fragmentToshow != null) {
                 fragmentManager
                     .beginTransaction()
                     .replace(R.id.FragmentContainer, fragmentToshow)
@@ -62,6 +65,10 @@ class MainActivity : AppCompatActivity() {
         // Actually we might have to us e Toolbar for each Fragments
         val toolbar = findViewById<Toolbar>(R.id.Main_Toolbar)
         setSupportActionBar(findViewById(R.id.Main_Toolbar))
+        toolbar.setNavigationIcon(R.drawable.ic_launcher_background)
+        toolbar.setNavigationOnClickListener{
+            Toast.makeText(this, "Please work", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -73,18 +80,21 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
-        when (id) {
-            R.id.Testing -> {
+        when(id){
+            R.id.Logout ->{
                 ParseUser.logOut()
                 goToLogin()
                 Toast.makeText(this, "Testing Complete", Toast.LENGTH_SHORT).show()
+            }
+            R.id.Profile -> {
+
             }
         }
 
         return super.onOptionsItemSelected(item)
     }
 
-    private fun goToLogin() {
+    private fun goToLogin(){
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
