@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 // https://stackoverflow.com/questions/70556055/how-to-convert-geohash-to-latitude-and-longitude-in-kotlin
-interface ApiInterface {
+interface TMApiEndpointInterface {
     @GET("/discovery/v2/events")
     fun getEvents(
         @Query("city") city: String,

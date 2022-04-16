@@ -16,30 +16,32 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        if(ParseUser.getCurrentUser() != null){
+        if (ParseUser.getCurrentUser() != null) {
             goToMainActivity()
         }
 
-        findViewById<Button>(R.id.LoginActivity_Login).setOnClickListener{
+        findViewById<Button>(R.id.LoginActivity_Login).setOnClickListener {
             val username = findViewById<EditText>(R.id.LoginActivity_Username).text.toString()
             val password = findViewById<EditText>(R.id.LoginActivity_Password).text.toString()
             loginUser(username, password)
         }
 
-         findViewById<Button>(R.id.LoginActivity_SignUp).setOnClickListener{
-             gotToSignUp()
+        findViewById<Button>(R.id.LoginActivity_SignUp).setOnClickListener {
+            gotToSignUp()
         }
     }
 
     private fun loginUser(username: String, password: String) {
-        ParseUser.logInInBackground(username, password, ({ user, e ->
-            if (user != null) {
-                Log.i(TAG, "Successfully logged in user")
-                goToMainActivity()
-            } else {
-                e.printStackTrace()
-                Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
-            }})
+        ParseUser.logInInBackground(
+            username, password, ({ user, e ->
+                if (user != null) {
+                    Log.i(TAG, "Successfully logged in user")
+                    goToMainActivity()
+                } else {
+                    e.printStackTrace()
+                    Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
+                }
+            })
         )
     }
 
@@ -49,13 +51,13 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun gotToSignUp(){
+    private fun gotToSignUp() {
         val intent = Intent(this, SignUpActivity::class.java)
         startActivity(intent)
         finish()
     }
 
     companion object {
-        val TAG = "LoginActivity"
+        const val TAG = "LoginActivity"
     }
 }

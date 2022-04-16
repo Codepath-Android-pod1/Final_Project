@@ -2,7 +2,6 @@ package com.example.final_project
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,9 +11,9 @@ import com.parse.ParseUser
 
 class SignUpActivity : AppCompatActivity() {
 
-     override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_sign_up)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sign_up)
 
         findViewById<Button>(R.id.Signup_SignUp).setOnClickListener {
             val username = findViewById<EditText>(R.id.Signup_Username).text.toString()
@@ -26,14 +25,14 @@ class SignUpActivity : AppCompatActivity() {
         findViewById<Button>(R.id.Signup_Back).setOnClickListener {
             goToLogin()
         }
-     }
+    }
 
-    private fun signUpUser(username: String, password: String){
+    private fun signUpUser(username: String, password: String) {
         // Create the ParseUser
         val user = ParseUser()
 
         // Set fields for the user to be created
-        user.setUsername(username)
+        user.username = username
         user.setPassword(password)
 
         user.signUpInBackground { e ->
@@ -54,7 +53,7 @@ class SignUpActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun goToMain(){
+    private fun goToMain() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()

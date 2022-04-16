@@ -3,8 +3,7 @@ package com.example.final_project
 import android.app.Application
 import com.parse.Parse
 
-class Final_ProjectApplication : Application() {
-
+class FinalProjectApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Parse.initialize(
@@ -12,6 +11,7 @@ class Final_ProjectApplication : Application() {
                 .applicationId(getString(R.string.back4app_app_id))
                 .clientKey(getString(R.string.back4app_client_key))
                 .server(getString(R.string.back4app_server_url))
-                .build());
+                .build()
+        )
     }
 }
