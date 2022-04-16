@@ -85,13 +85,13 @@ Breifly shows the current progress of the project.
     - (Create/POST) Create a new event object
 
 #### Existing API Endpoints
-##### Meetup API (GraphQL)
-https://www.meetup.com/api/schema/#Event
+##### Eventbrite API
+- Base URL - [https://www.eventbriteapi.com/v3/](https://www.eventbriteapi.com/v3/)
 
-https://www.meetup.com/api/schema/#Venue
-
-Using [Apollo Kotlin](https://www.apollographql.com/docs/kotlin) client to generate Kotlin models from GraphQL queries
-
+HTTP Verb | Endpoint | Description
+ ---------|----------|------------
+  `GET`    |  |
+  
 ##### Ticketmaster Discovery API
 - Base URL - [https://app.ticketmaster.com/discovery/v2/](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/)
 
