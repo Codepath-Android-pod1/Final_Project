@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/OrangeRedRounded.xml" value="0.195" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/roundedbutton.xml" value="0.1315" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.67" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/content_login.xml" value="0.22" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/content_sign_up.xml" value="0.2" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.18802083333333333" />
