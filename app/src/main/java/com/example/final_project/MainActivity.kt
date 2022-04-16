@@ -3,16 +3,21 @@ package com.example.final_project
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.final_project.fragments.ChatFragment
 import com.example.final_project.fragments.EditFragment
 import com.example.final_project.fragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import com.parse.ParseObject
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Fragments / Bottom Navigation Bar
         val fragmentManager: FragmentManager = supportFragmentManager
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->
             var fragmentToshow: Fragment? = null
@@ -47,6 +53,10 @@ class MainActivity : AppCompatActivity() {
             true
         }
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_Home
+
+        // Generalize Tool bar (We could move it to individual Fragment and have specialize toolbar
+        // Actually we might have to us e Toolbar for each Fragments
+        setSupportActionBar(findViewById(R.id.Main_Toolbar))
     }
 
     companion object {

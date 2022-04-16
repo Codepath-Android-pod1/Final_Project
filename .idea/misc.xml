@@ -4,12 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.21014492753623187" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.19558359621451105" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.24048913043478262" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.1956521739130435" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_home.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_toolbar.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
