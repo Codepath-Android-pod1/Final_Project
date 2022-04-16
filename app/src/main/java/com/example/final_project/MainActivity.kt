@@ -65,6 +65,11 @@ class MainActivity : AppCompatActivity() {
         // Actually we might have to us e Toolbar for each Fragments
         val toolbar = findViewById<Toolbar>(R.id.Main_Toolbar)
         setSupportActionBar(findViewById(R.id.Main_Toolbar))
+        toolbar.title = ""
+        toolbar.setNavigationIcon(R.drawable.ic_launcher_background)
+        toolbar.setNavigationOnClickListener{
+            Toast.makeText(this, "Please work", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -77,10 +82,13 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
 
         when(id){
-            R.id.Testing ->{
+            R.id.Logout ->{
                 ParseUser.logOut()
                 goToLogin()
                 Toast.makeText(this, "Testing Complete", Toast.LENGTH_SHORT).show()
+            }
+            R.id.Profile -> {
+
             }
         }
 

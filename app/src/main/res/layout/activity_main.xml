@@ -16,7 +16,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleMarginStart="40dp">
+        app:titleMarginStart="40dp"
+        app:title=" "
+        >
 
     </androidx.appcompat.widget.Toolbar>
 
