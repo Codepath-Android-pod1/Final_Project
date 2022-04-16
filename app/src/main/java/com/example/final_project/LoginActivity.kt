@@ -33,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun signUpUser(username: String, password: String){
         // Create the ParseUser
         val user = ParseUser()
