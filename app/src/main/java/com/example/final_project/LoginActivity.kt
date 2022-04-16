@@ -26,11 +26,11 @@ class LoginActivity : AppCompatActivity() {
             loginUser(username, password)
         }
 
-        /* findViewById<Button>(R.id.Signup_signup).setOnClickListener{
-            val username = findViewById<EditText>(R.id.Signup_Username).text.toString()
-            val password = findViewById<EditText>(R.id.Signup_Password).text.toString()
-            signUpUser(username, password)
-        }*/
+         findViewById<Button>(R.id.LoginActivity_SignUp).setOnClickListener{
+             val intent = Intent(this, SignUpActivity::class.java)
+             startActivity(intent)
+             finish()
+        }
     }
 
     private fun signUpUser(username: String, password: String){
