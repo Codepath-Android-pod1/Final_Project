@@ -19,5 +19,13 @@
     <string name="back4app_app_id">idKkpoMnyIq9SiFyT86nGpzfdg6Os0T2jcbQsuaL</string>
     <string name="back4app_client_key">t3UwCgRQRQlxi8oPT9a2DknLbIB5nSxHCkrw5Lyc</string>
 
+    <string name="ticketmaster_key">6zyeU8AOypGsbIoAw93PCIhhz81vWMVo</string>
+    <string name="ticketmaster_secret">HVpcFtc4HiegTjmi</string>
+
+    <string name="button_allow">Allow</string>
+    <string name="button_deny">Deny</string>
+    <string name="permission_location_rationale">Location permission is needed to search for nearby events.</string>
+    <string name="permission_location_denied">Location permission was denied. Please consider granting it in order to search for nearby events!</string>
+    <string name="permission_location_never_ask_again">Location permission was denied with never ask again.</string>
 
 </resources>

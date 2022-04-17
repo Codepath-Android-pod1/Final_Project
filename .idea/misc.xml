@@ -3,14 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/OrangeRedRounded.xml" value="0.195" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/roundedbutton.xml" value="0.1315" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.67" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/content_login.xml" value="0.22" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/content_sign_up.xml" value="0.2" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.21014492753623187" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.19558359621451105" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.24048913043478262" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_home.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.37083333333333335" />
+        <entry key="app/src/main/res/menu/menu_toolbar.xml" value="0.28229166666666666" />
       </map>
     </option>
   </component>

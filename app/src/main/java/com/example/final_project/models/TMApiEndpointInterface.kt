@@ -8,8 +8,8 @@ import retrofit2.http.Query
 interface TMApiEndpointInterface {
     @GET("/discovery/v2/events")
     fun getEvents(
-        @Query("city") city: String,
-        @Query("keyword") keyword: String,
-        @Query("geoPoint") geoHash: String,
+        @Query("city") city: String = "",
+        @Query("keyword") keyword: String = "",
+        @Query("geoPoint") geoHash: String = "",
     ): Call<Events>
 }
