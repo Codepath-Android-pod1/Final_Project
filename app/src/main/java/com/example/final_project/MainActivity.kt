@@ -21,18 +21,28 @@ import androidx.fragment.app.FragmentManager
 import com.example.final_project.fragments.ChatFragment
 import com.example.final_project.fragments.EditFragment
 import com.example.final_project.fragments.HomeFragment
+import com.example.final_project.models.EventData
+import com.example.final_project.models.TMApi
+import com.firebase.geofire.GeoFireUtils
+import com.firebase.geofire.GeoLocation
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.parse.ParseUser
 import permissions.dispatcher.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 @RuntimePermissions
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var latLng: LatLng
+    private lateinit var apiService: TMApi
+    private var geoHash: String = ""
 
     private lateinit var drawer: DrawerLayout
     private lateinit var fragmentManger: FragmentManager
@@ -80,6 +90,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
+
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        apiService = retrofit.create(TMApi::class.java)
+        getEvents()
     }
 
     override fun onBackPressed() {
@@ -132,7 +150,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
             .addOnFailureListener { e: Exception ->
-                Log.d(TAG, "Error trying to get last GPS location");
+                Log.d(TAG, "Error trying to get last GPS location")
                 e.printStackTrace()
             }
     }
@@ -163,6 +181,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .show()
     }
 
+    private fun getEvents() {
+        val parameters = hashMapOf<String, String>()
+        parameters["city"] = ""
+        parameters["keyword"] = ""
+        parameters["geoPoint"] = geoHash
+
+        val call: Call<List<EventData>> = apiService.getEvents(parameters)
+        call.enqueue(object : Callback<List<EventData>> {
+            override fun onResponse(call: Call<List<EventData>>, response: Response<List<EventData>>) {
+                val statusCode = response.code()
+                val events: List<EventData>? = response.body()
+                Log.i(TAG, "Events: $events")
+                // TODO: handle data below
+            }
+
+            override fun onFailure(call: Call<List<EventData>>, t: Throwable) {
+                Log.e(TAG, t.message.toString())
+            }
+        })
+    }
+
 
     // Changing Location/Intent
     private fun goToLogin() {
@@ -172,11 +211,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun onLocationChanged(location: Location) {
-        latLng = LatLng(location.latitude, location.longitude)
+        geoHash = GeoFireUtils.getGeoHashForLocation(GeoLocation(location.latitude, location.longitude), 9)
+        Log.i(TAG, "Current geoHash: $geoHash")
     }
 
     companion object {
         const val TAG = "MainActivity"
+        const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -213,4 +254,3 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 }
-
