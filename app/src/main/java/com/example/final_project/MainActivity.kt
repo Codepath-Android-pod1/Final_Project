@@ -3,6 +3,7 @@ package com.example.final_project
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -18,9 +19,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.example.final_project.fragments.ChatFragment
-import com.example.final_project.fragments.EditFragment
-import com.example.final_project.fragments.HomeFragment
+import com.example.final_project.fragments.*
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
@@ -35,8 +34,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var latLng: LatLng
 
     private lateinit var drawer: DrawerLayout
+    private lateinit var navView: NavigationView
     private lateinit var fragmentManger: FragmentManager
     private lateinit var fragmentToShow: Fragment
+    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +57,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragmentManger = supportFragmentManager
 
         // Toolbar Init
-        val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
+        toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle(" ")
+        supportActionBar?.title = " "
 
         // Drawer
         drawer = findViewById(R.id.draw_main)
@@ -67,14 +68,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerListener.syncState()
 
         // Fragment Selection && Initial Fragment Setup
-        val navView = findViewById<NavigationView>(R.id.main_nav_view)
+        navView = findViewById(R.id.main_nav_view)
         navView.setNavigationItemSelectedListener (this)
         if (savedInstanceState == null) {
             fragmentToShow = HomeFragment()
-            fragmentManger
-                .beginTransaction()
-                .replace(R.id.FragmentContainer, fragmentToShow)
-                .commit()
+            changeFragment()
             navView.setCheckedItem(R.id.Testing1)
         }
 
@@ -103,8 +101,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 goToLogin()
                 Toast.makeText(this, "Testing Complete", Toast.LENGTH_SHORT).show()
             }
-            R.id.Profile -> {}
+            R.id.Feedback -> {
+                fragmentToShow = FeedBackFragment()
+            }
+            R.id.Report -> {
+                fragmentToShow = ReportFragment()
+            }
         }
+
+        changeFragment()
 
         return super.onOptionsItemSelected(item)
     }
@@ -203,14 +208,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
+        changeFragment()
+
+        drawer.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    private fun changeFragment() {
         if (fragmentToShow != null) {
             fragmentManger
                 .beginTransaction()
                 .replace(R.id.FragmentContainer, fragmentToShow)
                 .commit()
         }
-        drawer.closeDrawer(GravityCompat.START)
-        return true
     }
 }
+
+
 
