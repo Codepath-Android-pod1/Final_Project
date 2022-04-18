@@ -25,15 +25,18 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.parse.ParseUser
 import permissions.dispatcher.*
 
 @RuntimePermissions
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var latLng: LatLng
 
     private lateinit var drawer: DrawerLayout
+    private lateinit var fragmentManger: FragmentManager
+    private lateinit var fragmentToShow: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,48 +53,30 @@ class MainActivity : AppCompatActivity() {
             }
         */
 
-        // Fragments / Bottom Navigation Bar
-//        val fragmentManager: FragmentManager = supportFragmentManager
-//        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->
-//            var fragmentToshow: Fragment? = null
-//            when (item.itemId) {
-//                R.id.action_Home -> {
-//                    fragmentToshow = HomeFragment()
-//                }
-//                R.id.action_Edit -> {
-//                    fragmentToshow = EditFragment()
-//                }
-//                R.id.action_Chat -> {
-//                    fragmentToshow = ChatFragment()
-//                }
-//            }
-//            if (fragmentToshow != null) {
-//                fragmentManager
-//                    .beginTransaction()
-//                    .replace(R.id.FragmentContainer, fragmentToshow)
-//                    .commit()
-//            }
-//            true
-//        }
+        fragmentManger = supportFragmentManager
 //        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_Home
-//
-//        val toolbar = findViewById<Toolbar>(R.id.Main_Toolbar)
-//        setSupportActionBar(findViewById(R.id.Main_Toolbar))
-//        toolbar.setNavigationIcon(R.drawable.ic_launcher_background)
-//        toolbar.setNavigationOnClickListener {
-//            Toast.makeText(this, "Please work", Toast.LENGTH_SHORT).show()
-//        }
 
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
 
-        // Toolbar drawer
+        // Drawer
         drawer = findViewById(R.id.draw_main)
-
         val drawerListener = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(drawerListener)
         drawerListener.syncState()
+
+        // Fragment Selection && Initial Fragment Setup
+        val navView = findViewById<NavigationView>(R.id.main_nav_view)
+        navView.setNavigationItemSelectedListener (this)
+        fragmentToShow = HomeFragment()
+        fragmentManger
+            .beginTransaction()
+            .replace(R.id.FragmentContainer, fragmentToShow)
+            .commit()
+        navView.setCheckedItem(R.id.Testing1)
+
+
 
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
@@ -193,4 +178,38 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val TAG = "MainActivity"
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.Testing1 -> {
+                fragmentToShow = HomeFragment()
+            }
+
+            R.id.Testing2 -> {
+                fragmentToShow = EditFragment()
+            }
+            R.id.Testing3 -> {
+                fragmentToShow = ChatFragment()
+            }
+            R.id.Testing4 -> {
+                Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
+            }
+            R.id.Testing5 -> {
+                Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
+            }
+            R.id.Testing6 -> {
+                Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        if (fragmentToShow != null) {
+            fragmentManger
+                .beginTransaction()
+                .replace(R.id.FragmentContainer, fragmentToShow)
+                .commit()
+        }
+        drawer.closeDrawer(GravityCompat.START)
+        return true
+    }
 }
+
