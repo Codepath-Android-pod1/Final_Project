@@ -27,7 +27,6 @@ import com.firebase.geofire.GeoFireUtils
 import com.firebase.geofire.GeoLocation
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.parse.ParseUser
 import permissions.dispatcher.*
@@ -42,11 +41,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var apiService: TMApi
-    private var geoHash: String = ""
-
     private lateinit var drawer: DrawerLayout
     private lateinit var fragmentManger: FragmentManager
     private lateinit var fragmentToShow: Fragment
+
+    private var geoHash: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,17 +67,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle(" ")
+        supportActionBar?.title = " "
 
         // Drawer
         drawer = findViewById(R.id.draw_main)
-        val drawerListener = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val drawerListener = ActionBarDrawerToggle(
+            this,
+            drawer,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
         drawer.addDrawerListener(drawerListener)
         drawerListener.syncState()
 
         // Fragment Selection && Initial Fragment Setup
         val navView = findViewById<NavigationView>(R.id.main_nav_view)
-        navView.setNavigationItemSelectedListener (this)
+        navView.setNavigationItemSelectedListener(this)
         if (savedInstanceState == null) {
             fragmentToShow = HomeFragment()
             fragmentManger
@@ -101,7 +106,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
@@ -189,7 +194,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val call: Call<List<EventData>> = apiService.getEvents(parameters)
         call.enqueue(object : Callback<List<EventData>> {
-            override fun onResponse(call: Call<List<EventData>>, response: Response<List<EventData>>) {
+            override fun onResponse(
+                call: Call<List<EventData>>,
+                response: Response<List<EventData>>
+            ) {
                 val statusCode = response.code()
                 val events: List<EventData>? = response.body()
                 Log.i(TAG, "Events: $events")
@@ -211,17 +219,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun onLocationChanged(location: Location) {
-        geoHash = GeoFireUtils.getGeoHashForLocation(GeoLocation(location.latitude, location.longitude), 9)
+        geoHash = GeoFireUtils.getGeoHashForLocation(
+            GeoLocation(location.latitude, location.longitude),
+            9
+        )
         Log.i(TAG, "Current geoHash: $geoHash")
     }
 
-    companion object {
-        const val TAG = "MainActivity"
-        const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
-    }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.Testing1 -> {
                 fragmentToShow = HomeFragment()
             }
@@ -233,10 +239,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragmentToShow = ChatFragment()
             }
             R.id.Testing4 -> {
-                Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Testing1", Toast.LENGTH_SHORT).show()
             }
             R.id.Testing5 -> {
-                Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Testing1", Toast.LENGTH_SHORT).show()
             }
             R.id.Logout -> {
                 ParseUser.logOut()
@@ -244,13 +250,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
-        if (fragmentToShow != null) {
-            fragmentManger
-                .beginTransaction()
-                .replace(R.id.FragmentContainer, fragmentToShow)
-                .commit()
-        }
+        fragmentManger
+            .beginTransaction()
+            .replace(R.id.FragmentContainer, fragmentToShow)
+            .commit()
         drawer.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    companion object {
+        const val TAG = "MainActivity"
+        const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
     }
 }
