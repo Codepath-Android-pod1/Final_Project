@@ -1,6 +1,7 @@
-package com.example.final_project
+package com.example.final_project.databases
 
 import android.app.Application
+import com.example.final_project.R
 import com.parse.Parse
 
 class FinalProjectApp : Application() {
