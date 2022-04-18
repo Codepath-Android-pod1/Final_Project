@@ -199,12 +199,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 call: Call<EventData>,
                 response: Response<EventData>
             ) {
-                val statusCode = response.code()
-                Log.i(TAG, "status code $statusCode")
-                val eventData: EventData? = response.body()
-                if (eventData != null) {
-                    Log.i(TAG, "Events: ${eventData._embedded.events}")
+                if (!response.isSuccessful) {
+                    Log.e(TAG, "Status code ${response.code()}")
+                    return
                 }
+
+                val eventData = response.body()
+                Log.i(TAG, "Events: ${eventData!!._embedded.events}")
+
                 // TODO: handle data below
             }
 
