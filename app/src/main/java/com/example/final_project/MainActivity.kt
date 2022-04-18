@@ -18,9 +18,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.example.final_project.fragments.ChatFragment
-import com.example.final_project.fragments.EditFragment
-import com.example.final_project.fragments.HomeFragment
+import com.example.final_project.fragments.*
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
@@ -69,12 +67,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Fragment Selection && Initial Fragment Setup
         val navView = findViewById<NavigationView>(R.id.main_nav_view)
         navView.setNavigationItemSelectedListener (this)
+
         if (savedInstanceState == null) {
             fragmentToShow = HomeFragment()
-            fragmentManger
-                .beginTransaction()
-                .replace(R.id.FragmentContainer, fragmentToShow)
-                .commit()
+            changeFragment()
             navView.setCheckedItem(R.id.Testing1)
         }
 
@@ -103,8 +99,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 goToLogin()
                 Toast.makeText(this, "Testing Complete", Toast.LENGTH_SHORT).show()
             }
-            R.id.Profile -> {}
+            R.id.Feedback -> {
+                fragmentToShow = FeedBackFragment()
+            }
+
+            R.id.Report -> {
+                fragmentToShow = ReportFragment()
+            }
+
         }
+
+        changeFragment()
 
         return super.onOptionsItemSelected(item)
     }
@@ -203,14 +208,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
+        changeFragment()
+
+        drawer.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    private fun changeFragment() {
         if (fragmentToShow != null) {
             fragmentManger
                 .beginTransaction()
                 .replace(R.id.FragmentContainer, fragmentToShow)
                 .commit()
         }
-        drawer.closeDrawer(GravityCompat.START)
-        return true
     }
 }
 
