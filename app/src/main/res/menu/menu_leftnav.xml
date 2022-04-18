@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Testing1"
+            android:title="Testing" />
+
+        <item
+            android:id="@+id/Testing2"
+            android:title="Testing2" />
+
+        <item
+            android:id="@+id/Testing3"
+            android:title="Testing3" />
+    </group>
+
+    <!-- The item below only does a function; don't navigate to anything -->
+    <item android:title="Sub Menu">
+        <menu>
+            <item
+                android:id="@+id/Testing4"
+                android:title="Testing4" />
+            <item
+                android:id="@+id/Testing5"
+                android:title="Testing5" />
+            <item
+                android:id="@+id/Testing6"
+                android:title="Testing6" />
+        </menu>
+    </item>
+</menu>

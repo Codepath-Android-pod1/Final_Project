@@ -28,4 +28,7 @@
     <string name="permission_location_denied">Location permission was denied. Please consider granting it in order to search for nearby events!</string>
     <string name="permission_location_never_ask_again">Location permission was denied with never ask again.</string>
 
+    <string name="navigation_drawer_open"> Open Navigation Drawer </string>
+    <string name="navigation_drawer_close"> Close Navigation Drawer</string>
+
 </resources>

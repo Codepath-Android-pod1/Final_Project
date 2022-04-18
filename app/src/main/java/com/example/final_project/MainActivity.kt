@@ -10,9 +10,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.final_project.fragments.ChatFragment
@@ -30,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var latLng: LatLng
 
+    private lateinit var drawer: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,43 +51,61 @@ class MainActivity : AppCompatActivity() {
         */
 
         // Fragments / Bottom Navigation Bar
-        val fragmentManager: FragmentManager = supportFragmentManager
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->
-            var fragmentToshow: Fragment? = null
-            when (item.itemId) {
-                R.id.action_Home -> {
-                    fragmentToshow = HomeFragment()
-                }
-                R.id.action_Edit -> {
-                    fragmentToshow = EditFragment()
-                }
-                R.id.action_Chat -> {
-                    fragmentToshow = ChatFragment()
-                }
-            }
-            if (fragmentToshow != null) {
-                fragmentManager
-                    .beginTransaction()
-                    .replace(R.id.FragmentContainer, fragmentToshow)
-                    .commit()
-            }
-            true
-        }
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_Home
+//        val fragmentManager: FragmentManager = supportFragmentManager
+//        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->
+//            var fragmentToshow: Fragment? = null
+//            when (item.itemId) {
+//                R.id.action_Home -> {
+//                    fragmentToshow = HomeFragment()
+//                }
+//                R.id.action_Edit -> {
+//                    fragmentToshow = EditFragment()
+//                }
+//                R.id.action_Chat -> {
+//                    fragmentToshow = ChatFragment()
+//                }
+//            }
+//            if (fragmentToshow != null) {
+//                fragmentManager
+//                    .beginTransaction()
+//                    .replace(R.id.FragmentContainer, fragmentToshow)
+//                    .commit()
+//            }
+//            true
+//        }
+//        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_Home
+//
+//        val toolbar = findViewById<Toolbar>(R.id.Main_Toolbar)
+//        setSupportActionBar(findViewById(R.id.Main_Toolbar))
+//        toolbar.setNavigationIcon(R.drawable.ic_launcher_background)
+//        toolbar.setNavigationOnClickListener {
+//            Toast.makeText(this, "Please work", Toast.LENGTH_SHORT).show()
+//        }
 
-        // Generalize Tool bar (We could move it to individual Fragment and have specialize toolbar
-        // Actually we might have to us e Toolbar for each Fragments
-        val toolbar = findViewById<Toolbar>(R.id.Main_Toolbar)
-        setSupportActionBar(findViewById(R.id.Main_Toolbar))
-        toolbar.setNavigationIcon(R.drawable.ic_launcher_background)
-        toolbar.setNavigationOnClickListener {
-            Toast.makeText(this, "Please work", Toast.LENGTH_SHORT).show()
-        }
+        // Toolbar Init
+        val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
+        setSupportActionBar(toolbar)
+
+        // Toolbar drawer
+        drawer = findViewById(R.id.draw_main)
+
+        val drawerListener = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer.addDrawerListener(drawerListener)
+        drawerListener.syncState()
 
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
     }
 
+    override fun onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    // Misc stuff like Toolbar / Nav bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
         return super.onCreateOptionsMenu(menu)
@@ -101,6 +124,8 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
+    // Permission set up
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
@@ -153,6 +178,8 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+
+    // Changing Location/Intent
     private fun goToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
