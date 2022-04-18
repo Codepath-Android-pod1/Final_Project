@@ -54,11 +54,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         */
 
         fragmentManger = supportFragmentManager
-//        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_Home
 
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar?.setTitle(" ")
 
         // Drawer
         drawer = findViewById(R.id.draw_main)
@@ -69,14 +69,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Fragment Selection && Initial Fragment Setup
         val navView = findViewById<NavigationView>(R.id.main_nav_view)
         navView.setNavigationItemSelectedListener (this)
-        fragmentToShow = HomeFragment()
-        fragmentManger
-            .beginTransaction()
-            .replace(R.id.FragmentContainer, fragmentToShow)
-            .commit()
-        navView.setCheckedItem(R.id.Testing1)
-
-
+        if (savedInstanceState == null) {
+            fragmentToShow = HomeFragment()
+            fragmentManger
+                .beginTransaction()
+                .replace(R.id.FragmentContainer, fragmentToShow)
+                .commit()
+            navView.setCheckedItem(R.id.Testing1)
+        }
 
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
@@ -197,8 +197,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Testing5 -> {
                 Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
             }
-            R.id.Testing6 -> {
-                Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
+            R.id.Logout -> {
+                ParseUser.logOut()
+                goToLogin()
             }
         }
 
