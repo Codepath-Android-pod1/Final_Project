@@ -23,6 +23,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.parse.ParseUser
 import permissions.dispatcher.*
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var latLng: LatLng
 
+    // Toolbar/Navbar Related stuff
     private lateinit var drawer: DrawerLayout
     private lateinit var fragmentManger: FragmentManager
     private lateinit var fragmentToShow: Fragment
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle(" ")
+        supportActionBar?.title = " "
 
         // Drawer
         drawer = findViewById(R.id.draw_main)
@@ -74,6 +76,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navView.setCheckedItem(R.id.Testing1)
         }
 
+        // Floating Action Button && Set it's onclick thing
+        this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
+            Toast.makeText(this, "testing", Toast.LENGTH_SHORT).show()
+        }
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
     }

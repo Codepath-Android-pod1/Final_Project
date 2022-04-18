@@ -13,7 +13,7 @@
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.2520833333333333" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.25" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_feed_back.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_home.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_report.xml" value="0.24682971014492755" />
@@ -21,10 +21,10 @@
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_setting.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/nav_head.xml" value="0.30520833333333336" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.30520833333333336" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.13697916666666668" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13697916666666668" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_leftnav.xml" value="0.30520833333333336" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_toolbar.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13697916666666668" />
       </map>
     </option>
   </component>
