@@ -2,27 +2,23 @@ package com.example.final_project.models
 
 import com.example.final_project.unused_models.*
 
-data class EventItem(
-    val _embedded: Embedded,
+data class Event(
+    val _embedded: EmbeddedX,
     val _links: LinksXX,
-    val accessibility: Accessibility,
-    val ageRestrictions: AgeRestrictions,
     val classifications: List<ClassificationX>,
-    val code: String,
     val dates: Dates,
+    val distance: Double,
     val id: String,
-    val images: List<ImageXX>,
-    val info: String,
+    val images: List<ImageX>,
     val locale: String,
     val name: String,
-    val pleaseNote: String,
-    val priceRanges: List<PriceRange>,
+    val outlets: List<Outlet>,
     val promoter: Promoter,
     val promoters: List<Promoter>,
     val sales: Sales,
     val seatmap: Seatmap,
     val test: Boolean,
-    val ticketLimit: TicketLimit,
     val type: String,
+    val units: String,
     val url: String
 )

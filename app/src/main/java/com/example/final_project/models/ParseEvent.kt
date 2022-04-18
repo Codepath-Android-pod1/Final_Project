@@ -1,9 +1,12 @@
 package com.example.final_project.models
 
-import com.parse.*
+import com.parse.ParseClassName
+import com.parse.ParseGeoPoint
+import com.parse.ParseObject
+import com.parse.ParseUser
 
 @ParseClassName("Event")
-class UserEvent : ParseObject() {
+class ParseEvent : ParseObject() {
     fun getTitle(): String? {
         return getString(KEY_TITLE)
     }
@@ -20,11 +23,11 @@ class UserEvent : ParseObject() {
         put(KEY_DESCRIPTION, description)
     }
 
-    fun getDate(): ParseObject? {
-        return getParseObject(KEY_DATE)
+    fun getDate(): String? {
+        return getString(KEY_DATE)
     }
 
-    fun setDate(date: ParseObject) {
+    fun setDate(date: String) {
         put(KEY_DATE, date)
     }
 
