@@ -188,23 +188,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun getEvents() {
         val parameters = hashMapOf<String, String>()
+        parameters["apikey"] = R.string.ticketmaster_key.toString()
         parameters["city"] = ""
         parameters["keyword"] = ""
         parameters["geoPoint"] = geoHash
 
-        val call: Call<List<EventData>> = apiService.getEvents(parameters)
-        call.enqueue(object : Callback<List<EventData>> {
+        val call: Call<EventData> = apiService.getEvents(parameters)
+        call.enqueue(object : Callback<EventData> {
             override fun onResponse(
-                call: Call<List<EventData>>,
-                response: Response<List<EventData>>
+                call: Call<EventData>,
+                response: Response<EventData>
             ) {
                 val statusCode = response.code()
-                val events: List<EventData>? = response.body()
-                Log.i(TAG, "Events: $events")
+                Log.i(TAG, "status code $statusCode")
+                val eventData: EventData? = response.body()
+                if (eventData != null) {
+                    Log.i(TAG, "Events: ${eventData._embedded.events}")
+                }
                 // TODO: handle data below
             }
 
-            override fun onFailure(call: Call<List<EventData>>, t: Throwable) {
+            override fun onFailure(call: Call<EventData>, t: Throwable) {
                 Log.e(TAG, t.message.toString())
             }
         })
