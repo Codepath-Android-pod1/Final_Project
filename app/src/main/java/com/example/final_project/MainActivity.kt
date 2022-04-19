@@ -19,19 +19,30 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.final_project.fragments.*
+import com.example.final_project.models.EventData
+import com.example.final_project.models.TMApi
+import com.firebase.geofire.GeoFireUtils
+import com.firebase.geofire.GeoLocation
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.parse.ParseUser
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import permissions.dispatcher.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 @RuntimePermissions
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var latLng: LatLng
+    private lateinit var apiService: TMApi
+    private var geoHash: String = ""
 
     // Toolbar/Navbar Related stuff
     private lateinit var drawer: DrawerLayout
@@ -62,13 +73,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // Drawer
         drawer = findViewById(R.id.draw_main)
-        val drawerListener = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val drawerListener = ActionBarDrawerToggle(
+            this,
+            drawer,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
         drawer.addDrawerListener(drawerListener)
         drawerListener.syncState()
 
         // Fragment Selection && Initial Fragment Setup
         val navView = findViewById<NavigationView>(R.id.main_nav_view)
-        navView.setNavigationItemSelectedListener (this)
+        navView.setNavigationItemSelectedListener(this)
 
         if (savedInstanceState == null) {
             fragmentToShow = HomeFragment()
@@ -82,14 +99,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
-    }
 
-    override fun onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
+        val client: OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        apiService = retrofit.create(TMApi::class.java)
+        getEvents()
     }
 
     // Misc stuff like Toolbar / Nav bar
@@ -112,14 +136,48 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Report -> {
                 fragmentToShow = ReportFragment()
             }
-
         }
 
         changeFragment()
-
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.Testing1 -> {
+                fragmentToShow = HomeFragment()
+            }
+
+            R.id.Testing2 -> {
+                fragmentToShow = EditFragment()
+            }
+            R.id.Testing3 -> {
+                fragmentToShow = ChatFragment()
+            }
+            R.id.Testing4 -> {
+                Toast.makeText(this, "Testing1", Toast.LENGTH_SHORT).show()
+            }
+            R.id.Testing5 -> {
+                Toast.makeText(this, "Testing1", Toast.LENGTH_SHORT).show()
+            }
+            R.id.Logout -> {
+                ParseUser.logOut()
+                goToLogin()
+            }
+        }
+
+        changeFragment()
+        drawer.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    override fun onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
 
     // Permission set up
     override fun onRequestPermissionsResult(
@@ -143,7 +201,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
             .addOnFailureListener { e: Exception ->
-                Log.d(TAG, "Error trying to get last GPS location");
+                Log.d(TAG, "Error trying to get last GPS location")
                 e.printStackTrace()
             }
     }
@@ -174,50 +232,48 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .show()
     }
 
+    private fun getEvents() {
+        val parameters = hashMapOf<String, String>()
+        parameters["apikey"] = getString(R.string.ticketmaster_key)
+        parameters["city"] = ""
+        parameters["keyword"] = ""
+        parameters["geoPoint"] = geoHash
 
-    // Changing Location/Intent
+        val call: Call<EventData> = apiService.getEvents(parameters)
+        call.enqueue(object : Callback<EventData> {
+            override fun onResponse(
+                call: Call<EventData>,
+                response: Response<EventData>
+            ) {
+                if (!response.isSuccessful) {
+                    Log.e(TAG, "Status code ${response.code()}")
+                    return
+                }
+
+                val eventData = response.body()
+                Log.i(TAG, "Events: ${eventData!!._embedded.events}")
+
+                // TODO: handle data below
+            }
+
+            override fun onFailure(call: Call<EventData>, t: Throwable) {
+                Log.e(TAG, t.message.toString())
+            }
+        })
+    }
+
+    private fun onLocationChanged(location: Location) {
+        geoHash = GeoFireUtils.getGeoHashForLocation(
+            GeoLocation(location.latitude, location.longitude),
+            9
+        )
+        Log.i(TAG, "Current geoHash: $geoHash")
+    }
+
     private fun goToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
-    }
-
-    private fun onLocationChanged(location: Location) {
-        latLng = LatLng(location.latitude, location.longitude)
-    }
-
-    companion object {
-        const val TAG = "MainActivity"
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.Testing1 -> {
-                fragmentToShow = HomeFragment()
-            }
-
-            R.id.Testing2 -> {
-                fragmentToShow = EditFragment()
-            }
-            R.id.Testing3 -> {
-                fragmentToShow = ChatFragment()
-            }
-            R.id.Testing4 -> {
-                Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
-            }
-            R.id.Testing5 -> {
-                Toast.makeText(this,"Testing1", Toast.LENGTH_SHORT).show()
-            }
-            R.id.Logout -> {
-                ParseUser.logOut()
-                goToLogin()
-            }
-        }
-
-        changeFragment()
-
-        drawer.closeDrawer(GravityCompat.START)
-        return true
     }
 
     private fun changeFragment() {
@@ -227,6 +283,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .replace(R.id.FragmentContainer, fragmentToShow)
                 .commit()
         }
+    }
+
+    companion object {
+        const val TAG = "MainActivity"
+        const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
     }
 }
 
