@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -119,11 +120,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     // Misc stuff like Toolbar / Nav bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
+
+        // Doesn't work for now
+        val search = menu?.findItem(R.id.Search)
+        val searchView = search?.actionView as SearchView
+        searchView.queryHint = "Search for Events"
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+        })
+
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.Search -> {
+                fragmentToShow = SearchFragment()
+            }
             R.id.Logout -> {
                 ParseUser.logOut()
                 goToLogin()

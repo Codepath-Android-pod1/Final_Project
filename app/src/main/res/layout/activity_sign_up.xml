@@ -18,7 +18,7 @@
         android:hint="Username"
         android:inputType="textPersonName"
         android:paddingLeft="110dp"
-        android:stateListAnimator="@anim/button_state_list_animator"
+        android:stateListAnimator="@anim/button_state_list_anim_material"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
