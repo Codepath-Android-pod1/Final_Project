@@ -1,4 +1,4 @@
-package com.example.final_project
+package com.example.final_project.activities
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -19,6 +19,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.final_project.R
 import com.example.final_project.fragments.*
 import com.example.final_project.models.EventData
 import com.example.final_project.models.TMApi
@@ -42,8 +43,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 @RuntimePermissions
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var apiService: TMApi
-    private var geoHash: String = ""
 
     // Toolbar/Navbar Related stuff
     private lateinit var drawer: DrawerLayout
@@ -114,7 +113,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .build()
 
         apiService = retrofit.create(TMApi::class.java)
-        getEvents()
     }
 
     // Misc stuff like Toolbar / Nav bar
@@ -126,7 +124,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val searchView = search?.actionView as SearchView
         searchView.queryHint = "Search for Events"
 
-        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(p0: String?): Boolean {
                 TODO("Not yet implemented")
             }
@@ -252,36 +250,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .show()
     }
 
-    private fun getEvents() {
-        val parameters = hashMapOf<String, String>()
-        parameters["apikey"] = getString(R.string.ticketmaster_key)
-        parameters["city"] = ""
-        parameters["keyword"] = ""
-        parameters["geoPoint"] = geoHash
-
-        val call: Call<EventData> = apiService.getEvents(parameters)
-        call.enqueue(object : Callback<EventData> {
-            override fun onResponse(
-                call: Call<EventData>,
-                response: Response<EventData>
-            ) {
-                if (!response.isSuccessful) {
-                    Log.e(TAG, "Status code ${response.code()}")
-                    return
-                }
-
-                val eventData = response.body()
-                Log.i(TAG, "Events: ${eventData!!._embedded.events}")
-
-                // TODO: handle data below
-            }
-
-            override fun onFailure(call: Call<EventData>, t: Throwable) {
-                Log.e(TAG, t.message.toString())
-            }
-        })
-    }
-
     private fun onLocationChanged(location: Location) {
         geoHash = GeoFireUtils.getGeoHashForLocation(
             GeoLocation(location.latitude, location.longitude),
@@ -308,6 +276,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     companion object {
         const val TAG = "MainActivity"
         const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
+        lateinit var apiService: TMApi
+        var geoHash: String = ""
     }
 }
 
