@@ -16,6 +16,11 @@
         app:actionViewClass="android.widget.SearchView" />
 
     <item
+        android:id="@+id/Setting"
+        android:title="Setting"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/Report"
         android:title="Report"
         app:showAsAction="never"/>

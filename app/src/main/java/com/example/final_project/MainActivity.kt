@@ -152,10 +152,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Feedback -> {
                 fragmentToShow = FeedBackFragment()
             }
-
             R.id.Report -> {
                 fragmentToShow = ReportFragment()
             }
+            R.id.Setting -> {
+                fragmentToShow = SettingFragment()
+            }
+
         }
 
         changeFragment()
