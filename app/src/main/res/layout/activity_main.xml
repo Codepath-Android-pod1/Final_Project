@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/draw_main"
+    android:clipChildren="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="end">
@@ -18,6 +19,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/main_toolbar"
+            android:clipChildren="false"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/black"
