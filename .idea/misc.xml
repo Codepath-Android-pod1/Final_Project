@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1955" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/greenroundedbutton.xml" value="0.1955" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.1955" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/loginbackground.xml" value="0.259" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/orangeredroundedbutton.xml" value="0.259" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/OrangeRedRounded.xml" value="0.195" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/roundedbutton.xml" value="0.1315" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.33" />
