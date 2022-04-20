@@ -21,7 +21,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.final_project.R
 import com.example.final_project.fragments.*
-import com.example.final_project.models.EventData
 import com.example.final_project.models.TMApi
 import com.firebase.geofire.GeoFireUtils
 import com.firebase.geofire.GeoLocation
@@ -33,9 +32,6 @@ import com.parse.ParseUser
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import permissions.dispatcher.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

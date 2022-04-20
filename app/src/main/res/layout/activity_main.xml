@@ -3,13 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/draw_main"
-    android:clipChildren="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
     tools:openDrawer="end">
     <!-- Remove OpenDrawer to move the left thing away-->
-
-
 
 
     <RelativeLayout
@@ -19,10 +17,10 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/main_toolbar"
-            android:clipChildren="false"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/black"
+            android:clipChildren="false"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -53,10 +51,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_head"
-        app:menu="@menu/menu_leftnav" >
+        app:menu="@menu/menu_leftnav">
 
     </com.google.android.material.navigation.NavigationView>
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

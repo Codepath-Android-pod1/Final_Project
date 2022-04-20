@@ -5,27 +5,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.viewpager.widget.ViewPager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.viewpager.widget.ViewPager
 import com.example.final_project.R
-import com.example.final_project.adapter.MyAdapter
-import com.google.android.material.tabs.TabLayout
 import com.example.final_project.activities.MainActivity
 import com.example.final_project.adapter.EventAdapter
 import com.example.final_project.models.Event
 import com.example.final_project.models.EventData
+import com.google.android.material.tabs.TabLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
-//    lateinit var vp: ViewPager
-//    lateinit var tl: TabLayout
+    lateinit var vp: ViewPager
+    lateinit var tl: TabLayout
     lateinit var toolbar: Toolbar
     lateinit var eventsRV: RecyclerView
     lateinit var adapter: EventAdapter
@@ -76,7 +75,7 @@ class HomeFragment : Fragment() {
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright)
 
-         queryEvents()
+        queryEvents()
     }
 
     fun queryEvents() {

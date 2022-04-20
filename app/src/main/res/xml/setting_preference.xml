@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference />
 
     <Preference
         android:key="Feedback"
-        android:title="Send Feedback"
-        android:summary="Report technical issues or suggest new features" />
+        android:summary="Report technical issues or suggest new features"
+        android:title="Send Feedback" />
 
     <SwitchPreferenceCompat
         android:key="Testing"
-        android:title="Enable Message Notification"
-        />
+        android:title="Enable Message Notification" />
 
     <SwitchPreferenceCompat
         android:key="Testing"
-        android:title="Enable Message Notification"
-        />
+        android:title="Enable Message Notification" />
 
     <SwitchPreferenceCompat
         android:key="Testing"
-        android:title="Enable Message Notification"
-        />
+        android:title="Enable Message Notification" />
 
     <SwitchPreferenceCompat
         android:key="Testing"
-        android:title="Enable Message Notification"
-        />
+        android:title="Enable Message Notification" />
 
     <SwitchPreferenceCompat
         android:key="Testing"
-        android:title="Enable Message Notification"
-        />
-
+        android:title="Enable Message Notification" />
 
 
 </PreferenceScreen>

@@ -5,15 +5,15 @@
     <item
         android:id="@+id/action_Home"
         android:title="Home"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_Edit"
         android:title="Edit"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_Chat"
         android:title="Chat"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 </menu>
