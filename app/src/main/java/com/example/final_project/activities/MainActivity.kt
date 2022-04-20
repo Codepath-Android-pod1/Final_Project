@@ -276,7 +276,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         const val TAG = "MainActivity"
         const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
         lateinit var apiService: TMApi
-        var geoHash: String = ""
+        lateinit var geoHash: String
     }
 }
 

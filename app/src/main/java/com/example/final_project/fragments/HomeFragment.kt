@@ -21,7 +21,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment : Fragment() {
+open class HomeFragment : Fragment() {
 
     lateinit var vp: ViewPager
     lateinit var tl: TabLayout
@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        eventsRV = view.findViewById(R.id)
+        eventsRV = view.findViewById(R.id.rvEvent)
         adapter = EventAdapter(requireContext(), allEvents)
         eventsRV.adapter = adapter
         eventsRV.layoutManager = LinearLayoutManager(requireContext())
@@ -78,12 +78,14 @@ class HomeFragment : Fragment() {
         queryEvents()
     }
 
-    fun queryEvents() {
+    private fun queryEvents() {
         val parameters = hashMapOf<String, String>()
         parameters["apikey"] = getString(R.string.ticketmaster_key)
         parameters["city"] = ""
         parameters["keyword"] = ""
         parameters["geoPoint"] = MainActivity.geoHash
+
+        adapter.clear()
 
         val call: Call<EventData> = MainActivity.apiService.getEvents(parameters)
         call.enqueue(object : Callback<EventData> {
