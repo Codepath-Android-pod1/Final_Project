@@ -1,28 +1,16 @@
 package com.example.final_project.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager.widget.ViewPager
 import com.example.final_project.R
-import com.example.final_project.activities.MainActivity
-import com.example.final_project.adapter.EventAdapter
 import com.example.final_project.adapter.MyAdapter
-import com.example.final_project.models.Event
-import com.example.final_project.models.EventData
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 open class HomeFragment : Fragment() {
 
@@ -44,11 +32,15 @@ open class HomeFragment : Fragment() {
         tl = view.findViewById(R.id.tablayout)
 
         tl.setupWithViewPager(vp)
+        vp.offscreenPageLimit = 2
         tl.addTab(tl.newTab().setText("Testing 1"))
         tl.addTab(tl.newTab().setText("Testing 2"))
         tl.tabGravity = TabLayout.GRAVITY_FILL
-        val adapter = MyAdapter(this, parentFragmentManager, tl.tabCount)
+        val fragmentArray = arrayOf(ChatFragment(), TMEventFragment())
+        val adapter = MyAdapter(childFragmentManager, fragmentArray)
+
         vp.adapter = adapter
+        vp.currentItem = 1
         vp.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tl))
         tl.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -62,9 +54,6 @@ open class HomeFragment : Fragment() {
         view.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
             Toast.makeText(activity, "testing", Toast.LENGTH_SHORT).show()
         }
-
-
-
     }
 
 
