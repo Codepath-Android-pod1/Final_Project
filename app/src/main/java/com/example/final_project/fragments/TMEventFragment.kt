@@ -1,27 +1,25 @@
 package com.example.final_project.fragments
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
+import android.widget.AbsListView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.viewpager.widget.ViewPager
 import com.example.final_project.R
 import com.example.final_project.activities.MainActivity
 import com.example.final_project.adapter.EventAdapter
 import com.example.final_project.models.Event
 import com.example.final_project.models.EventData
-import okhttp3.internal.wait
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class TMEventFragment : Fragment() {
 
@@ -54,6 +52,37 @@ class TMEventFragment : Fragment() {
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright)
 
         queryEvents()
+
+        eventsRV.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+
+            @Override
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    // Scrolling up
+
+                } else {
+                    // Scrolling down
+
+                }
+            }
+
+            @Override
+            override fun onScrollStateChanged(recyclerView: RecyclerView , newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
+                    // Do something
+                    Log.i(TAG, "1")
+                } else if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                    // Do something
+                    Log.i(TAG, "2")
+                } else {
+                    // Do something
+                    Log.i(TAG, "3")
+                }
+            }
+        })
     }
 
 

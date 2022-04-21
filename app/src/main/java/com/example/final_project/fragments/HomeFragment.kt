@@ -62,6 +62,9 @@ open class HomeFragment : Fragment() {
         view.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
             Toast.makeText(activity, "testing", Toast.LENGTH_SHORT).show()
         }
+
+
+
     }
 
 
