@@ -6,13 +6,16 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.example.final_project.fragments.ChatFragment
 import com.example.final_project.fragments.HomeFragment
 import com.example.final_project.fragments.SettingFragment
+import com.example.final_project.fragments.TMEventFragment
 
 @Suppress("DEPRECATION")
+val StringArray = arrayOf("Tab1", "Tab2")
 internal class MyAdapter(
     var context: HomeFragment,
     fm: FragmentManager,
     var totalTabs: Int
 ) :
+
     FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
@@ -20,7 +23,7 @@ internal class MyAdapter(
                 ChatFragment()
             }
             1 -> {
-                SettingFragment()
+                TMEventFragment()
             }
             else -> getItem(position)
         }
@@ -28,5 +31,9 @@ internal class MyAdapter(
 
     override fun getCount(): Int {
         return totalTabs
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return StringArray[position]
     }
 }

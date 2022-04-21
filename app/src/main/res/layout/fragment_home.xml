@@ -1,37 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragments.HomeFragment">
 
-    <!--    <com.google.android.material.tabs.TabLayout-->
-    <!--        android:id="@+id/tablayout"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="50dp"-->
-    <!--        android:background="@color/white"-->
-    <!--        app:tabTextColor="@color/black"-->
-    <!--        app:tabSelectedTextColor="@color/pastelGreen"/>-->
-    <!--    <androidx.viewpager.widget.ViewPager-->
-    <!--        android:id="@+id/viewpager"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_weight="1" />-->
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvEvent"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            android:background="@color/white"
+            app:tabTextColor="@color/black"
+            app:tabSelectedTextColor="@color/pastelGreen"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

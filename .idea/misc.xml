@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/OrangeRedRounded.xml" value="0.195" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/roundedbutton.xml" value="0.1315" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.33" />
@@ -14,24 +13,24 @@
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/drawable/greenroundedbutton.xml" value="0.1455" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.12259371833839919" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.31091370558375636" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.25" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_feed_back.xml" value="0.24682971014492755" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_home.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_report.xml" value="0.24682971014492755" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_set_photo.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_setting.xml" value="0.24682971014492755" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_t_m_event.xml" value="0.2826086956521739" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/nav_head.xml" value="0.30520833333333336" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.30520833333333336" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_leftnav.xml" value="0.30520833333333336" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_toolbar.xml" value="0.36666666666666664" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
+        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/xml/setting_preference.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.13697916666666668" />
-        <entry key="app/src/main/res/layout/fragment_feed_back.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13697916666666668" />
-        <entry key="app/src/main/res/layout/item_event.xml" value="0.33" />
       </map>
     </option>
   </component>
