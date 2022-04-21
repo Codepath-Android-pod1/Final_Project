@@ -89,6 +89,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navView.setCheckedItem(R.id.Testing1)
         }
 
+        // Floating Action Button && Set it's onclick thing
+        this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
+            Toast.makeText(this, "testing", Toast.LENGTH_SHORT).show()
+        }
+
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
 
@@ -265,6 +270,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .beginTransaction()
                 .replace(R.id.FragmentContainer, fragmentToShow!!)
                 .commit()
+        }
+
+        if (fragmentToShow is HomeFragment) {
+            this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).show()
+        } else {
+            this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).hide()
         }
     }
 

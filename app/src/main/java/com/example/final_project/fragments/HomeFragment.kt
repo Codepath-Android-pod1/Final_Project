@@ -40,7 +40,6 @@ open class HomeFragment : Fragment() {
         val adapter = MyAdapter(childFragmentManager, fragmentArray)
 
         vp.adapter = adapter
-        vp.currentItem = 1
         vp.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tl))
         tl.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -50,10 +49,6 @@ open class HomeFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
-        // Floating Action Button && Set it's onclick thing
-        view.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
-            Toast.makeText(activity, "testing", Toast.LENGTH_SHORT).show()
-        }
     }
 
 
