@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     // Toolbar/Navbar Related stuff
     private lateinit var drawer: DrawerLayout
     private lateinit var fragmentManger: FragmentManager
-    private lateinit var fragmentToShow: Fragment
+    private var fragmentToShow: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -267,7 +267,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (fragmentToShow != null) {
             fragmentManger
                 .beginTransaction()
-                .replace(R.id.FragmentContainer, fragmentToShow)
+                .replace(R.id.FragmentContainer, fragmentToShow!!)
                 .commit()
         }
     }
@@ -276,7 +276,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         const val TAG = "MainActivity"
         const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
         lateinit var apiService: TMApi
-        lateinit var geoHash: String
+        var geoHash: String = ""
     }
 }
 

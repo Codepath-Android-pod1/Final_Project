@@ -8,9 +8,10 @@
 
     <ImageView
         android:id="@+id/ivImage"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -19,6 +20,7 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         app:layout_constraintStart_toEndOf="@+id/ivImage"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
@@ -27,6 +29,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         app:layout_constraintStart_toEndOf="@+id/ivImage"
         app:layout_constraintTop_toBottomOf="@+id/tvDate"
         tools:text="TextView" />
@@ -43,8 +46,17 @@
         android:id="@+id/tvLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         app:layout_constraintStart_toEndOf="@+id/ivImage"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        tools:layout_editor_absoluteY="51dp"
         tools:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvDayTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@+id/tvDate"
+        app:layout_constraintTop_toTopOf="@+id/tvDate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

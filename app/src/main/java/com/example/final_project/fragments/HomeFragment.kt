@@ -78,7 +78,7 @@ open class HomeFragment : Fragment() {
         queryEvents()
     }
 
-    private fun queryEvents() {
+    open fun queryEvents() {
         val parameters = hashMapOf<String, String>()
         parameters["apikey"] = getString(R.string.ticketmaster_key)
         parameters["city"] = ""
