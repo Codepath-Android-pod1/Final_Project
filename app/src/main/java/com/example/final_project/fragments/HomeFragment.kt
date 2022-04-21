@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,7 @@ import com.example.final_project.adapter.EventAdapter
 import com.example.final_project.adapter.MyAdapter
 import com.example.final_project.models.Event
 import com.example.final_project.models.EventData
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,6 +57,11 @@ open class HomeFragment : Fragment() {
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+
+        // Floating Action Button && Set it's onclick thing
+        view.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
+            Toast.makeText(activity, "testing", Toast.LENGTH_SHORT).show()
+        }
     }
 
 

@@ -89,10 +89,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navView.setCheckedItem(R.id.Testing1)
         }
 
-        // Floating Action Button && Set it's onclick thing
-        this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
-            Toast.makeText(this, "testing", Toast.LENGTH_SHORT).show()
-        }
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
 
