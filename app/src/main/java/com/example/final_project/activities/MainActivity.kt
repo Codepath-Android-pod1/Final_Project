@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var drawer: DrawerLayout
     private lateinit var fragmentManger: FragmentManager
     private var fragmentToShow: Fragment? = null
+    private lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerListener.syncState()
 
         // Fragment Selection && Initial Fragment Setup
-        val navView = findViewById<NavigationView>(R.id.main_nav_view)
+        navView = findViewById(R.id.main_nav_view)
         navView.setNavigationItemSelectedListener(this)
 
         if (savedInstanceState == null) {
@@ -92,6 +93,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Floating Action Button && Set it's onclick thing
         this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
             fragmentToShow = EditFragment()
+            //Change to Edit Fragment
+            navView.setCheckedItem(R.id.Testing2)
             changeFragment()
         }
 
@@ -116,22 +119,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     // Misc stuff like Toolbar / Nav bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
-
-        // Doesn't work for now
-//        val search = menu?.findItem(R.id.Search)
-//        val searchView = search?.actionView as SearchView
-//        searchView.queryHint = "Search for Events"
-//
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextChange(p0: String?): Boolean {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onQueryTextSubmit(p0: String?): Boolean {
-//                TODO("Not yet implemented")
-//            }
-//        })
-
         return super.onCreateOptionsMenu(menu)
     }
 
