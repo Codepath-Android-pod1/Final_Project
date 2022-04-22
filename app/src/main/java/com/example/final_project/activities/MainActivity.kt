@@ -91,7 +91,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // Floating Action Button && Set it's onclick thing
         this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
-            Toast.makeText(this, "testing", Toast.LENGTH_SHORT).show()
+            fragmentToShow = EditFragment()
+            changeFragment()
         }
 
         // Ask permission for coarse location
@@ -117,19 +118,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         menuInflater.inflate(R.menu.menu_toolbar, menu)
 
         // Doesn't work for now
-        val search = menu?.findItem(R.id.Search)
-        val searchView = search?.actionView as SearchView
-        searchView.queryHint = "Search for Events"
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(p0: String?): Boolean {
-                TODO("Not yet implemented")
-            }
-
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                TODO("Not yet implemented")
-            }
-        })
+//        val search = menu?.findItem(R.id.Search)
+//        val searchView = search?.actionView as SearchView
+//        searchView.queryHint = "Search for Events"
+//
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextChange(p0: String?): Boolean {
+//                TODO("Not yet implemented")
+//            }
+//
+//            override fun onQueryTextSubmit(p0: String?): Boolean {
+//                TODO("Not yet implemented")
+//            }
+//        })
 
         return super.onCreateOptionsMenu(menu)
     }
@@ -142,7 +143,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Logout -> {
                 ParseUser.logOut()
                 goToLogin()
-                Toast.makeText(this, "Testing Complete", Toast.LENGTH_SHORT).show()
             }
             R.id.Feedback -> {
                 fragmentToShow = FeedBackFragment()
@@ -153,7 +153,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Setting -> {
                 fragmentToShow = SettingFragment()
             }
-
         }
 
         changeFragment()
