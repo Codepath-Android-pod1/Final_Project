@@ -48,7 +48,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_alignParentRight="true"
                 android:contentDescription="Purely Testing"
-                android:src="@drawable/ic_baseline_edit_24" />
+                android:src="@drawable/ic_baseline_edit_24"
+                android:tooltipText="Compose Events"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/Sub_FloatingButton_2"
