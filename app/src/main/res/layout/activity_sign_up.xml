@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/coBackgroundBase"
+    android:background="@color/coBackgroundColor"
     tools:context=".activities.LoginActivity">
 
     <EditText
@@ -17,7 +17,6 @@
         android:hint="Username"
         android:inputType="textPersonName"
         android:paddingLeft="110dp"
-        android:stateListAnimator="@anim/button_state_list_anim_material"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
