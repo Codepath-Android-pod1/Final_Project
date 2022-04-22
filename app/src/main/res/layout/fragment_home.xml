@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:tabTextColor="@color/black"
-            app:tabSelectedTextColor="@color/pastelGreen"/>
+            app:tabSelectedTextColor="@color/coGreen"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"
