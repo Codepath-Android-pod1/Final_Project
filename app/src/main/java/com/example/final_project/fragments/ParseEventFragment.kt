@@ -39,7 +39,7 @@ class ParseEventFragment : TMEventFragment() {
         query.addDescendingOrder("createdAt")
         query.limit = 20
 
-        adapter.clear()
+        parseAdapter.clear()
         query.findInBackground { events, e ->
             if (e != null) {
                 Log.e(TAG, "Error fetching posts")
@@ -49,11 +49,11 @@ class ParseEventFragment : TMEventFragment() {
                     for (event in events) {
                         Log.i(
                             TAG,
-                            "Post: ${event.getDescription()}, username: ${event.getUser()?.username}"
+                            "Event: ${event.getDescription()}, username: ${event.getUser()?.username}"
                         )
                     }
                     allPEvents.addAll(events)
-                    adapter.notifyDataSetChanged()
+                    parseAdapter.notifyDataSetChanged()
                 }
             }
         }

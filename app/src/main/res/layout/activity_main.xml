@@ -49,8 +49,8 @@
                 android:backgroundTint="@color/coOrange"
                 android:contentDescription="Purely Testing"
                 android:src="@drawable/ic_baseline_edit_24"
-                app:borderWidth="0dp"
-                android:tooltipText="Compose Events" />
+                android:tooltipText="Compose Events"
+                app:borderWidth="0dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/Sub_FloatingButton_2"
