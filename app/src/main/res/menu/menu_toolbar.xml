@@ -11,8 +11,7 @@
         android:icon="@drawable/ic_baseline_search_24"
         android:title="Search"
         android:tooltipText="Search for Event"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="ifRoom|withText" />
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/Setting"

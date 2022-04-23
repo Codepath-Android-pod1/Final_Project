@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var drawer: DrawerLayout
     private lateinit var fragmentManger: FragmentManager
     private var fragmentToShow: Fragment? = null
+    private lateinit var navView: NavigationView
+    private var ifShow = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerListener.syncState()
 
         // Fragment Selection && Initial Fragment Setup
-        val navView = findViewById<NavigationView>(R.id.main_nav_view)
+        navView = findViewById(R.id.main_nav_view)
         navView.setNavigationItemSelectedListener(this)
 
         if (savedInstanceState == null) {
@@ -90,9 +92,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         // Floating Action Button && Set it's onclick thing
+
+
         this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
-            Toast.makeText(this, "testing", Toast.LENGTH_SHORT).show()
+            if (ifShow){
+                findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_1).hide()
+                findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_2).hide()
+                findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_3).hide()
+            }else {
+                findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_1).show()
+                findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_2).show()
+                findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_3).show()
+            }
+            ifShow = !ifShow
+//            fragmentToShow = EditFragment()
+//            //Change to Edit Fragment
+//            navView.setCheckedItem(R.id.Testing2)
+//            changeFragment()
         }
+
         // Ask permission for coarse location
         getLocationWithPermissionCheck()
 
@@ -114,22 +132,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     // Misc stuff like Toolbar / Nav bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
-
-        // Doesn't work for now
-        val search = menu?.findItem(R.id.Search)
-        val searchView = search?.actionView as SearchView
-        searchView.queryHint = "Search for Events"
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(p0: String?): Boolean {
-                TODO("Not yet implemented")
-            }
-
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                TODO("Not yet implemented")
-            }
-        })
-
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -141,7 +143,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Logout -> {
                 ParseUser.logOut()
                 goToLogin()
-                Toast.makeText(this, "Testing Complete", Toast.LENGTH_SHORT).show()
             }
             R.id.Feedback -> {
                 fragmentToShow = FeedBackFragment()
@@ -152,7 +153,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Setting -> {
                 fragmentToShow = SettingFragment()
             }
-
         }
 
         changeFragment()
@@ -270,6 +270,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .replace(R.id.FragmentContainer, fragmentToShow!!)
                 .commit()
         }
+
+        if (fragmentToShow is HomeFragment) {
+            this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).show()
+        } else {
+            this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).hide()
+        }
+        this.findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_1).hide()
+        this.findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_2).hide()
+        this.findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_3).hide()
     }
 
     companion object {

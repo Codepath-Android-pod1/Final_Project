@@ -11,12 +11,12 @@
 Allows users to find events based on their location and interests. Events include professional and social events. The user can search for a specific event through filters, such as the user's current location, the type of event (social/professional), the organizer of the event, etc.
 
 ### App Evaluation
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Social Networking / Lifestyle
+- **Mobile:** This app would be primarily developed for mobile by taking advantage of location services to find nearby events.
+- **Story:** User views a list of nearby social or professional events or based on their search options. Users can also create, read, update, delete events that will be publicly available for anyone on the app to join.
+- **Market:** All age groups are targeted. Students, in particular, would benfit the most from this app as this demographic generally on the lookout for events or opportunities to participate in.
+- **Habit:** The habit of users depends on how eager they are willing to participate in events. We expect most users to use this app frequently since it leverages on the appeal of both professional opportunities and social events.
+- **Scope:** The app could be expanded to contain more features. For example, using OAuth API to purchases tickets and view upcoming events while in the app.
 
 ## Product Spec
 ### 1. User Stories (Required and Optional)
@@ -90,4 +90,4 @@ Breifly shows the current progress of the project.
 
  HTTP Verb | Endpoint | Description
  ----------|----------|------------
-  `GET`    | /events.json?apikey={apikey}&{params} | gets all cities (parameters include `keyword`, `geoPoint`, `postalCode`, `radius`, `unit`, etc)
+  `GET`    | /events.json?apikey={apikey}&{params} | gets all events (relevant parameters include `keyword`, `geoPoint`, `postalCode`, `radius`, `unit`, etc)
