@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -95,11 +94,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
-            if (ifShow){
+            if (ifShow) {
                 findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_1).hide()
                 findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_2).hide()
                 findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_3).hide()
-            }else {
+            } else {
                 findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_1).show()
                 findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_2).show()
                 findViewById<FloatingActionButton>(R.id.Sub_FloatingButton_3).show()

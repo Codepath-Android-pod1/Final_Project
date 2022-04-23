@@ -12,16 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.final_project.R
 import com.example.final_project.activities.MainActivity
-import com.example.final_project.adapter.EventAdapter
+import com.example.final_project.adapters.EventAdapter
 import com.example.final_project.models.Event
 import com.example.final_project.models.EventData
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class TMEventFragment : Fragment() {
+open class TMEventFragment : Fragment() {
 
     lateinit var eventsRV: RecyclerView
     lateinit var adapter: EventAdapter
@@ -33,7 +32,7 @@ class TMEventFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_t_m_event, container, false)
+        return inflater.inflate(R.layout.fragment_event_rv, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,11 +52,9 @@ class TMEventFragment : Fragment() {
 
         queryEvents()
 
-        eventsRV.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-
-            @Override
+        eventsRV.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy);
+                super.onScrolled(recyclerView, dx, dy)
                 if (dy > 0) {
                     // Scrolling up
 
@@ -67,9 +64,8 @@ class TMEventFragment : Fragment() {
                 }
             }
 
-            @Override
-            override fun onScrollStateChanged(recyclerView: RecyclerView , newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState);
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
 
                 if (newState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
                     // Do something
