@@ -55,7 +55,7 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 ## Video Walkthrough
 Breifly shows the current progress of the project.
 
-<img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/CP-1.gif' />
+<img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/CP-2.gif' />
 
 
 ## Schema 

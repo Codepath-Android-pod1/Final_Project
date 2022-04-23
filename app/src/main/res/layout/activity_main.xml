@@ -49,6 +49,7 @@
                 android:backgroundTint="@color/coOrange"
                 android:contentDescription="Purely Testing"
                 android:src="@drawable/ic_baseline_edit_24"
+                app:borderWidth="0dp"
                 android:tooltipText="Compose Events" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -56,12 +57,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/Sub_FloatingButton_1"
-                android:layout_gravity="bottom|right"
-                android:layout_marginBottom="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_alignParentRight="true"
-                android:contentDescription="Purely Testing"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/coOrange"
+                android:contentDescription="Purely Testing"
+                app:borderWidth="0dp"
                 android:src="@drawable/ic_baseline_edit_24" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -69,11 +71,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/Main_FloatingButton"
+                android:layout_alignParentRight="true"
                 android:layout_gravity="bottom|right"
                 android:layout_marginRight="16dp"
-                android:layout_alignParentRight="true"
-                android:contentDescription="Purely Testing"
                 android:backgroundTint="@color/coOrange"
+                android:contentDescription="Purely Testing"
+                app:borderWidth="0dp"
                 android:src="@drawable/ic_baseline_edit_24" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -90,6 +93,7 @@
                 android:background="@color/coOrange"
                 android:backgroundTint="@color/coOrange"
                 android:contentDescription="Purely Testing"
+                app:borderWidth="0dp"
                 android:src="@drawable/ic_baseline_edit_24" />
         </RelativeLayout>
 
