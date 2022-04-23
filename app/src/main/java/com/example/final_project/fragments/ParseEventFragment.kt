@@ -3,6 +3,7 @@ package com.example.final_project.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.final_project.R
 import com.example.final_project.adapters.EventAdapter
@@ -15,10 +16,15 @@ class ParseEventFragment : TMEventFragment() {
     var allPEvents: MutableList<ParseEvent> = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        eventsRV = view.findViewById(R.id.rvEvent)
+        rvEvents = view.findViewById(R.id.rvEvent)
         parseAdapter = ParseEventAdapter(requireContext(), allPEvents)
-        eventsRV.adapter = parseAdapter
-        eventsRV.layoutManager = LinearLayoutManager(requireContext())
+        rvEvents.adapter = parseAdapter
+        rvEvents.layoutManager = LinearLayoutManager(requireContext())
+        val dividerItemDecoration = DividerItemDecoration(
+            requireContext(),
+            LinearLayoutManager(requireContext()).orientation
+        )
+        rvEvents.addItemDecoration(dividerItemDecoration)
 
         swipeContainer = view.findViewById(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {

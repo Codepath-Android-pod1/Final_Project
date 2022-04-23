@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -22,7 +23,7 @@ import retrofit2.Response
 
 open class TMEventFragment : Fragment() {
 
-    lateinit var eventsRV: RecyclerView
+    lateinit var rvEvents: RecyclerView
     lateinit var adapter: EventAdapter
     var allEvents: MutableList<Event> = mutableListOf()
     lateinit var swipeContainer: SwipeRefreshLayout
@@ -38,10 +39,15 @@ open class TMEventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        eventsRV = view.findViewById(R.id.rvEvent)
+        rvEvents = view.findViewById(R.id.rvEvent)
         adapter = EventAdapter(requireContext(), allEvents)
-        eventsRV.adapter = adapter
-        eventsRV.layoutManager = LinearLayoutManager(requireContext())
+        rvEvents.adapter = adapter
+        rvEvents.layoutManager = LinearLayoutManager(requireContext())
+        val dividerItemDecoration = DividerItemDecoration(
+            requireContext(),
+            LinearLayoutManager(requireContext()).orientation
+        )
+        rvEvents.addItemDecoration(dividerItemDecoration)
 
         swipeContainer = view.findViewById(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
@@ -52,7 +58,7 @@ open class TMEventFragment : Fragment() {
 
         queryEvents()
 
-        eventsRV.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        rvEvents.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (dy > 0) {
