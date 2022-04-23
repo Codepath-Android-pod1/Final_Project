@@ -36,7 +36,6 @@ class ParseEventFragment : TMEventFragment() {
 
     override fun queryEvents() {
         val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
-        query.addDescendingOrder("createdAt")
         query.limit = 20
 
         parseAdapter.clear()

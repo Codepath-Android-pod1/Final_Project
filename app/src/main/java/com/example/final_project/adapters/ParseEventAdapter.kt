@@ -48,7 +48,7 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
             val locationText =  "$distanceAway miles away"
 
             tvTitle.text = event.getTitle()
-            tvDate.text = event.getDate()
+//            tvDate.text = event.getDate()
             tvLocation.text = locationText
         }
     }
