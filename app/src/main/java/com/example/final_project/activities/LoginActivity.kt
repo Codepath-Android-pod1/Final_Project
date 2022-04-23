@@ -8,8 +8,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.final_project.R
+import com.parse.ParseException
 import com.parse.ParseUser
-
 
 class LoginActivity : AppCompatActivity() {
 
@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         findViewById<Button>(R.id.LoginActivity_Login).setOnClickListener {
             val username = findViewById<EditText>(R.id.LoginActivity_Username).text.toString()
             val password = findViewById<EditText>(R.id.LoginActivity_Password).text.toString()
-            loginUser(username, password)
+            this.loginUser(username, password)
         }
 
         findViewById<Button>(R.id.LoginActivity_SignUp).setOnClickListener {
@@ -34,13 +34,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginUser(username: String, password: String) {
         ParseUser.logInInBackground(
-            username, password, ({ user, e ->
+            username, password, ({
+                    user: ParseUser?, e: ParseException? ->
+                Log.i("Login", user.toString())
                 if (user != null) {
-                    Log.i(TAG, "Successfully logged in user")
                     goToMainActivity()
                 } else {
-                    e.printStackTrace()
-                    Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
+                    e?.printStackTrace()
+                    Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
                 }
             })
         )
