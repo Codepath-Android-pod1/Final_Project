@@ -74,8 +74,6 @@ open class HomeFragment : Fragment() {
         }
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright)
-
-        queryEvents()
     }
 
     open fun queryEvents() {
