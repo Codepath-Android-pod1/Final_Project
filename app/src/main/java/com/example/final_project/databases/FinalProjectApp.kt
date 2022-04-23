@@ -2,11 +2,16 @@ package com.example.final_project.databases
 
 import android.app.Application
 import com.example.final_project.R
+import com.example.final_project.models.ParseEvent
 import com.parse.Parse
+import com.parse.ParseObject
 
 class FinalProjectApp : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        ParseObject.registerSubclass(ParseEvent::class.java)
+
         Parse.initialize(
             Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_app_id))
