@@ -17,13 +17,13 @@
         <!--android:theme="@style/Theme.Final_Project"-->
         <meta-data
             android:name="com.parse.SERVER_URL"
-            android:value="@string/back4app_server_url" />
+            android:value="https://parseapi.back4app.com" />
         <meta-data
             android:name="com.parse.APPLICATION_ID"
-            android:value="@string/back4app_app_id" />
+            android:value="idKkpoMnyIq9SiFyT86nGpzfdg6Os0T2jcbQsuaL" />
         <meta-data
             android:name="com.parse.CLIENT_KEY"
-            android:value="@string/back4app_client_key" />
+            android:value="t3UwCgRQRQlxi8oPT9a2DknLbIB5nSxHCkrw5Lyc" />
 
         <activity
             android:name=".activities.SignUpActivity"

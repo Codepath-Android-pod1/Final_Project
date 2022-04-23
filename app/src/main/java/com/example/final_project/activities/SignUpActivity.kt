@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.final_project.R
+import com.google.android.material.snackbar.Snackbar
 import com.parse.ParseUser
 
 
@@ -15,6 +16,10 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+
+        if (ParseUser.getCurrentUser() != null) {
+            goToMain()
+        }
 
         findViewById<Button>(R.id.Signup_SignUp).setOnClickListener {
             val username = findViewById<EditText>(R.id.Signup_Username).text.toString()
@@ -33,19 +38,24 @@ class SignUpActivity : AppCompatActivity() {
         val user = ParseUser()
 
         // Set fields for the user to be created
-        user.username = username
-        user.setPassword(password)
+        if (username == "" || password == "") {
+            Toast.makeText(this, "Please Enter Username and Password", Toast.LENGTH_SHORT).show()
+        } else {
+            user.username = username
+            user.setPassword(password)
 
-        user.signUpInBackground { e ->
-            if (e == null) {
-                // successfully signed in
-                goToMain()
-                Toast.makeText(this, "Successfully Created", Toast.LENGTH_SHORT).show()
-            } else {
-                e.printStackTrace()
-                Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
+            user.signUpInBackground { e ->
+                if (e == null) {
+                    // successfully signed in
+                    goToMain()
+                    Toast.makeText(this, "Successfully Created", Toast.LENGTH_SHORT).show()
+                } else {
+                    e.printStackTrace()
+                    Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
+                }
             }
         }
+
     }
 
     private fun goToLogin() {
