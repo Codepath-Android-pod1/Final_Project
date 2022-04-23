@@ -1,27 +1,56 @@
 package com.example.final_project.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.final_project.R
+import com.example.final_project.adapters.EventAdapter
+import com.example.final_project.adapters.ParseEventAdapter
+import com.example.final_project.models.ParseEvent
+import com.parse.ParseQuery
 
-class ParseEventFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_rv, container, false)
-    }
+class ParseEventFragment : TMEventFragment() {
+    lateinit var parseAdapter: ParseEventAdapter
+    var allPEvents: MutableList<ParseEvent> = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // TODO
+        eventsRV = view.findViewById(R.id.rvEvent)
+        parseAdapter = ParseEventAdapter(requireContext(), allPEvents)
+        eventsRV.adapter = parseAdapter
+        eventsRV.layoutManager = LinearLayoutManager(requireContext())
+
+        swipeContainer = view.findViewById(R.id.swipeContainer)
+        swipeContainer.setOnRefreshListener {
+            queryEvents()
+        }
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright)
     }
 
-    fun queryEvents() {
-        // TODO
+    override fun queryEvents() {
+        val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
+        query.addDescendingOrder("createdAt")
+        query.limit = 20
+
+        adapter.clear()
+        query.findInBackground { events, e ->
+            if (e != null) {
+                Log.e(TAG, "Error fetching posts")
+            } else {
+                if (events != null) {
+                    swipeContainer.isRefreshing = false
+                    for (event in events) {
+                        Log.i(
+                            TAG,
+                            "Post: ${event.getDescription()}, username: ${event.getUser()?.username}"
+                        )
+                    }
+                    allPEvents.addAll(events)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
     }
 
     companion object {

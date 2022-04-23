@@ -34,7 +34,7 @@ open class HomeFragment : Fragment() {
         tl.addTab(tl.newTab().setText("Testing 1"))
         tl.addTab(tl.newTab().setText("Testing 2"))
         tl.tabGravity = TabLayout.GRAVITY_FILL
-        val fragmentArray = arrayOf(ParseEventFragment(), TMEventFragment())
+        val fragmentArray = arrayOf(ParseEventFragment() as Fragment, TMEventFragment())
         val adapter = MyAdapter(childFragmentManager, fragmentArray)
 
         vp.adapter = adapter

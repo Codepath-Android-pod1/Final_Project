@@ -249,6 +249,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun onLocationChanged(location: Location) {
+        currLocation = location
         geoHash = GeoFireUtils.getGeoHashForLocation(
             GeoLocation(location.latitude, location.longitude),
             9
@@ -285,6 +286,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
         lateinit var apiService: TMApi
         var geoHash: String = ""
+        lateinit var currLocation: Location
     }
 }
 
