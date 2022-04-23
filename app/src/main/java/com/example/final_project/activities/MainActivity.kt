@@ -170,8 +170,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Testing3 -> {
                 fragmentToShow = ChatFragment()
             }
-            R.id.Testing4 -> {
-                Toast.makeText(this, "Testing1", Toast.LENGTH_SHORT).show()
+            R.id.profile_user -> {
+                fragmentToShow = ProfileFragment()
             }
             R.id.Testing5 -> {
                 Toast.makeText(this, "Testing1", Toast.LENGTH_SHORT).show()
