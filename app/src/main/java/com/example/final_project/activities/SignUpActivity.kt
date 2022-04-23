@@ -16,6 +16,10 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
+        if (ParseUser.getCurrentUser() != null) {
+            goToMain()
+        }
+
         findViewById<Button>(R.id.Signup_SignUp).setOnClickListener {
             val username = findViewById<EditText>(R.id.Signup_Username).text.toString()
             val password = findViewById<EditText>(R.id.Signup_Password).text.toString()

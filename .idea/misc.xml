@@ -3,14 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable-v24/user_picture.xml" value="0.195" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/OrangeRedRounded.xml" value="0.195" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/loginbackground.xml" value="0.195" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/orangeredroundedbutton.xml" value="0.195" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/roundedbutton.xml" value="0.1315" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.182518115942029" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.67" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/content_login.xml" value="0.22" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/content_sign_up.xml" value="0.2" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_event_rv.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_feedback.xml" value="0.182518115942029" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_profile.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_report.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_search.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_set_photo.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_setting.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/nav_head.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/drawable/greenroundedbutton.xml" value="0.1455" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/drawable/loginbackground.xml" value="0.2075" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/drawable/orangeredroundedbutton.xml" value="0.2075" />

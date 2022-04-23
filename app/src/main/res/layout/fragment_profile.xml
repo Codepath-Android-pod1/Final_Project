@@ -38,12 +38,12 @@
                 android:layout_toEndOf="@+id/iv_icon_user"
                 android:orientation="vertical">
 
-                <TextView
+                <EditText
                     style="@style/TextAppearance.MaterialComponents.Headline5"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="User Name"
+                    android:hint="Your name:"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -54,7 +54,7 @@
             android:layout_height="1dp"
             android:background="#dddddd" />
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
@@ -62,16 +62,16 @@
             android:drawableStart="@drawable/ic_baseline_email_24"
             android:drawablePadding="10sp"
             android:drawableTintMode="src_atop"
-            android:text="example@gmail.com"
+            android:hint="Your email:"
             android:textSize="17sp" />
 
-        <TextView
+        <EditText
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableStart="@drawable/ic_baseline_phone_24"
-            android:text="+1 800 123 0000" />
+            android:hint="Your phone number:" />
 
         <View
             android:layout_width="match_parent"
