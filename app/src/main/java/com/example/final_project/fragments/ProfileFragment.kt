@@ -24,18 +24,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvLogout.setOnClickListener{
-            AlertDialog.Builder(requireContext())
-                .setTitle("Confirm logout")
-                .setMessage("Are you sure you want to logout or?")
-                .setIcon(R.drawable.ic_baseline_warning_24)
-                .setPositiveButton(android.R.string.yes, )
-                { _, _ ->
-                    requireActivity().finish()
-                }
-                .setNegativeButton(android.R.string.no, null)
-                .show()
-        }
+
         binding.tvDeleteAccount.setOnClickListener{
             Toast.makeText(requireContext(), "Needs to confirm a few things...", Toast.LENGTH_SHORT)
                 .show()

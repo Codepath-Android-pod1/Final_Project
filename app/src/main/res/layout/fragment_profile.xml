@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:paddingTop="32dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="32dp"
     tools:context=".fragments.ProfileFragment">
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
     <LinearLayout
-        android:layout_marginTop="64dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -32,6 +31,7 @@
                 android:src="@drawable/user_picture" />
 
             <LinearLayout
+                android:id="@+id/Profile_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -55,6 +55,7 @@
             android:background="#dddddd" />
 
         <EditText
+            android:id="@+id/Profile_Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
@@ -66,34 +67,34 @@
             android:textSize="17sp" />
 
         <EditText
-            android:layout_marginStart="20dp"
+            android:id="@+id/Profile_PhoneNum"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:drawableStart="@drawable/ic_baseline_phone_24"
             android:hint="Your phone number:" />
 
+        <Button
+            android:id="@+id/Profile_SaveButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:hint="save"
+            android:layout_gravity="bottom|right"
+            android:background="@drawable/greenroundedbutton"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="match_parent"
             android:background="#dddddd" />
 
-        <TextView
-            android:id="@+id/tvLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
-            android:layout_marginStart="20dp"
-            android:drawableStart="@drawable/ic_baseline_logout_24"
-            android:drawablePadding="10sp"
-            android:drawableTint="#d82121"
-            android:text="Log out"
-            android:textColor="#d82121"
-            android:textSize="17sp" />
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="match_parent"
             android:background="#dddddd" />
+
 
         <TextView
             android:id="@+id/tvDeleteAccount"
@@ -107,5 +108,23 @@
             android:text="Delete account"
             android:textColor="#d82121"
             android:textSize="17sp" />
+
+        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/Profile_FloatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|right"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/coOrange"
+            android:backgroundTint="@color/coOrange"
+            android:contentDescription="Save"
+            android:src="@drawable/ic_save"
+            app:borderWidth="0dp" />-->
     </LinearLayout>
+
 </ScrollView>
