@@ -19,8 +19,9 @@
     <item android:title="Sub Menu">
         <menu>
             <item
-                android:id="@+id/Testing4"
-                android:title="Testing4" />
+                android:id="@+id/profile_user"
+                android:icon="@drawable/ic_baseline_person_24"
+                android:title="Profile" />
             <item
                 android:id="@+id/Testing5"
                 android:title="Testing5" />
