@@ -122,6 +122,6 @@ class TMEventFragment : Fragment() {
     }
 
     companion object {
-        const val TAG = "HomeFragment"
+        const val TAG = "TMEventFragment"
     }
 }
