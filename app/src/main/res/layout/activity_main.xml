@@ -5,8 +5,8 @@
     android:id="@+id/draw_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
     android:background="@color/coBackgroundColor"
+    android:clipChildren="false"
     tools:openDrawer="end">
     <!-- Remove OpenDrawer to move the left thing away-->
 
@@ -45,8 +45,8 @@
             android:background="@color/coOrange"
             android:backgroundTint="@color/coOrange"
             android:contentDescription="Purely Testing"
-            app:borderWidth="0dp"
-            android:src="@drawable/ic_baseline_edit_24" />
+            android:src="@drawable/ic_baseline_edit_24"
+            app:borderWidth="0dp" />
 
     </RelativeLayout>
 

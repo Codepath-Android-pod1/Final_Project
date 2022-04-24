@@ -21,21 +21,20 @@ class LoginActivity : AppCompatActivity() {
             goToMainActivity()
         }
 
-        findViewById<Button>(R.id.LoginActivity_Login).setOnClickListener {
+        findViewById<Button>(R.id.btn_login).setOnClickListener {
             val username = findViewById<EditText>(R.id.LoginActivity_Username).text.toString()
             val password = findViewById<EditText>(R.id.LoginActivity_Password).text.toString()
             this.loginUser(username, password)
         }
 
-        findViewById<Button>(R.id.LoginActivity_SignUp).setOnClickListener {
+        findViewById<Button>(R.id.btn_signup).setOnClickListener {
             gotToSignUp()
         }
     }
 
     private fun loginUser(username: String, password: String) {
         ParseUser.logInInBackground(
-            username, password, ({
-                    user: ParseUser?, e: ParseException? ->
+            username, password, ({ user: ParseUser?, e: ParseException? ->
                 Log.i("Login", user.toString())
                 if (user != null) {
                     goToMainActivity()

@@ -6,7 +6,6 @@ import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.final_project.R
-import com.example.final_project.adapters.EventAdapter
 import com.example.final_project.adapters.ParseEventAdapter
 import com.example.final_project.models.ParseEvent
 import com.parse.ParseQuery
@@ -32,29 +31,21 @@ class ParseEventFragment : TMEventFragment() {
         }
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright)
+        queryEvents()
     }
 
     override fun queryEvents() {
         val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
-        query.addDescendingOrder("createdAt")
         query.limit = 20
 
-        adapter.clear()
+        parseAdapter.clear()
         query.findInBackground { events, e ->
             if (e != null) {
                 Log.e(TAG, "Error fetching posts")
             } else {
-                if (events != null) {
-                    swipeContainer.isRefreshing = false
-                    for (event in events) {
-                        Log.i(
-                            TAG,
-                            "Post: ${event.getDescription()}, username: ${event.getUser()?.username}"
-                        )
-                    }
-                    allPEvents.addAll(events)
-                    adapter.notifyDataSetChanged()
-                }
+                if (events != null) swipeContainer.isRefreshing = false
+                allPEvents.addAll(events)
+                parseAdapter.notifyDataSetChanged()
             }
         }
     }

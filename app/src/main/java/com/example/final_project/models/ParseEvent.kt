@@ -4,6 +4,7 @@ import com.parse.ParseClassName
 import com.parse.ParseGeoPoint
 import com.parse.ParseObject
 import com.parse.ParseUser
+import java.util.*
 
 @ParseClassName("Event")
 class ParseEvent : ParseObject() {
@@ -23,11 +24,11 @@ class ParseEvent : ParseObject() {
         put(KEY_DESCRIPTION, description)
     }
 
-    fun getDate(): String? {
-        return getString(KEY_DATE)
+    fun getDate(): Date? {
+        return getDate(KEY_DATE)
     }
 
-    fun setDate(date: String) {
+    fun setDate(date: Date) {
         put(KEY_DATE, date)
     }
 
