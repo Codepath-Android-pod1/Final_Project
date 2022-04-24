@@ -65,7 +65,7 @@
             android:minWidth="0dp"
             android:paddingHorizontal="5dp"
             android:text="Sign Up"
-            android:textColor="@color/teal_200"
+            android:textColor="@color/coOrange"
             android:textSize="15sp" />
 
     </RelativeLayout>
@@ -74,7 +74,7 @@
         android:id="@+id/LoginActivity_Username"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="250dp"
         android:autofillHints="User Name"
         android:background="@drawable/loginbackground"
         android:ems="50"
