@@ -34,6 +34,10 @@ class ProfileActivity : AppCompatActivity() {
         if (name == "" || email == "" || phone == "") {
             Toast.makeText(this, "Please Enter Name, Email, and Phone Number", Toast.LENGTH_SHORT)
                 .show()
+        } else if (!(email.endsWith(".org") || email.endsWith(".com") ||
+                    email.endsWith(".net") || email.endsWith(".gov") ||
+                    email.endsWith(".edu")) && !email.contains("@")) {
+            Toast.makeText(this, "Please Enter Valid Email Address", Toast.LENGTH_SHORT)
         } else {
             val params = HashMap<String, Any>()
             params["email"] = email
@@ -54,6 +58,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
     }
+
 
     companion object {
         const val TAG = "UPDATE ACTIVITY"
