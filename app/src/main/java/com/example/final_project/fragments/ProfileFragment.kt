@@ -1,12 +1,10 @@
 package com.example.final_project.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -14,6 +12,7 @@ import com.example.final_project.R
 import com.example.final_project.activities.ProfileActivity
 import com.example.final_project.databinding.FragmentProfileBinding
 import com.parse.*
+
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -53,21 +52,21 @@ class ProfileFragment : Fragment() {
         if (name == "" || email == "" || phone == "") {
             Toast.makeText(context, "Please Enter Name, Email, and Phone Number", Toast.LENGTH_SHORT).show()
         } else {
-            val params = HashMap<String, Any>()
-            params["objectId"] = user.getObjectId()
-            params["newEmail"] = email
-            params["newPhonenum"] = phone
-            params["newName"] = name
+            val params = HashMap<String, Any?>()
+            params.put("objectId", user.getObjectId())
+            params.put("newEmail", email)
+            params.put("newPhonenum", phone)
+            params.put("newName", name)
             Log.i(ProfileActivity.TAG, "ObjectId --> "+user.getObjectId())
             Log.i(ProfileActivity.TAG, ""+params)
             ParseCloud.callFunctionInBackground("editUserProperty", params,
-                FunctionCallback{ obj: ParseObject, e: ParseException? ->
+                FunctionCallback { String: Object, e: ParseException? ->
                     if (e == null) {
-                        Log.d("result", obj["email"].toString() + obj["name"].toString() + obj["phonenum"].toString() + " ")
+                        Log.i(ProfileActivity.TAG, "It is null and it passed")
                     } else {
                         Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     }
-                })
+                } )
         }
 
     }
