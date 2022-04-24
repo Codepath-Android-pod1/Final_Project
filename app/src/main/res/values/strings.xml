@@ -30,5 +30,6 @@
     <string name="navigation_drawer_open"> Open Navigation Drawer </string>
     <string name="navigation_drawer_close"> Close Navigation Drawer</string>
     <string name="login_signup_text">Don\'t have an account?</string>
+    <string name="own_account_text">Have an account already?</string>
 
 </resources>
