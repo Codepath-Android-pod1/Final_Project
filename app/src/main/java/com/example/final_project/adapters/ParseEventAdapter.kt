@@ -7,17 +7,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.R
+import com.example.final_project.activities.MainActivity
 import com.example.final_project.models.ParseEvent
 import com.parse.ParseGeoPoint
-import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.math.roundToInt
 
 class ParseEventAdapter(private val context: Context, private val events: MutableList<ParseEvent>) :
     RecyclerView.Adapter<ParseEventAdapter.ViewHolder>() {
-    lateinit var currLocation: ParseGeoPoint
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_event, parent, false)
-        ParseGeoPoint.getCurrentLocationInBackground(1) { geoPoint, _ -> currLocation = geoPoint }
         return ViewHolder(view)
     }
 
@@ -43,13 +44,18 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
 
         fun bind(event: ParseEvent) {
             val eventLocation = event.getLocation()
-            val distanceAway = eventLocation!!.distanceInMilesTo(currLocation)
+            val currLocation = ParseGeoPoint(
+                MainActivity.currLocation.latitude,
+                MainActivity.currLocation.longitude
+            )
+            val distanceAway = eventLocation!!.distanceInMilesTo(currLocation).roundToInt()
             val locationText = "$distanceAway miles away"
+            val parser = SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH)
 
             tvTitle.text = event.getTitle()
-            tvDate.text = event.getDate().toString().format(DateTimeFormatter.ofPattern("MMM d"))
-            tvDayTime.text =
-                event.getDate().toString().format(DateTimeFormatter.ofPattern("E h:mma"))
+            val date = parser.parse(event.getDate().toString()) as Date
+            tvDate.text = SimpleDateFormat("MMM d", Locale.ENGLISH).format(date)
+            tvDayTime.text = SimpleDateFormat("E h:mma", Locale.ENGLISH).format(date)
             tvLocation.text = locationText
         }
     }

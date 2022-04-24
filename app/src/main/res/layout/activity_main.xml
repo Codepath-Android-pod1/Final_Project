@@ -5,8 +5,8 @@
     android:id="@+id/draw_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
     android:background="@color/coBackgroundColor"
+    android:clipChildren="false"
     tools:openDrawer="end">
     <!-- Remove OpenDrawer to move the left thing away-->
 

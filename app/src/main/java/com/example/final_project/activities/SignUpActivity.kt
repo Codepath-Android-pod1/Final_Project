@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.final_project.R
-import com.google.android.material.snackbar.Snackbar
 import com.parse.ParseUser
 
 

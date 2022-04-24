@@ -32,7 +32,8 @@ class ProfileActivity : AppCompatActivity() {
 
         // Set fields for the user to be created
         if (name == "" || email == "" || phone == "") {
-            Toast.makeText(this, "Please Enter Name, Email, and Phone Number", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please Enter Name, Email, and Phone Number", Toast.LENGTH_SHORT)
+                .show()
         } else {
             val params = HashMap<String, Any>()
             params["email"] = email
@@ -42,7 +43,10 @@ class ProfileActivity : AppCompatActivity() {
             ParseCloud.callFunctionInBackground("editUserProperty", params,
                 FunctionCallback { obj: ParseObject, e: ParseException? ->
                     if (e == null) {
-                        Log.d("result", obj["email"].toString() + obj["name"].toString() + obj["phonenum"].toString() + " ")
+                        Log.d(
+                            "result",
+                            obj["email"].toString() + obj["name"].toString() + obj["phonenum"].toString() + " "
+                        )
                     } else {
                         Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
                     }

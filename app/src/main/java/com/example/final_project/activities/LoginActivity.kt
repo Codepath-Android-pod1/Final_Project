@@ -34,8 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginUser(username: String, password: String) {
         ParseUser.logInInBackground(
-            username, password, ({
-                    user: ParseUser?, e: ParseException? ->
+            username, password, ({ user: ParseUser?, e: ParseException? ->
                 Log.i("Login", user.toString())
                 if (user != null) {
                     goToMainActivity()
