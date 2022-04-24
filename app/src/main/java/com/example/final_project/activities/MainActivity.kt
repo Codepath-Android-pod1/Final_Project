@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (savedInstanceState == null) {
             fragmentToShow = HomeFragment()
             changeFragment()
-            navView.setCheckedItem(R.id.Testing1)
+            navView.setCheckedItem(R.id.Home)
         }
 
         // Floating Action Button && Set it's onclick thing
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
             fragmentToShow = EditFragment()
             //Change to Edit Fragment
-            navView.setCheckedItem(R.id.Testing2)
+            navView.setCheckedItem(R.id.Compose)
             changeFragment()
         }
 
@@ -117,18 +117,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.Search -> {
                 fragmentToShow = SearchFragment()
             }
-            R.id.Logout -> {
-                ParseUser.logOut()
-                goToLogin()
-            }
+//            R.id.Logout -> {
+//                ParseUser.logOut()
+//                goToLogin()
+//            }
             R.id.Feedback -> {
                 fragmentToShow = FeedBackFragment()
+                navView.setCheckedItem(R.id.nav_Feedback)
             }
             R.id.Report -> {
                 fragmentToShow = ReportFragment()
+                navView.setCheckedItem(R.id.nav_Bugs)
             }
             R.id.Setting -> {
                 fragmentToShow = SettingFragment()
+                navView.setCheckedItem(R.id.Preference)
             }
         }
 
@@ -138,23 +141,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.Testing1 -> {
+            R.id.Home -> {
                 fragmentToShow = HomeFragment()
             }
 
-            R.id.Testing2 -> {
+            R.id.Compose -> {
                 fragmentToShow = EditFragment()
             }
-            R.id.Testing3 -> {
+            R.id.Friends -> {
                 fragmentToShow = ChatFragment()
             }
             R.id.profile_user -> {
                 fragmentToShow = ProfileFragment()
             }
-            R.id.Testing5 -> {
-                Toast.makeText(this, "Testing1", Toast.LENGTH_SHORT).show()
+            R.id.Preference -> {
+                fragmentToShow = SettingFragment()
             }
-            R.id.Logout -> {
+            R.id.nav_Feedback -> {
+                fragmentToShow = FeedBackFragment()
+            }
+            R.id.nav_Bugs -> {
+                fragmentToShow = ReportFragment()
+            }
+            R.id.nav_Logout -> {
                 ParseUser.logOut()
                 goToLogin()
             }
