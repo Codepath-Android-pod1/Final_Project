@@ -36,7 +36,8 @@ class ProfileActivity : AppCompatActivity() {
                 .show()
         } else if (!(email.endsWith(".org") || email.endsWith(".com") ||
                     email.endsWith(".net") || email.endsWith(".gov") ||
-                    email.endsWith(".edu")) && !email.contains("@")) {
+                    email.endsWith(".edu")) && !email.contains("@")
+        ) {
             Toast.makeText(this, "Please Enter Valid Email Address", Toast.LENGTH_SHORT)
         } else {
             val params = HashMap<String, Any>()

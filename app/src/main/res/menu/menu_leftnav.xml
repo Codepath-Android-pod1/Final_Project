@@ -8,14 +8,14 @@
             android:title="Home" />
 
         <item
-            android:icon="@drawable/ic_baseline_edit_24"
             android:id="@+id/Compose"
+            android:icon="@drawable/ic_baseline_edit_24"
             android:title="Compose" />
 
         <item
             android:id="@+id/Friends"
-            android:title="Friends"
-            android:icon="@drawable/ic_baseline_people_24"/>
+            android:icon="@drawable/ic_baseline_people_24"
+            android:title="Friends" />
 
         <item
             android:id="@+id/profile_user"
@@ -28,20 +28,20 @@
         <menu>
             <item
                 android:id="@+id/Preference"
-                android:title="Preference"
-                android:icon="@drawable/ic_baseline_settings_24"/>
+                android:icon="@drawable/ic_baseline_settings_24"
+                android:title="Preference" />
             <item
                 android:id="@+id/nav_Feedback"
-                android:title="Feedback"
-                android:icon="@drawable/ic_baseline_feedback_24"/>
+                android:icon="@drawable/ic_baseline_feedback_24"
+                android:title="Feedback" />
             <item
                 android:id="@+id/nav_Bugs"
-                android:title="Report Bugs"
-                android:icon="@drawable/ic_baseline_bug_report_24"/>
+                android:icon="@drawable/ic_baseline_bug_report_24"
+                android:title="Report Bugs" />
             <item
                 android:id="@+id/nav_Logout"
                 android:icon="@drawable/ic_baseline_power_settings_new_24"
-                android:title="Logout"/>
+                android:title="Logout" />
         </menu>
     </item>
 </menu>

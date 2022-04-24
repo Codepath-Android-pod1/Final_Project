@@ -23,34 +23,40 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:layout_constraintStart_toEndOf="@+id/ivImage"
-        app:layout_constraintTop_toTopOf="@+id/btnEnter"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivImage"
         app:layout_constraintTop_toBottomOf="@+id/tvDate"
         tools:text="TextView" />
 
-    <Button
-        android:id="@+id/btnEnter"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:text="Button"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--    <Button-->
+    <!--        android:id="@+id/btnEnter"-->
+    <!--        android:layout_width="75dp"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_margin="10dp"-->
+    <!--        android:text="Button"-->
+    <!--        android:textSize="11sp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/tvLocation"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:maxLines="2"
+        android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivImage"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:text="TextView" />

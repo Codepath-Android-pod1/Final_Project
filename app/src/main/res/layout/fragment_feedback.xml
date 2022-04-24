@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FeedBackFragment"
-    android:background="@color/coBackgroundColor">
+    android:background="@color/coBackgroundColor"
+    tools:context=".fragments.FeedBackFragment">
 
     <TextView
         android:id="@+id/Feedback_Title"
@@ -14,11 +14,11 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/opensans_bold"
         android:text="Feedback Form"
+        android:textColor="@color/coEditText"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/coEditText"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -28,124 +28,124 @@
         android:layout_marginTop="30dp"
         android:fontFamily="@font/opensans_bold"
         android:text="Would you Recommend our Application to your friends?"
+        android:textColor="@color/coEditText"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Feedback_EditText"
 
-        android:textColor="@color/coEditText"/>
+        app:layout_constraintTop_toBottomOf="@+id/Feedback_EditText" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/Feedback_Q1"
-        android:id="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp">
+        app:layout_constraintTop_toBottomOf="@id/Feedback_Q1">
 
         <RadioButton
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1"
             android:buttonTint="@color/coEditText"
-            android:textColor="@color/coEditText"/>
+            android:text="1"
+            android:textColor="@color/coEditText" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2"
             android:layout_marginStart="20dp"
             android:buttonTint="@color/coEditText"
-            android:textColor="@color/coEditText"/>
+            android:text="2"
+            android:textColor="@color/coEditText" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="3"
             android:layout_marginStart="20dp"
             android:buttonTint="@color/coEditText"
-            android:textColor="@color/coEditText"/>
+            android:text="3"
+            android:textColor="@color/coEditText" />
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="4"
             android:layout_marginStart="20dp"
             android:buttonTint="@color/coEditText"
-            android:textColor="@color/coEditText"/>
+            android:text="4"
+            android:textColor="@color/coEditText" />
 
         <RadioButton
             android:id="@+id/radioButton5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="5"
             android:layout_marginStart="20dp"
             android:buttonTint="@color/coEditText"
-            android:textColor="@color/coEditText"/>
+            android:text="5"
+            android:textColor="@color/coEditText" />
     </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup"
-        android:text="Absolutely no"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/coEditText"/>
+        android:text="Absolutely no"
+        android:textColor="@color/coEditText"
+        app:layout_constraintLeft_toLeftOf="@id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="@id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup"
-        android:text="Sure"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/coEditText"/>
+        android:text="Sure"
+        android:textColor="@color/coEditText"
+        app:layout_constraintRight_toRightOf="@id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 
     <TextView
+        android:id="@+id/Feedback_Q2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/Feedback_Title"
         android:layout_marginTop="80dp"
+        android:fontFamily="@font/opensans_bold"
+        android:text="Is there anything else you would like us to know?"
+        android:textColor="@color/coEditText"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Is there anything else you would like us to know?"
-        android:fontFamily="@font/opensans_bold"
-        android:textSize="20sp"
-        android:id="@+id/Feedback_Q2"
-        android:textColor="@color/coEditText" />
+        app:layout_constraintTop_toTopOf="@id/Feedback_Title" />
 
     <EditText
         android:id="@+id/Feedback_EditText"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="20dp"
-        android:inputType="textMultiLine"
+        android:backgroundTint="@color/coEditText"
         android:gravity="top"
-        app:layout_constraintTop_toBottomOf="@id/Feedback_Q2"
         android:hint="Please enter your feedback"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="@color/coEditText"/>
+        app:layout_constraintTop_toBottomOf="@id/Feedback_Q2" />
 
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/coEditText"
         android:layout_marginTop="50dp"
         android:background="@color/coGreen"
         android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup"
-        app:layout_constraintStart_toStartOf="@+id/Feedback_EditText" />
+        android:textColor="@color/coEditText"
+        app:layout_constraintStart_toStartOf="@+id/Feedback_EditText"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,14 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:fontFamily="@font/librebodoni_bolditalic"
         android:text="Eventful"
+        android:textColor="@color/white"
+        android:textSize="75dp"
         app:layout_constraintBottom_toTopOf="@+id/LoginActivity_Username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/white"
-        android:textSize="75dp"
-        android:fontFamily="@font/librebodoni_bolditalic"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_login"
@@ -26,15 +26,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/greenroundedbutton"
+        android:fontFamily="@font/roboto_bold"
+        android:letterSpacing="0.1"
         android:text="Login"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginActivity_Password"
-        android:fontFamily="@font/roboto_bold"
-        android:letterSpacing="0.1"/>
+        app:layout_constraintTop_toBottomOf="@+id/LoginActivity_Password" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -78,14 +78,14 @@
         android:autofillHints="User Name"
         android:background="@drawable/loginbackground"
         android:ems="50"
+        android:fontFamily="@font/roboto_bold"
         android:hint="Username"
         android:inputType="textPersonName"
         android:paddingLeft="110dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/roboto_bold"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/LoginActivity_Password"
@@ -94,15 +94,14 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/loginbackground"
         android:ems="50"
+        android:fontFamily="@font/roboto_bold"
         android:hint="Password"
         android:inputType="textPassword"
         android:paddingLeft="110dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginActivity_Username"
-        android:fontFamily="@font/roboto_bold"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/LoginActivity_Username" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

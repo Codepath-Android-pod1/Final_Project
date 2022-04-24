@@ -11,7 +11,10 @@ import androidx.fragment.app.Fragment
 import com.example.final_project.R
 import com.example.final_project.activities.ProfileActivity
 import com.example.final_project.databinding.FragmentProfileBinding
-import com.parse.*
+import com.parse.FunctionCallback
+import com.parse.ParseCloud
+import com.parse.ParseException
+import com.parse.ParseUser
 
 
 class ProfileFragment : Fragment() {
@@ -34,11 +37,11 @@ class ProfileFragment : Fragment() {
             val name = getView()?.findViewById<EditText>(R.id.Profile_Name)?.text.toString()
             val email = getView()?.findViewById<EditText>(R.id.Profile_Email)?.text.toString()
             val phone = getView()?.findViewById<EditText>(R.id.Profile_PhoneNum)?.text.toString()
-            Log.i(ProfileActivity.TAG, ""+name + "/" + email+"/" + phone)
+            Log.i(ProfileActivity.TAG, "" + name + "/" + email + "/" + phone)
             updateUser(name, email, phone)
         }
 
-        binding.tvDeleteAccount.setOnClickListener{
+        binding.tvDeleteAccount.setOnClickListener {
             Toast.makeText(requireContext(), "Needs to confirm a few things...", Toast.LENGTH_SHORT)
                 .show()
         }
@@ -47,18 +50,22 @@ class ProfileFragment : Fragment() {
     private fun updateUser(name: String, email: String, phone: String) {
         // Create the ParseUser
         val user = ParseUser.getCurrentUser()
-        Log.i(ProfileActivity.TAG, ""+user)
+        Log.i(ProfileActivity.TAG, "" + user)
         // Set fields for the user to be created
         if (name == "" || email == "" || phone == "") {
-            Toast.makeText(context, "Please Enter Name, Email, and Phone Number", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "Please Enter Name, Email, and Phone Number",
+                Toast.LENGTH_SHORT
+            ).show()
         } else {
             val params = HashMap<String, Any?>()
             params.put("objectId", user.getObjectId())
             params.put("newEmail", email)
             params.put("newPhonenum", phone)
             params.put("newName", name)
-            Log.i(ProfileActivity.TAG, "ObjectId --> "+user.getObjectId())
-            Log.i(ProfileActivity.TAG, ""+params)
+            Log.i(ProfileActivity.TAG, "ObjectId --> " + user.getObjectId())
+            Log.i(ProfileActivity.TAG, "" + params)
             ParseCloud.callFunctionInBackground("editUserProperty", params,
                 FunctionCallback { String: Object, e: ParseException? ->
                     if (e == null) {
@@ -66,7 +73,7 @@ class ProfileFragment : Fragment() {
                     } else {
                         Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     }
-                } )
+                })
         }
 
     }
