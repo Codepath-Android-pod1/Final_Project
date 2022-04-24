@@ -58,6 +58,14 @@ class ProfileFragment : Fragment() {
                 "Please Enter Name, Email, and Phone Number",
                 Toast.LENGTH_SHORT
             ).show()
+        }else if(!(email.endsWith(".org") || email.endsWith(".com") ||
+                    email.endsWith(".net") || email.endsWith(".edu") ||
+                    email.endsWith(".gov")) || !email.contains("@")) {
+            Toast.makeText(
+                context,
+                "Please Enter Valid Email address",
+                Toast.LENGTH_SHORT
+            ).show()
         } else {
             val params = HashMap<String, Any?>()
             params.put("objectId", user.getObjectId())
