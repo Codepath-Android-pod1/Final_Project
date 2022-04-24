@@ -3,6 +3,7 @@ package com.example.final_project.fragments
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -114,7 +115,7 @@ class EditFragment : Fragment() {
             } else {
                 Log.i(MainActivity.TAG, "Successfully saved post")
                 Toast.makeText(requireContext(), "Post successful", Toast.LENGTH_SHORT).show()
-                // TODO bring user to Event Fragment using Intent
+                startActivity(Intent(requireContext(), ParseEventFragment::class.java))
             }
             pb.visibility = ProgressBar.INVISIBLE
         }

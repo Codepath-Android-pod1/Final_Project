@@ -4,20 +4,20 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.R
-import com.example.final_project.activities.MainActivity
-import com.example.final_project.models.Event
 import com.example.final_project.models.ParseEvent
-import com.firebase.geofire.GeoFireUtils
 import com.parse.ParseGeoPoint
+import java.time.format.DateTimeFormatter
 
 class ParseEventAdapter(private val context: Context, private val events: MutableList<ParseEvent>) :
-    RecyclerView.Adapter<ParseEventAdapter.ViewHolder>()  {
+    RecyclerView.Adapter<ParseEventAdapter.ViewHolder>() {
+    lateinit var currLocation: ParseGeoPoint
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_event, parent, false)
+        ParseGeoPoint.getCurrentLocationInBackground(1) { geoPoint, _ -> currLocation = geoPoint }
         return ViewHolder(view)
     }
 
@@ -35,7 +35,7 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
         private val tvDate: TextView = itemView.findViewById(R.id.tvDate)
         private val tvDayTime: TextView = itemView.findViewById(R.id.tvDayTime)
@@ -43,12 +43,13 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
 
         fun bind(event: ParseEvent) {
             val eventLocation = event.getLocation()
-            val currLocation = MainActivity.currLocation
-            val distanceAway = eventLocation!!.distanceInMilesTo(ParseGeoPoint(currLocation.latitude, currLocation.longitude))
-            val locationText =  "$distanceAway miles away"
+            val distanceAway = eventLocation!!.distanceInMilesTo(currLocation)
+            val locationText = "$distanceAway miles away"
 
             tvTitle.text = event.getTitle()
-//            tvDate.text = event.getDate()
+            tvDate.text = event.getDate().toString().format(DateTimeFormatter.ofPattern("MMM d"))
+            tvDayTime.text =
+                event.getDate().toString().format(DateTimeFormatter.ofPattern("E h:mma"))
             tvLocation.text = locationText
         }
     }

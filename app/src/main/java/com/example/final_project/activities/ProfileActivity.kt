@@ -40,7 +40,7 @@ class ProfileActivity : AppCompatActivity() {
 
             ParseCloud.callFunctionInBackground("editUserProperty", params,
                 FunctionCallback { string: String?, e: ParseException? ->
-                    ParseCloud.useMasterKey()
+//                    ParseCloud.useMasterKey()
                     if (e == null) {
                         Toast.makeText(this, "Successfully Created", Toast.LENGTH_SHORT).show()
                     } else {

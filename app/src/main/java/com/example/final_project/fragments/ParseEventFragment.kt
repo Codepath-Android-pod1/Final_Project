@@ -32,6 +32,7 @@ class ParseEventFragment : TMEventFragment() {
         }
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright)
+        queryEvents()
     }
 
     override fun queryEvents() {
@@ -48,7 +49,7 @@ class ParseEventFragment : TMEventFragment() {
                     for (event in events) {
                         Log.i(
                             TAG,
-                            "Event: ${event.getDescription()}, username: ${event.getUser()?.username}"
+                            "Event: ${event.getTitle()}, username: ${event.getUser()?.username}"
                         )
                     }
                     allPEvents.addAll(events)
