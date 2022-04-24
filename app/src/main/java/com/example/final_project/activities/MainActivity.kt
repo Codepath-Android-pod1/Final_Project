@@ -46,9 +46,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        getLocationWithPermissionCheck()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getLocationWithPermissionCheck()
         fragmentManger = supportFragmentManager
 
         // Toolbar Init
