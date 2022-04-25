@@ -87,6 +87,7 @@ class ProfileFragment : Fragment() {
                         ParseUser.getCurrentUser().fetchInBackground<ParseObject> { user, e -> }
                         Log.i(ProfileActivity.TAG, "It is null and it passed--> " + user.getString("email")
                                 + " " + user.getString("name") + " " + user.getString("phonenum"))
+                        Toast.makeText(context, "Successfully Saved!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     }
