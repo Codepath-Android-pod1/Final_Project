@@ -11,10 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.final_project.R
 import com.example.final_project.activities.ProfileActivity
 import com.example.final_project.databinding.FragmentProfileBinding
-import com.parse.FunctionCallback
-import com.parse.ParseCloud
-import com.parse.ParseException
-import com.parse.ParseUser
+import com.parse.*
 
 
 class ProfileFragment : Fragment() {
@@ -80,6 +77,7 @@ class ProfileFragment : Fragment() {
             ParseCloud.callFunctionInBackground("editUserProperty", params,
                 FunctionCallback { String: Object, e: ParseException? ->
                     if (e == null) {
+                        ParseUser.getCurrentUser().fetchInBackground<ParseObject> { user, e -> }
                         Log.i(ProfileActivity.TAG, "It is null and it passed--> " + user.getString("email")
                                 + " " + user.getString("name") + " " + user.getString("phonenum"))
                     } else {
