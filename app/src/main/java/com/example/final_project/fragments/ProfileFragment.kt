@@ -1,5 +1,7 @@
 package com.example.final_project.fragments
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,14 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.final_project.R
 import com.example.final_project.activities.ProfileActivity
 import com.example.final_project.databinding.FragmentProfileBinding
-import com.parse.FunctionCallback
-import com.parse.ParseCloud
-import com.parse.ParseException
-import com.parse.ParseUser
+import com.parse.*
 
 
 class ProfileFragment : Fragment() {
@@ -31,7 +31,19 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val user = ParseUser.getCurrentUser()
+        binding.ProfileName.setText(user.getString("name"))
+        binding.ProfileEmail.setText(user.getString("email"))
+        binding.ProfilePhoneNum.setText(user.getString("phonenum"))
+        binding.ProfileImage.setOnClickListener {
+            Log.i(ProfileActivity.TAG, "-----ProfilePhoto Clicked")
+            openGalleryForImage()
+        }
+        binding.tvDeleteAccount.setOnClickListener {
+            Log.i(ProfileActivity.TAG, "-----Delete Account Clicked")
+            user.deleteInBackground()
+            ParseUser.logOutInBackground()
+        }
         binding.ProfileSaveButton.setOnClickListener {
             Log.i(ProfileActivity.TAG, "Tlqkf 버튼 눌렸다고")
             val name = getView()?.findViewById<EditText>(R.id.Profile_Name)?.text.toString()
@@ -39,11 +51,6 @@ class ProfileFragment : Fragment() {
             val phone = getView()?.findViewById<EditText>(R.id.Profile_PhoneNum)?.text.toString()
             Log.i(ProfileActivity.TAG, "" + name + "/" + email + "/" + phone)
             updateUser(name, email, phone)
-        }
-
-        binding.tvDeleteAccount.setOnClickListener {
-            Toast.makeText(requireContext(), "Needs to confirm a few things...", Toast.LENGTH_SHORT)
-                .show()
         }
     }
 
@@ -77,7 +84,9 @@ class ProfileFragment : Fragment() {
             ParseCloud.callFunctionInBackground("editUserProperty", params,
                 FunctionCallback { String: Object, e: ParseException? ->
                     if (e == null) {
-                        Log.i(ProfileActivity.TAG, "It is null and it passed")
+                        ParseUser.getCurrentUser().fetchInBackground<ParseObject> { user, e -> }
+                        Log.i(ProfileActivity.TAG, "It is null and it passed--> " + user.getString("email")
+                                + " " + user.getString("name") + " " + user.getString("phonenum"))
                     } else {
                         Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     }
@@ -85,4 +94,18 @@ class ProfileFragment : Fragment() {
         }
 
     }
+
+    private fun openGalleryForImage() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        getResult.launch(intent)
+    }
+
+    private val getResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()) {
+            if(it.resultCode == Activity.RESULT_OK){
+                val value = it.data?.getStringExtra("input")
+            }
+        }
 }
