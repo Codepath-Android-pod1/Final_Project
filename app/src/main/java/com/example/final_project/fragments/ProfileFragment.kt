@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -39,10 +40,11 @@ class ProfileFragment : Fragment() {
             Log.i(ProfileActivity.TAG, "-----ProfilePhoto Clicked")
             openGalleryForImage()
         }
-        binding.tvDeleteAccount.setOnClickListener {
+        binding.btnDeleteAccount.setOnClickListener {
             Log.i(ProfileActivity.TAG, "-----Delete Account Clicked")
-            user.deleteInBackground()
-            ParseUser.logOutInBackground()
+            openDialog()
+//            user.deleteInBackground()
+//            ParseUser.logOutInBackground()
         }
         binding.ProfileSaveButton.setOnClickListener {
             Log.i(ProfileActivity.TAG, "Tlqkf 버튼 눌렸다고")
@@ -104,6 +106,11 @@ class ProfileFragment : Fragment() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         getResult.launch(intent)
+    }
+
+    private fun openDialog() {
+        val dialog = DeleteAccountFragment()
+        dialog.show(parentFragmentManager, "Testing")
     }
 
     private val getResult =
