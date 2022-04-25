@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/Feedback_Q2"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/opensans_bold"
@@ -42,6 +42,7 @@
         android:gravity="top"
         android:hint="Please describe the Bug"
         android:inputType="textMultiLine"
+        android:textColorHint="@color/coEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"

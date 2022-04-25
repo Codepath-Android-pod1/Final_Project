@@ -125,12 +125,13 @@
 
     <EditText
         android:id="@+id/Feedback_EditText"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/coEditText"
         android:gravity="top"
         android:hint="Please enter your feedback"
+        android:textColorHint="@color/coEditText"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -138,7 +139,7 @@
         app:layout_constraintTop_toBottomOf="@id/Feedback_Q2" />
 
     <Button
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@color/coGreen"
