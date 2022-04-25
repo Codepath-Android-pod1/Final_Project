@@ -6,12 +6,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.final_project.R
 import com.example.final_project.activities.DetailEvent
 import com.example.final_project.models.Event
@@ -41,9 +39,11 @@ class EventAdapter(private val context: Context, private val events: MutableList
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
-//        private val ivImage: ImageView = itemView.findViewById(R.id.ivImage)
+
+        //        private val ivImage: ImageView = itemView.findViewById(R.id.ivImage)
         private val tvDate: TextView = itemView.findViewById(R.id.tvDate)
         private val tvDayTime: TextView = itemView.findViewById(R.id.tvDayTime)
         private val tvLocation: TextView = itemView.findViewById(R.id.tvLocation)

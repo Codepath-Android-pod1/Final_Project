@@ -1,17 +1,14 @@
 package com.example.final_project.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.final_project.R
 import com.example.final_project.adapters.EventAdapter.Companion.EVENT_EXTRA_IMAGE
 import com.example.final_project.adapters.EventAdapter.Companion.EVENT_EXTRA_NAME
-import com.example.final_project.models.Event
 import com.example.final_project.models.ImageX
-import com.example.final_project.models.ParseEvent
 
 open class DetailEvent : AppCompatActivity() {
     lateinit var tvTitle: TextView

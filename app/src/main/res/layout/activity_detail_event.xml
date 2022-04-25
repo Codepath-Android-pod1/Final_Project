@@ -10,20 +10,20 @@
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Title"
-        android:maxLines="2"
         android:layout_margin="10dp"
+        android:maxLines="2"
         android:transitionName="title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivImage" />
+        app:layout_constraintTop_toBottomOf="@+id/ivImage"
+        tools:text="Title" />
 
     <ImageView
         android:id="@+id/ivImage"
-        android:scaleType="fitXY"
-        android:layout_margin="10dp"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,10 +33,10 @@
         android:id="@+id/tvDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Details"
-        android:maxLines="2"
         android:layout_margin="10dp"
+        android:maxLines="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:text="Details" />
 </androidx.constraintlayout.widget.ConstraintLayout>

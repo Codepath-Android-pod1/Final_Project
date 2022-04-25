@@ -41,7 +41,8 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
         private val tvDate: TextView = itemView.findViewById(R.id.tvDate)
         private val tvDayTime: TextView = itemView.findViewById(R.id.tvDayTime)

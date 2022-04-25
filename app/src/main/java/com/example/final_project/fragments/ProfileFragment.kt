@@ -65,9 +65,10 @@ class ProfileFragment : Fragment() {
                 "Please Enter Name, Email, and Phone Number",
                 Toast.LENGTH_SHORT
             ).show()
-        }else if(!(email.endsWith(".org") || email.endsWith(".com") ||
+        } else if (!(email.endsWith(".org") || email.endsWith(".com") ||
                     email.endsWith(".net") || email.endsWith(".edu") ||
-                    email.endsWith(".gov")) || !email.contains("@")) {
+                    email.endsWith(".gov")) || !email.contains("@")
+        ) {
             Toast.makeText(
                 context,
                 "Please Enter Valid Email address",
@@ -85,8 +86,11 @@ class ProfileFragment : Fragment() {
                 FunctionCallback { String: Object, e: ParseException? ->
                     if (e == null) {
                         ParseUser.getCurrentUser().fetchInBackground<ParseObject> { user, e -> }
-                        Log.i(ProfileActivity.TAG, "It is null and it passed--> " + user.getString("email")
-                                + " " + user.getString("name") + " " + user.getString("phonenum"))
+                        Log.i(
+                            ProfileActivity.TAG,
+                            "It is null and it passed--> " + user.getString("email")
+                                    + " " + user.getString("name") + " " + user.getString("phonenum")
+                        )
                     } else {
                         Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     }
@@ -103,8 +107,9 @@ class ProfileFragment : Fragment() {
 
     private val getResult =
         registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()) {
-            if(it.resultCode == Activity.RESULT_OK){
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
                 val value = it.data?.getStringExtra("input")
             }
         }

@@ -31,5 +31,10 @@
     <string name="navigation_drawer_close"> Close Navigation Drawer</string>
     <string name="login_signup_text">Don\'t have an account?</string>
     <string name="own_account_text">Have an account already?</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="eventful">Eventful</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
 
 </resources>
