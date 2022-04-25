@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference />
+    <Preference/>
 
     <Preference
-        android:key="Feedback"
-        android:summary="Report technical issues or suggest new features"
-        android:title="Send Feedback" />
+        android:key="UI"
+        android:summary="Set appearance for your application"
+        android:title="User Interface" />
 
     <SwitchPreferenceCompat
-        android:key="Testing"
-        android:title="Enable Message Notification" />
+        android:key="darkTheme"
+        android:title="Dark Mode" />
+
+    <Preference
+        android:key="handicaps"
+        android:summary="Turn on setting that helps with disability"
+        android:title="Disability Usage" />
 
     <SwitchPreferenceCompat
-        android:key="Testing"
-        android:title="Enable Message Notification" />
+        android:key="voice"
+        android:title="Text to Speech" />
 
     <SwitchPreferenceCompat
-        android:key="Testing"
-        android:title="Enable Message Notification" />
+        android:key="size"
+        android:title="Increase text sizes" />
 
     <SwitchPreferenceCompat
-        android:key="Testing"
-        android:title="Enable Message Notification" />
-
-    <SwitchPreferenceCompat
-        android:key="Testing"
-        android:title="Enable Message Notification" />
+        android:key="color"
+        android:title="Color Blind Mode" />
 
 
 </PreferenceScreen>

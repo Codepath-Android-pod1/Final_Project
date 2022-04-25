@@ -3,28 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/coBackgroundColor"
+    android:paddingBottom="20dp">
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/opensans_bold"
+        android:textColor="@color/coBlue"
+        android:textSize="17.5dp"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
+        android:textColor="@color/coEditText"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:maxLines="2"
         android:transitionName="title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDate"
-        tools:text="TextView" />
+        tools:text="TextView"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="20dp"/>
 
     <!--    <Button-->
     <!--        android:id="@+id/btnEnter"-->
@@ -38,23 +46,29 @@
 
     <TextView
         android:id="@+id/tvLocation"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:ellipsize="end"
         android:maxLines="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/coEditText"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        tools:text="TextView" />
+        tools:text="TextView"
+        android:textSize="15dp"
+        android:fontFamily="@font/roboto_bold"/>
 
     <TextView
         android:id="@+id/tvDayTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_bold_italic"
         android:text="TextView"
+        android:textColor="@color/coEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDate"
         app:layout_constraintStart_toEndOf="@+id/tvDate"
-        app:layout_constraintTop_toTopOf="@+id/tvDate" />
+        android:textSize="15dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
