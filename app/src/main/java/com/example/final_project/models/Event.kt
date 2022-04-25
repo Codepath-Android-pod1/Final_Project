@@ -1,7 +1,10 @@
 package com.example.final_project.models
 
+import android.os.Parcelable
 import com.example.final_project.unused_models.*
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Event(
     val _embedded: EmbeddedX,
     val _links: LinksXX,
@@ -21,4 +24,4 @@ data class Event(
     val type: String,
     val units: String,
     val url: String
-)
+) : Parcelable

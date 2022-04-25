@@ -15,7 +15,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <!--android:theme="@style/Theme.Final_Project"-->
+        <activity
+            android:name=".activities.DetailParseEvent"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DetailEvent"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" /> <!-- android:theme="@style/Theme.Final_Project" -->
         <meta-data
             android:name="com.parse.SERVER_URL"
             android:value="https://parseapi.back4app.com" />
@@ -30,7 +39,6 @@
             android:name=".activities.SignUpActivity"
             android:exported="true"
             android:label="@string/title_activity_sign_up" />
-
         <activity
             android:name=".activities.LoginActivity"
             android:exported="true">

@@ -1,5 +1,9 @@
 package com.example.final_project.unused_models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Attraction(
     val _links: Links,
     val aliases: List<String>,
@@ -13,4 +17,4 @@ data class Attraction(
     val type: String,
     val upcomingEvents: UpcomingEvents,
     val url: String
-)
+) : Parcelable
