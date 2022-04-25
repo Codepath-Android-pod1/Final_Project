@@ -11,7 +11,8 @@ import com.parse.*
 
 
 class ProfileActivity : AppCompatActivity() {
-
+    //This ProfileActivity legit do nothing. It is just there to leave it because I am scared
+    //what will happen after I delete it.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_profile)

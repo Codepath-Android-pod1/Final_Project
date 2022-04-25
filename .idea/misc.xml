@@ -4,32 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.16944444444444445" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable-v24/user_picture.xml" value="0.195" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1955" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/greenroundedbutton.xml" value="0.1955" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.1955" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/loginbackground.xml" value="0.259" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/orangeredroundedbutton.xml" value="0.259" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.136" />
+        <entry key="..\:/Users/Andrew Cho/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_profile.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/OrangeRedRounded.xml" value="0.195" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/loginbackground.xml" value="0.195" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/orangeredroundedbutton.xml" value="0.195" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/drawable/roundedbutton.xml" value="0.1315" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.182518115942029" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.67" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/content_login.xml" value="0.22" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/content_sign_up.xml" value="0.2" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_event_rv.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_feedback.xml" value="0.182518115942029" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_profile.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_report.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_search.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_set_photo.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/fragment_setting.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/choyo/AndroidStudioProjects/Final_Project/app/src/main/res/layout/nav_head.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/drawable/greenroundedbutton.xml" value="0.1455" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/font/lobster.xml" value="0.396875" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/font/lobster_regular.xml" value="0.396875" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_login.xml" value="0.12259371833839919" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.31091370558375636" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.25" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_feed_back.xml" value="0.24682971014492755" />
@@ -41,9 +33,6 @@
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.30520833333333336" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_leftnav.xml" value="0.30520833333333336" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/menu/menu_toolbar.xml" value="0.36666666666666664" />
-        <entry key="app/src/main/res/drawable/orangeredroundedbutton.xml" value="0.1655" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2657407407407407" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_compose.xml" value="0.30104166666666665" />
         <entry key="app/src/main/res/layout/fragment_detail_event.xml" value="0.1962962962962963" />
