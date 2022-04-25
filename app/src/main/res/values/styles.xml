@@ -2,6 +2,7 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.Bridge">
         <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
         <item name="colorPrimary">@color/coOrange</item>
         <item name="colorPrimaryDark">@color/coBackgroundColor</item>
         <item name="colorAccent">@color/coGreen</item>

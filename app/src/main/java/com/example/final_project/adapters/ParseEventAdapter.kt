@@ -11,8 +11,8 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.R
+import com.example.final_project.activities.DetailParseEvent
 import com.example.final_project.activities.MainActivity
-import com.example.final_project.fragments.DetailEventFragment
 import com.example.final_project.models.ParseEvent
 import com.parse.ParseGeoPoint
 import java.text.SimpleDateFormat
@@ -70,7 +70,7 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
 
         override fun onClick(v: View?) {
             val event = events[absoluteAdapterPosition]
-            val intent = Intent(context, DetailEventFragment::class.java)
+            val intent = Intent(context, DetailParseEvent::class.java)
             intent.putExtra(EVENT_EXTRA, event)
             val titlePair = Pair.create(tvTitle as View, "title")
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
