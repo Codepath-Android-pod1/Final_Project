@@ -23,7 +23,7 @@ import com.parse.ParseUser
 import java.text.SimpleDateFormat
 import java.util.*
 
-class EditFragment : Fragment() {
+class CreateEventFragment : Fragment() {
     private lateinit var pb: ProgressBar
 
     override fun onCreateView(

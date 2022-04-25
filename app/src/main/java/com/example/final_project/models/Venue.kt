@@ -1,7 +1,10 @@
 package com.example.final_project.models
 
+import android.os.Parcelable
 import com.example.final_project.unused_models.*
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Venue(
     val _links: LinksX,
     val address: Address,
@@ -20,4 +23,4 @@ data class Venue(
     val type: String,
     val units: String,
     val upcomingEvents: UpcomingEventsX
-)
+) : Parcelable

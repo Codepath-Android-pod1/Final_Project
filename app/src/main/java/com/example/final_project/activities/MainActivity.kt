@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
-            fragmentToShow = EditFragment()
+            fragmentToShow = CreateEventFragment()
             //Change to Edit Fragment
             navView.setCheckedItem(R.id.Compose)
             changeFragment()
@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.Compose -> {
-                fragmentToShow = EditFragment()
+                fragmentToShow = CreateEventFragment()
             }
             R.id.Friends -> {
                 fragmentToShow = ChatFragment()

@@ -56,8 +56,6 @@ open class TMEventFragment : Fragment() {
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright)
 
-        queryEvents()
-
         rvEvents.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -85,6 +83,8 @@ open class TMEventFragment : Fragment() {
                 }
             }
         })
+
+        queryEvents()
     }
 
 
