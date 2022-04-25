@@ -31,7 +31,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val user = ParseUser.getCurrentUser()
+        binding.ProfileName.setText(user.getString("name"))
+        binding.ProfileEmail.setText(user.getString("email"))
+        binding.ProfilePhoneNum.setText(user.getString("phonenum"))
         binding.ProfileSaveButton.setOnClickListener {
             Log.i(ProfileActivity.TAG, "Tlqkf 버튼 눌렸다고")
             val name = getView()?.findViewById<EditText>(R.id.Profile_Name)?.text.toString()
@@ -77,7 +80,8 @@ class ProfileFragment : Fragment() {
             ParseCloud.callFunctionInBackground("editUserProperty", params,
                 FunctionCallback { String: Object, e: ParseException? ->
                     if (e == null) {
-                        Log.i(ProfileActivity.TAG, "It is null and it passed")
+                        Log.i(ProfileActivity.TAG, "It is null and it passed--> " + user.getString("email")
+                                + " " + user.getString("name") + " " + user.getString("phonenum"))
                     } else {
                         Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     }
