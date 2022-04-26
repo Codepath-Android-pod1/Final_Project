@@ -84,6 +84,7 @@ class CreateEventFragment : Fragment() {
             createEvent(view)
         }
 
+
         // Initialize the AutocompleteSupportFragment
         autocompleteFragment =
             childFragmentManager.findFragmentById(R.id.fragment_autocomplete) as AutocompleteSupportFragment
@@ -108,6 +109,7 @@ class CreateEventFragment : Fragment() {
                 .replace(R.id.composeView, autocompleteFragment)
                 .commit()
         }
+
     }
 
     private fun createEvent(view: View) {
