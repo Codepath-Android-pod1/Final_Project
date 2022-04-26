@@ -24,7 +24,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" /> <!-- android:theme="@style/Theme.Final_Project" -->
+            android:value="${MAPS_API_KEY}" />
         <meta-data
             android:name="com.parse.SERVER_URL"
             android:value="https://parseapi.back4app.com" />

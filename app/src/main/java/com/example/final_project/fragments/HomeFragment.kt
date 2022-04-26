@@ -43,7 +43,6 @@ open class HomeFragment : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 vp.currentItem = tab.position
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })

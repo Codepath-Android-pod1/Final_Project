@@ -7,9 +7,7 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.example.final_project.R
 import com.example.final_project.activities.LoginActivity
-import com.google.android.material.snackbar.Snackbar
 import com.parse.ParseUser
-import java.lang.IllegalStateException
 
 class DeleteAccountFragment : DialogFragment() {
 
@@ -22,7 +20,8 @@ class DeleteAccountFragment : DialogFragment() {
 
             builder.setView(inflater.inflate(R.layout.fragment_delete_account, null))
                 .setTitle("Account Removal")
-                .setPositiveButton("Delete Account"
+                .setPositiveButton(
+                    "Delete Account"
                 ) { dialogInterface, i ->
                     val user = ParseUser.getCurrentUser()
 
@@ -31,7 +30,8 @@ class DeleteAccountFragment : DialogFragment() {
                     goToLogin()
 
                 }
-                .setNegativeButton("Cancel"
+                .setNegativeButton(
+                    "Cancel"
                 ) { dialogInterface, i ->
                     // Stop | Leave
                 }

@@ -15,9 +15,14 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.example.final_project.R
 import com.example.final_project.activities.MainActivity
 import com.example.final_project.models.ParseEvent
+import com.google.android.gms.common.api.Status
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.parse.ParseGeoPoint
 import com.parse.ParseUser
 import java.text.SimpleDateFormat
@@ -40,6 +45,7 @@ class CreateEventFragment : Fragment() {
         pb = view.findViewById<View>(R.id.pbLoading) as ProgressBar
         val etDate = view.findViewById<EditText>(R.id.etPEDate)
         val etTime = view.findViewById<EditText>(R.id.etTime)
+        val etLocation = view.findViewById<EditText>(R.id.etAddress)
 
         etDate.setOnClickListener {
             val cal = Calendar.getInstance()
@@ -74,6 +80,31 @@ class CreateEventFragment : Fragment() {
 
         view.findViewById<Button>(R.id.btnCreate).setOnClickListener {
             createEvent(view)
+        }
+
+        // Initialize the AutocompleteSupportFragment
+        val autocompleteFragment =
+            (activity as FragmentActivity).supportFragmentManager.findFragmentById(R.id.fragment_autocomplete)
+                    as AutocompleteSupportFragment
+
+        // Specify the types of place data to return
+        autocompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME))
+
+        // Set up a PlaceSelectionListener to handle the response
+        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+                Log.i(TAG, "Place: ${place.name}, ${place.id}")
+            }
+
+            override fun onError(status: Status) {
+                Log.e(TAG, "An error occurred: $status")
+            }
+        })
+
+        etLocation.setOnClickListener {
+            (activity as FragmentActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.composeView, autocompleteFragment)
+                .commit()
         }
     }
 
@@ -124,5 +155,9 @@ class CreateEventFragment : Fragment() {
     private fun hideKeyboard(v: View) {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(v.applicationWindowToken, 0)
+    }
+
+    companion object {
+        const val TAG = "CreateEventFragment"
     }
 }

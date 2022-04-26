@@ -131,8 +131,8 @@
         android:backgroundTint="@color/coEditText"
         android:gravity="top"
         android:hint="Please enter your feedback"
-        android:textColorHint="@color/coEditText"
         android:inputType="textMultiLine"
+        android:textColorHint="@color/coEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,10 +143,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@drawable/greenroundedbutton"
-        android:text="Submit"
-        android:textSize="20dp"
         android:letterSpacing="0.2"
+        android:text="Submit"
         android:textColor="@color/coEditText"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/Feedback_EditText"
         app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 

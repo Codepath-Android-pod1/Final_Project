@@ -18,6 +18,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.final_project.BuildConfig
 import com.example.final_project.R
 import com.example.final_project.fragments.*
 import com.example.final_project.models.TMApi
@@ -25,6 +26,7 @@ import com.firebase.geofire.GeoFireUtils
 import com.firebase.geofire.GeoLocation
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.libraries.places.api.Places
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.parse.ParseUser
@@ -46,10 +48,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        getLocationWithPermissionCheck()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fragmentManger = supportFragmentManager
+
+        // Ask permission for coarse location
+        getLocationWithPermissionCheck()
+        Places.initialize(this, BuildConfig.MAPS_API_KEY)
+//        val placesClient = Places.createClient(this)
 
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
@@ -71,25 +77,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Fragment Selection && Initial Fragment Setup
         navView = findViewById(R.id.main_nav_view)
         navView.setNavigationItemSelectedListener(this)
-
         if (savedInstanceState == null) {
             fragmentToShow = HomeFragment()
             changeFragment()
             navView.setCheckedItem(R.id.Home)
         }
 
-        // Floating Action Button && Set it's onclick thing
-
-
+        // Floating Action Button && set onClick
         this.findViewById<FloatingActionButton>(R.id.Main_FloatingButton).setOnClickListener {
             fragmentToShow = CreateEventFragment()
             //Change to Edit Fragment
             navView.setCheckedItem(R.id.Compose)
             changeFragment()
         }
-
-        // Ask permission for coarse location
-
 
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
