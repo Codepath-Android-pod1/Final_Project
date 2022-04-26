@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="coBackgroundColor">#FFAF79</color>
+    <color name="coBackgroundColor2">#FF7B6B</color>
     <color name="coEditText">#FEF3E2</color>
     <color name="coGreen">#09CA63</color>
     <color name="coOrange">#F4350A</color>

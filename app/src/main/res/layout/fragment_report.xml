@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/coBackgroundColor"
+    android:background="@drawable/gradient_bg"
     tools:context=".fragments.FeedBackFragment">
 
     <TextView
@@ -52,8 +52,11 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@color/coGreen"
+        android:background="@drawable/greenroundedbutton"
         android:text="Submit"
+        android:textSize="20dp"
+        android:letterSpacing="0.2"
+        android:fontFamily="@font/opensans_bold"
         android:textColor="@color/coEditText"
         app:layout_constraintStart_toStartOf="@+id/Bug_EditText"
         app:layout_constraintTop_toBottomOf="@id/Bug_EditText" />

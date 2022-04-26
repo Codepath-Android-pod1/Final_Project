@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/coBackgroundColor"
+    android:background="@drawable/gradient_bg"
     tools:context=".fragments.FeedBackFragment">
 
     <TextView
@@ -29,7 +29,7 @@
         android:fontFamily="@font/opensans_bold"
         android:text="Would you Recommend our Application to your friends?"
         android:textColor="@color/coEditText"
-        android:textSize="20sp"
+        android:textSize="0sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
@@ -142,8 +142,10 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@color/coGreen"
+        android:background="@drawable/greenroundedbutton"
         android:text="Submit"
+        android:textSize="20dp"
+        android:letterSpacing="0.2"
         android:textColor="@color/coEditText"
         app:layout_constraintStart_toStartOf="@+id/Feedback_EditText"
         app:layout_constraintTop_toBottomOf="@id/radioGroup" />

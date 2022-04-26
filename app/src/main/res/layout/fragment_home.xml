@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/coBackgroundColor"
+    android:background="@drawable/gradient_bg"
     android:orientation="vertical"
     tools:context=".fragments.HomeFragment">
 
@@ -12,9 +12,8 @@
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFF9F1"
-        app:tabSelectedTextColor="@color/black"
-        app:tabTextColor="@color/black" />
+        android:background="@color/coEditText"
+        app:tabTextColor="@color/coBackgroundColor2" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
