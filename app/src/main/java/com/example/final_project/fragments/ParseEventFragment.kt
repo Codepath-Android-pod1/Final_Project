@@ -19,11 +19,6 @@ class ParseEventFragment : TMEventFragment() {
         parseAdapter = ParseEventAdapter(requireContext(), allPEvents)
         rvEvents.adapter = parseAdapter
         rvEvents.layoutManager = LinearLayoutManager(requireContext())
-        val dividerItemDecoration = DividerItemDecoration(
-            requireContext(),
-            LinearLayoutManager(requireContext()).orientation
-        )
-        rvEvents.addItemDecoration(dividerItemDecoration)
 
         swipeContainer = view.findViewById(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
