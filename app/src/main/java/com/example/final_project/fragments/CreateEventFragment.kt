@@ -30,6 +30,8 @@ import java.util.*
 
 class CreateEventFragment : Fragment() {
     private lateinit var pb: ProgressBar
+    private lateinit var eventLoc: ParseGeoPoint
+    private lateinit var autocompleteFragment: AutocompleteSupportFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,17 +85,17 @@ class CreateEventFragment : Fragment() {
         }
 
         // Initialize the AutocompleteSupportFragment
-        val autocompleteFragment =
-            (activity as FragmentActivity).supportFragmentManager.findFragmentById(R.id.fragment_autocomplete)
-                    as AutocompleteSupportFragment
+        autocompleteFragment =
+            childFragmentManager.findFragmentById(R.id.fragment_autocomplete) as AutocompleteSupportFragment
 
         // Specify the types of place data to return
-        autocompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME))
+        autocompleteFragment.setPlaceFields(listOf(Place.Field.NAME, Place.Field.LAT_LNG))
 
         // Set up a PlaceSelectionListener to handle the response
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                Log.i(TAG, "Place: ${place.name}, ${place.id}")
+                Log.i(TAG, "Place: ${place.name}, ${place.latLng}")
+                eventLoc = ParseGeoPoint(place.latLng.latitude, place.latLng.latitude)
             }
 
             override fun onError(status: Status) {
@@ -131,8 +133,7 @@ class CreateEventFragment : Fragment() {
         event.setTitle(title)
         event.setDescription(description)
         event.setDate(dateObject)
-        // TODO add functionality to get event location's GeoPoint
-        event.setLocation(ParseGeoPoint())
+        event.setLocation(eventLoc)
         event.setUser(user)
         event.saveInBackground { e ->
             if (e != null) {
