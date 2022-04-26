@@ -15,5 +15,6 @@
     <color name="coOrange">#F4350A</color>
     <color name="coBlue">#2196F3</color>
     <color name="coPurple">#A161FC</color>
-
+    <color name="coSkyBlue">#00E2FF</color>
+    <color name="coLightSkyBlue">#A5D7FF</color>
 </resources>
