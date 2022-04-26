@@ -1,91 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/composeView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/etTitle"
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:ems="10"
-        android:hint="Title"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:ems="10"
-        android:hint="Description"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
 
-    <EditText
-        android:id="@+id/etPEDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:ems="10"
-        android:focusable="false"
-        android:hint="Date"
-        android:inputType="date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="300dp"
+                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/loginbackground"
+                android:paddingVertical="10dp"
+                android:ems="10"
+                android:hint="Title"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:ems="10"
-        android:focusable="false"
-        android:hint="Time"
-        android:inputType="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPEDate" />
+            <EditText
+                android:id="@+id/etDescription"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:ems="10"
+                android:hint="Description"
+                android:background="@drawable/loginbackground"
+                android:paddingVertical="10dp"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 
-    <EditText
-        android:id="@+id/etAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:ems="10"
-        android:hint="Location"
-        android:inputType="textPostalAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTime" />
+            <EditText
+                android:id="@+id/etPEDate"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:ems="10"
+                android:focusable="false"
+                android:drawableLeft="time"
+                android:hint="Date"
+                android:inputType="date"
+                android:background="@drawable/loginbackground"
+                android:paddingVertical="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
-    <ProgressBar
-        android:id="@+id/pbLoading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="2dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/etTime"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Time"
+                android:inputType="time"
+                android:background="@drawable/loginbackground"
+                android:paddingVertical="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPEDate" />
 
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Event"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAddress" />
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:ems="10"
+                android:drawableLeft="@drawable/ic_baseline_search_24"
+                android:hint="Location"
+                android:background="@drawable/loginbackground"
+                android:paddingVertical="10dp"
+                android:drawablePadding="10dp"
+                android:inputType="textPostalAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTime" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_autocomplete"
-        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreate" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ProgressBar
+                android:id="@+id/pbLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_marginTop="30dp"
+                android:layout_width="300dp"
+                android:background="@drawable/greenroundedbutton"
+                android:textColor="@color/coEditText"
+                android:fontFamily="@font/opensans_bold"
+                android:letterSpacing="0.2"
+                android:layout_height="wrap_content"
+                android:text="Create Event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAddress" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_autocomplete"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/btnCreate" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
