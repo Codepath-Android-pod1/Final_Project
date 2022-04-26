@@ -91,6 +91,7 @@
             android:drawablePadding="10sp"
             android:drawableTint="#d82121"
             android:text="Delete account"
+            android:background="@drawable/border_none"
             android:textColor="#d82121"
             android:textSize="17sp"
             app:layout_constraintTop_toBottomOf="@+id/Profile_PhoneNum"
