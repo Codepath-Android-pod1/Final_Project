@@ -4,105 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg2">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/Profile_Image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/white_background"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.232"
-            tools:ignore="MissingConstraints" />
-
-        <EditText
-            android:id="@+id/Profile_Name"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:hint="Your name:"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Profile_Image"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="40dp">
 
-        <EditText
-            android:id="@+id/Profile_Email"
-            android:layout_width="362dp"
-            android:layout_height="45dp"
-            android:layout_marginVertical="10dp"
-            android:layout_marginTop="4dp"
-            android:drawableStart="@drawable/ic_baseline_email_24"
-            android:drawablePadding="10sp"
-            android:drawableTintMode="src_atop"
-            android:hint="Your email:"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Profile_Name"
-            tools:ignore="MissingConstraints" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="50dp"
+                android:paddingHorizontal="30dp">
 
-        <Button
-            android:id="@+id/Profile_SaveButton"
-            android:layout_width="207dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/greenroundedbutton"
-            android:hint="save"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Profile_PhoneNum" />
+                <ImageView
+                    android:id="@+id/Profile_Image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/white_background"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_profile"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/Profile_PhoneNum"
-            android:layout_width="362dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+                <EditText
+                    android:id="@+id/Profile_Name"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:hint="Your name:"
+                    android:textColorHint="@color/coBackgroundColor"
+                    android:textColor="@color/coBackgroundColor"
+                    android:backgroundTint="@color/coBackgroundColor"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Profile_Image"
+                    tools:ignore="MissingConstraints" />
 
-            android:layout_weight="1"
-            android:drawableStart="@drawable/ic_baseline_phone_24"
-            android:hint="Your phone number:"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Profile_Email"
-            tools:ignore="MissingConstraints" />
+                <EditText
+                    android:id="@+id/Profile_Email"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_marginVertical="10dp"
+                    android:textColorHint="@color/coBackgroundColor"
+                    android:textColor="@color/coBackgroundColor"
+                    android:drawableTint="@color/coBackgroundColor"
+                    android:backgroundTint="@color/coBackgroundColor"
+                    android:layout_marginTop="4dp"
+                    android:drawableStart="@drawable/ic_baseline_email_24"
+                    android:drawablePadding="10sp"
+                    android:drawableTintMode="src_atop"
+                    android:hint="Your email:"
+                    android:textSize="17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Profile_Name"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/Profile_SaveButton"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.2"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/greenroundedbutton"
+                    android:textColorHint="@color/white"
+                    android:fontFamily="@font/opensans_bold"
+                    android:hint="save"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Profile_PhoneNum" />
+
+                <EditText
+                    android:id="@+id/Profile_PhoneNum"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColorHint="@color/coBackgroundColor"
+                    android:textColor="@color/coBackgroundColor"
+                    android:drawableTint="@color/coBackgroundColor"
+                    android:backgroundTint="@color/coBackgroundColor"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_baseline_phone_24"
+                    android:hint="Your phone number:"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Profile_Email"
+                    tools:ignore="MissingConstraints" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <Button
             android:id="@+id/btnDeleteAccount"
-            android:layout_width="match_parent"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
-            android:background="@android:drawable/edit_text"
+            android:elevation="10dp"
+            android:background="@color/white"
             android:drawableStart="@drawable/ic_baseline_delete_24"
             android:drawablePadding="10sp"
+            android:fontFamily="@font/opensans_bold"
+            android:letterSpacing="0.2"
+            android:paddingHorizontal="40dp"
             android:drawableTint="#d82121"
             android:text="Delete account"
+            android:layout_marginBottom="20dp"
             android:textColor="#d82121"
             android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
