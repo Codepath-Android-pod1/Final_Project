@@ -8,6 +8,7 @@
     android:padding="16dp">
 
     <ImageView
+        android:contentDescription="Profile Image"
         android:id="@+id/profileIV"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -23,7 +24,7 @@
         android:layout_marginLeft="10dp"
         android:paddingTop="8dp"
         android:text="Username"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/profileIV"
         app:layout_constraintLeft_toRightOf="@+id/profileIV" />
 

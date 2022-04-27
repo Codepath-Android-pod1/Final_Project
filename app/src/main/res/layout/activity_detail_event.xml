@@ -23,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_margin="10dp"
+        android:contentDescription="Event Image"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

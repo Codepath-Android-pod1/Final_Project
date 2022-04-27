@@ -22,7 +22,7 @@ class DeleteAccountFragment : DialogFragment() {
                 .setTitle("Account Removal")
                 .setPositiveButton(
                     "Delete Account"
-                ) { dialogInterface, i ->
+                ) { _, _ ->
                     val user = ParseUser.getCurrentUser()
 
                     user.deleteInBackground()
@@ -32,7 +32,7 @@ class DeleteAccountFragment : DialogFragment() {
                 }
                 .setNegativeButton(
                     "Cancel"
-                ) { dialogInterface, i ->
+                ) { _, _ ->
                     // Stop | Leave
                 }
 

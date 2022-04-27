@@ -44,7 +44,6 @@
             android:layout_marginBottom="16dp"
             android:background="@color/coEditText"
             android:backgroundTint="@color/coEditText"
-            android:contentDescription="Compose Event"
             android:src="@drawable/ic_baseline_edit_24"
             app:borderWidth="0dp" />
 
