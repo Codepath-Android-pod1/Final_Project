@@ -48,11 +48,29 @@ class ParseEvent : ParseObject() {
         put(KEY_LOCATION, parseLocation)
     }
 
+    fun getLocName(): String? {
+        return getString(KEY_LOCATION_NAME)
+    }
+
+    fun setLocName(name: String) {
+        put(KEY_LOCATION_NAME, name)
+    }
+
+    fun getLocAddress(): String? {
+        return getString(KEY_LOCATION_ADDRESS)
+    }
+
+    fun setLocAddress(address: String) {
+        put(KEY_LOCATION_ADDRESS, address)
+    }
+
     companion object {
         const val KEY_TITLE = "title"
         const val KEY_DESCRIPTION = "description"
         const val KEY_DATE = "date"
-        const val KEY_LOCATION = "location"
         const val KEY_USER = "user"
+        const val KEY_LOCATION = "location"
+        const val KEY_LOCATION_NAME = "locationName"
+        const val KEY_LOCATION_ADDRESS = "locationAddress"
     }
 }

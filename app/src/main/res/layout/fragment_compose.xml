@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/composeView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,14 +19,16 @@
             <EditText
                 android:id="@+id/etTitle"
                 android:layout_width="300dp"
-                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:autofillHints=""
                 android:background="@drawable/loginbackground"
-                android:paddingVertical="10dp"
                 android:ems="10"
-                android:hint="Title"
+                android:hint="@string/title"
                 android:inputType="text"
+                android:paddingVertical="10dp"
+                android:paddingStart="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,13 +36,15 @@
                 android:id="@+id/etDescription"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="10dp"
-                android:ems="10"
-                android:hint="Description"
+                android:layout_marginTop="10dp"
+                android:autofillHints=""
                 android:background="@drawable/loginbackground"
-                android:paddingVertical="10dp"
+                android:ems="10"
+                android:hint="@string/description"
                 android:inputType="text"
+                android:paddingVertical="10dp"
+                android:paddingStart="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 
@@ -49,14 +52,16 @@
                 android:id="@+id/etPEDate"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints=""
+                android:background="@drawable/loginbackground"
                 android:ems="10"
                 android:focusable="false"
-                android:hint="Date"
+                android:hint="@string/date"
                 android:inputType="date"
-                android:background="@drawable/loginbackground"
                 android:paddingVertical="10dp"
+                android:paddingStart="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
@@ -64,65 +69,51 @@
                 android:id="@+id/etTime"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints=""
+                android:background="@drawable/loginbackground"
                 android:ems="10"
                 android:focusable="false"
-                android:hint="Time"
+                android:hint="@string/time"
                 android:inputType="time"
-                android:background="@drawable/loginbackground"
                 android:paddingVertical="10dp"
+                android:paddingStart="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etPEDate" />
-
-            <EditText
-                android:id="@+id/etAddress"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="10dp"
-                android:ems="10"
-                android:hint="Location"
-                android:background="@drawable/loginbackground"
-                android:paddingVertical="10dp"
-                android:drawablePadding="10dp"
-                android:inputType="textPostalAddress"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etTime" />
 
             <ProgressBar
                 android:id="@+id/pbLoading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="2dp"
+                android:elevation="1dp"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btnCreate"
-                android:layout_marginTop="20dp"
                 android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/greenroundedbutton"
-                android:textColor="@color/coEditText"
                 android:fontFamily="@font/opensans_bold"
                 android:letterSpacing="0.2"
-                android:layout_height="wrap_content"
-                android:text="Create Event"
+                android:text="@string/create_event"
+                android:textColor="@color/coEditText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_autocomplete" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragment_autocomplete"
-                android:layout_marginTop="10dp"
                 android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                 android:layout_width="300dp"
-                app:layout_constraintLeft_toLeftOf="@id/etAddress"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/etAddress" />
-
+                app:layout_constraintStart_toStartOf="@+id/etTime"
+                app:layout_constraintTop_toBottomOf="@+id/etTime" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

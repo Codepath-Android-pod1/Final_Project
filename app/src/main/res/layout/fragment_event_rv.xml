@@ -14,10 +14,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvEvent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:fadeScrollbars="true"
+            android:fillViewport="true"
+            android:scrollbars="vertical" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 
 </RelativeLayout>

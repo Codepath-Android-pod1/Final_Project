@@ -70,7 +70,6 @@ class EventAdapter(private val context: Context, private val events: MutableList
             tvDayTime.text =
                 if (dayTime == null) "" else dayTime.format(DateTimeFormatter.ofPattern("E h:mma"))
             tvLocation.text = location
-//            Glide.with(itemView.context).load(event.images[0].url).into(ivImage)
         }
 
         override fun onClick(v: View?) {

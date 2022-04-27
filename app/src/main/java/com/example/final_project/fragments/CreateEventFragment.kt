@@ -15,7 +15,6 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.example.final_project.R
 import com.example.final_project.activities.MainActivity
 import com.example.final_project.models.ParseEvent
@@ -30,8 +29,10 @@ import java.util.*
 
 class CreateEventFragment : Fragment() {
     private lateinit var pb: ProgressBar
-    private lateinit var eventLoc: ParseGeoPoint
     private lateinit var autocompleteFragment: AutocompleteSupportFragment
+    private var eventLocPoint: ParseGeoPoint? = null
+    private lateinit var eventLocName: String
+    private lateinit var eventAddress: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +48,6 @@ class CreateEventFragment : Fragment() {
         pb = view.findViewById<View>(R.id.pbLoading) as ProgressBar
         val etDate = view.findViewById<EditText>(R.id.etPEDate)
         val etTime = view.findViewById<EditText>(R.id.etTime)
-        val etLocation = view.findViewById<EditText>(R.id.etAddress)
 
         etDate.setOnClickListener {
             val cal = Calendar.getInstance()
@@ -88,28 +88,30 @@ class CreateEventFragment : Fragment() {
         // Initialize the AutocompleteSupportFragment
         autocompleteFragment =
             childFragmentManager.findFragmentById(R.id.fragment_autocomplete) as AutocompleteSupportFragment
+        autocompleteFragment.setHint("Location")
 
         // Specify the types of place data to return
-        autocompleteFragment.setPlaceFields(listOf(Place.Field.NAME, Place.Field.LAT_LNG))
+        autocompleteFragment.setPlaceFields(
+            listOf(
+                Place.Field.NAME,
+                Place.Field.LAT_LNG,
+                Place.Field.ADDRESS
+            )
+        )
 
         // Set up a PlaceSelectionListener to handle the response
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                Log.i(TAG, "Place: ${place.name}, ${place.latLng}")
-                eventLoc = ParseGeoPoint(place.latLng.latitude, place.latLng.latitude)
+                Log.i(TAG, "Place: ${place.name}, ${place.address}")
+                eventLocPoint = ParseGeoPoint(place.latLng.latitude, place.latLng.latitude)
+                eventLocName = place.name as String
+                eventAddress = place.address as String
             }
 
             override fun onError(status: Status) {
                 Log.e(TAG, "An error occurred: $status")
             }
         })
-
-        etLocation.setOnClickListener {
-            (activity as FragmentActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.composeView, autocompleteFragment)
-                .commit()
-        }
-
     }
 
     private fun createEvent(view: View) {
@@ -120,11 +122,10 @@ class CreateEventFragment : Fragment() {
         val dateTime = "$date $time"
         val user = ParseUser.getCurrentUser()
 
-        if (date == "" || time == "") {
+        if (eventLocPoint == null || date == "" || time == "") {
             Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
             return
         }
-
         val formatter = SimpleDateFormat("M/dd/yyyy HH:mm", Locale.ENGLISH)
         val dateObject: Date = formatter.parse(dateTime) as Date
 
@@ -132,11 +133,13 @@ class CreateEventFragment : Fragment() {
         pb.visibility = ProgressBar.VISIBLE
 
         val event = ParseEvent()
+        event.setUser(user)
         event.setTitle(title)
         event.setDescription(description)
         event.setDate(dateObject)
-        event.setLocation(eventLoc)
-        event.setUser(user)
+        event.setLocation(eventLocPoint!!)
+        event.setLocName(eventLocName)
+        event.setLocAddress(eventAddress)
         event.saveInBackground { e ->
             if (e != null) {
                 Log.e(MainActivity.TAG, "Error while saving post")
@@ -149,7 +152,7 @@ class CreateEventFragment : Fragment() {
             } else {
                 Log.i(MainActivity.TAG, "Successfully saved post")
                 Toast.makeText(requireContext(), "Post successful", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(requireContext(), ParseEventFragment::class.java))
+                startActivity(Intent(requireContext(), MainActivity::class.java))
             }
             pb.visibility = ProgressBar.INVISIBLE
         }

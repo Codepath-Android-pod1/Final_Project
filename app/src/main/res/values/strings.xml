@@ -36,5 +36,10 @@
     <string name="eventful">Eventful</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
+    <string name="create_event">Create Event</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
 
 </resources>
