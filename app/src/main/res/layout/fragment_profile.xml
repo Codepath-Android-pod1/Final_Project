@@ -22,8 +22,8 @@
             android:background="@drawable/white_background"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="@id/card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,6 +31,7 @@
             tools:ignore="MissingConstraints" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
@@ -42,7 +43,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardBackgroundColor="@color/coEditText">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -100,7 +102,7 @@
                     android:letterSpacing="0.2"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/Profile_PhoneNum" />
@@ -132,13 +134,13 @@
             android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:background="@color/white"
+            android:background="@color/coEditText"
             android:drawableStart="@drawable/ic_baseline_delete_24"
             android:drawablePadding="10sp"
             android:drawableTint="#d82121"
             android:elevation="10dp"
             android:fontFamily="@font/opensans_bold"
-            android:letterSpacing="0.2"
+            android:letterSpacing="0.1"
             android:paddingHorizontal="40dp"
             android:text="Delete account"
             android:textColor="#d82121"
