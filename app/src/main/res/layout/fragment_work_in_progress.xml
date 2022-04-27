@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WorkInProgressFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/work"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:textSize="75dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/opensans_bold"
+            android:textColor="@color/coEditText"
+            android:text="Work" />
+
+        <TextView
+            android:id="@+id/in"
+            app:layout_constraintTop_toBottomOf="@id/work"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:textSize="40dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/coEditText"
+            android:fontFamily="@font/opensans_bold"
+            android:text="In" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/opensans_bold"
+            android:text="Progress"
+            android:textSize="75dp"
+            android:textColor="@color/coEditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/in" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</RelativeLayout>

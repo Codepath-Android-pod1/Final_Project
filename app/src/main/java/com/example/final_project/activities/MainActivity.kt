@@ -115,12 +115,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.Search -> {
-                fragmentToShow = SearchFragment()
+                //fragmentToShow = SearchFragment()
+                fragmentToShow = WorkInProgressFragment()
             }
-//            R.id.Logout -> {
-//                ParseUser.logOut()
-//                goToLogin()
-//            }
             R.id.Feedback -> {
                 fragmentToShow = FeedBackFragment()
                 navView.setCheckedItem(R.id.nav_Feedback)
@@ -149,7 +146,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragmentToShow = CreateEventFragment()
             }
             R.id.Friends -> {
-                fragmentToShow = ChatFragment()
+                fragmentToShow = WorkInProgressFragment()
             }
             R.id.profile_user -> {
                 fragmentToShow = ProfileFragment()
