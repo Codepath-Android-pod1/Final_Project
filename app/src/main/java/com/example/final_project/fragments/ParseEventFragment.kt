@@ -10,6 +10,7 @@ import com.example.final_project.R
 import com.example.final_project.adapters.ParseEventAdapter
 import com.example.final_project.models.ParseEvent
 import com.parse.ParseQuery
+import java.lang.Exception
 import kotlin.properties.Delegates
 
 
@@ -42,15 +43,18 @@ class ParseEventFragment : TMEventFragment() {
     }
 
     override fun loadMoreData() {
-        Log.i(TMEventFragment.TAG, "loadMoreData called")
         val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
+        query.limit = 10
+        query.orderByAscending("date")
         query.skip = numResults
+
         query.findInBackground { events, e ->
             if (e != null) {
                 Log.e(TAG, "Error fetching posts")
             } else {
                 if (events != null) swipeContainer.isRefreshing = false
                 allPEvents.addAll(events)
+                numResults += events.size
                 parseAdapter.notifyDataSetChanged()
             }
         }
@@ -60,7 +64,7 @@ class ParseEventFragment : TMEventFragment() {
         val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
         numResults = 5
         query.limit = numResults
-        // TODO query by descending event dates
+        query.orderByAscending("date")
 
         parseAdapter.clear()
         query.findInBackground { events, e ->
