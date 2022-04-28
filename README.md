@@ -35,16 +35,28 @@ Allows users to find events based on their location and interests. Events includ
 ### 2. Screen Archetypes
 1. Login
 2. Register
-3. ...
+3. Home (Tab Layout)
+4. Edit/Compose (Fragment)
+5. Chat/Friend (Fragment)
+6. ...
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
-- First tab
+- Search
+- Setting
+- Report
+- Feedback
 - ...
 
 **Flow Navigation** (Screen to Screen)
-- First screen
+- Login/Register
+- Home with Professional/Social Event
+- Profile
+- Compose Event 
+- Setting
+- Report
+- Feedback
 - ...
 
 ## Wireframes
