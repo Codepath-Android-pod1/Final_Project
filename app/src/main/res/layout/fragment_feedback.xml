@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,148 +7,168 @@
     android:background="@drawable/gradient_bg"
     tools:context=".fragments.FeedBackFragment">
 
-    <TextView
-        android:id="@+id/Feedback_Title"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/opensans_bold"
-        android:text="Feedback Form"
-        android:textColor="@color/coEditText"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:elevation="10dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/coEditText">
 
-
-    <TextView
-        android:id="@+id/Feedback_Q1"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/opensans_bold"
-        android:text="Would you Recommend our Application to your friends?"
-        android:textColor="@color/coEditText"
-        android:textSize="0sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/Feedback_EditText" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Feedback_Q1">
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/coEditText"
-            android:text="1"
-            android:textColor="@color/coEditText" />
+            android:padding="20dp">
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:buttonTint="@color/coEditText"
-            android:text="2"
-            android:textColor="@color/coEditText" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:buttonTint="@color/coEditText"
-            android:text="3"
-            android:textColor="@color/coEditText" />
-
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:buttonTint="@color/coEditText"
-            android:text="4"
-            android:textColor="@color/coEditText" />
-
-        <RadioButton
-            android:id="@+id/radioButton5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:buttonTint="@color/coEditText"
-            android:text="5"
-            android:textColor="@color/coEditText" />
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Absolutely no"
-        android:textColor="@color/coEditText"
-        app:layout_constraintLeft_toLeftOf="@id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Sure"
-        android:textColor="@color/coEditText"
-        app:layout_constraintRight_toRightOf="@id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
-
-    <TextView
-        android:id="@+id/Feedback_Q2"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/opensans_bold"
-        android:text="Is there anything else you would like us to know?"
-        android:textColor="@color/coEditText"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/Feedback_Title" />
-
-    <EditText
-        android:id="@+id/Feedback_EditText"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/coEditText"
-        android:gravity="top"
-        android:hint="Please enter your feedback"
-        android:inputType="textMultiLine"
-        android:textColorHint="@color/coEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Feedback_Q2" />
-
-    <Button
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/greenroundedbutton"
-        android:letterSpacing="0.2"
-        android:text="Submit"
-        android:textColor="@color/coEditText"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/Feedback_EditText"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+            <TextView
+                android:id="@+id/Feedback_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/opensans_bold"
+                android:text="Feedback Form"
+                android:textColor="@color/coBlue"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/Feedback_Q1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/opensans_bold"
+                android:text="Would you Recommend our Application to your friends?"
+                android:textColor="@color/coBlue"
+                android:textSize="0sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/Feedback_EditText" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Feedback_Q1">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/coBlue"
+                    android:text="1"
+                    android:textColor="@color/coBlue" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:buttonTint="@color/coBlue"
+                    android:text="2"
+                    android:textColor="@color/coBlue" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:buttonTint="@color/coBlue"
+                    android:text="3"
+                    android:textColor="@color/coBlue" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:buttonTint="@color/coBlue"
+                    android:text="4"
+                    android:textColor="@color/coBlue" />
+
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:buttonTint="@color/coBlue"
+                    android:text="5"
+                    android:textColor="@color/coBlue" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Absolutely no"
+                android:textColor="@color/coBlue"
+                app:layout_constraintLeft_toLeftOf="@id/radioGroup"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Sure"
+                android:textColor="@color/coBlue"
+                app:layout_constraintRight_toRightOf="@id/radioGroup"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+            <TextView
+                android:id="@+id/Feedback_Q2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:fontFamily="@font/opensans_bold"
+                android:text="Is there anything else you would like us to know?"
+                android:textColor="@color/coBlue"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/Feedback_Title" />
+
+            <EditText
+                android:id="@+id/Feedback_EditText"
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/coBlue"
+                android:gravity="top"
+                android:hint="Please enter your feedback"
+                android:inputType="textMultiLine"
+                android:textColorHint="@color/coBlue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Feedback_Q2" />
+
+            <Button
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/greenroundedbutton"
+                android:letterSpacing="0.2"
+                android:text="Submit"
+                android:textColor="@color/coEditText"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/Feedback_EditText"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

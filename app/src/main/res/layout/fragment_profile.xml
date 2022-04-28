@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg2">
+    android:background="@drawable/gradient_bg">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
             android:background="@drawable/white_background"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_profile"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             app:layout_constraintBottom_toBottomOf="@id/card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="5dp"
             android:elevation="9dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="30dp"
+                android:paddingHorizontal="50dp"
                 android:paddingVertical="50dp">
 
                 <EditText
@@ -71,7 +71,7 @@
 
                 <EditText
                     android:id="@+id/Profile_Email"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="45dp"
                     android:layout_marginVertical="10dp"
                     android:layout_marginTop="4dp"
@@ -108,7 +108,7 @@
 
                 <EditText
                     android:id="@+id/Profile_PhoneNum"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
@@ -133,7 +133,7 @@
             android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:background="@color/coEditText"
+            android:background="@drawable/white_background"
             android:drawableStart="@drawable/ic_baseline_delete_24"
             android:drawablePadding="10sp"
             android:drawableTint="#d82121"

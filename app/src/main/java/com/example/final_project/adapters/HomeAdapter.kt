@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-val StringArray = arrayOf("Social", "Professional")
+val StringArray = arrayOf("Professional", "Social")
 
 internal class MyAdapter(
 //    var context: HomeFragment,

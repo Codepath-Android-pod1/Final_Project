@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="176dp"
+    android:layout_width="match_parent"
     android:layout_height="176dp"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -13,26 +13,31 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/user_picture"
+        android:background="@drawable/white_background"
+        android:src="@drawable/ic_profile"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/profileName"
+        android:fontFamily="@font/opensans_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:paddingTop="8dp"
-        android:text="Username"
+        android:text="\@Username"
+        android:textColor="@color/coBlue"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/profileIV"
         app:layout_constraintLeft_toRightOf="@+id/profileIV" />
 
     <TextView
-        android:layout_width="125dp"
+        android:layout_width="0dp"
+        android:fontFamily="@font/opensans_regular"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="User summary"
+        app:layout_constraintRight_toRightOf="@id/profileName"
         app:layout_constraintLeft_toLeftOf="@+id/profileIV"
         app:layout_constraintTop_toBottomOf="@id/profileIV" />
 

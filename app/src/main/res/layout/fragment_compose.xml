@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/composeView"
-    android:background="@drawable/gradient_bg2"
+    android:background="@drawable/gradient_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         app:cardBackgroundColor="@color/coEditText"
-        app:cardCornerRadius="20sp"
+        app:cardCornerRadius="5sp"
         android:layout_marginTop="50dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
