@@ -13,9 +13,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:elevation="10dp"
-        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/coEditText"
         app:cardCornerRadius="10dp"
-        app:cardBackgroundColor="@color/coEditText">
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -164,7 +164,6 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/Feedback_EditText"
                 app:layout_constraintTop_toBottomOf="@id/radioGroup" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,10 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -30,15 +27,16 @@ import com.google.android.libraries.places.api.Places
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.parse.ParseUser
+import com.vmadalin.easypermissions.EasyPermissions
+import com.vmadalin.easypermissions.annotations.AfterPermissionGranted
+import com.vmadalin.easypermissions.dialogs.SettingsDialog
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import permissions.dispatcher.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-@RuntimePermissions
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    EasyPermissions.PermissionCallbacks {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     // Toolbar/Navbar Related stuff
@@ -52,10 +50,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         fragmentManger = supportFragmentManager
 
-        // Ask permission for coarse location
-        getLocationWithPermissionCheck()
         Places.initialize(this, BuildConfig.MAPS_API_KEY)
-//        val placesClient = Places.createClient(this)
 
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
@@ -104,6 +99,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .build()
 
         apiService = retrofit.create(TMApi::class.java)
+
+        if (hasLocationPermission()) {
+            getLocation()
+        } else {
+            requestLocationPermissions()
+        }
     }
 
     // Misc stuff like Toolbar / Nav bar
@@ -179,19 +180,52 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    // Permission set up
+    private fun requestLocationPermissions() {
+//        EasyPermissions.requestPermissions(
+//            this,
+//            getString(R.string.permission_location_rationale),
+//            COARSE_LOCATION_CODE,
+//            Manifest.permission.ACCESS_COARSE_LOCATION
+//        )
+        EasyPermissions.requestPermissions(
+            this,
+            getString(R.string.permission_location_rationale),
+            FINE_LOCATION_CODE,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+    }
+
+    private fun hasLocationPermission() =
+        EasyPermissions.hasPermissions(
+            this,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        // NOTE: delegate the permission handling to generated function
-        onRequestPermissionsResult(requestCode, grantResults)
+        // EasyPermissions handles the request result.
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 
+    override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+        Log.d(TAG, "onPermissionsDenied: $requestCode :${perms.size}")
+
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            SettingsDialog.Builder(this).build().show()
+        } else {
+            requestLocationPermissions()
+        }
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {}
+
     @SuppressLint("MissingPermission")
-    @NeedsPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+    @AfterPermissionGranted(FINE_COARSE_LOCATION_CODE)
     fun getLocation() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         fusedLocationClient.lastLocation
@@ -204,32 +238,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Log.d(TAG, "Error trying to get last GPS location")
                 e.printStackTrace()
             }
-    }
-
-    @OnPermissionDenied(Manifest.permission.ACCESS_COARSE_LOCATION)
-    fun onLocationDenied() {
-        Toast.makeText(this, R.string.permission_location_denied, Toast.LENGTH_SHORT).show()
-        // TODO Disable search by location
-    }
-
-    @OnShowRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
-    fun showRationaleForLocation(request: PermissionRequest) {
-        showRationaleDialog(R.string.permission_location_rationale, request)
-    }
-
-    @OnNeverAskAgain(Manifest.permission.ACCESS_COARSE_LOCATION)
-    fun onLocationNeverAskAgain() {
-        Toast.makeText(this, R.string.permission_location_never_ask_again, Toast.LENGTH_SHORT)
-            .show()
-    }
-
-    private fun showRationaleDialog(@StringRes messageResId: Int, request: PermissionRequest) {
-        AlertDialog.Builder(this)
-            .setPositiveButton(R.string.button_allow) { _, _ -> request.proceed() }
-            .setNegativeButton(R.string.button_deny) { _, _ -> request.cancel() }
-            .setCancelable(false)
-            .setMessage(messageResId)
-            .show()
+//        val placesClient = Places.createClient(this)
+//        val placeFields: List<Place.Field> = listOf(Place.Field.LAT_LNG)
+//        val request: FindCurrentPlaceRequest = FindCurrentPlaceRequest.newInstance(placeFields)
+//        val placeResponse = placesClient.findCurrentPlace(request)
+//        placeResponse.addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                val response = task.result
+//                val newLoc = response.placeLikelihoods[0].place.latLng
+//                onLocationChanged(newLoc!!)
+//            } else {
+//                val exception = task.exception
+//                if (exception is ApiException) {
+//                    Log.e(TAG, "Place not found: ${exception.statusCode}")
+//                }
+//            }
+//        }
     }
 
     private fun onLocationChanged(location: Location) {
@@ -263,11 +287,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     companion object {
+        const val FINE_LOCATION_CODE = 123
+        const val COARSE_LOCATION_CODE = 456
+        const val FINE_COARSE_LOCATION_CODE = 789
         const val TAG = "MainActivity"
         const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
         lateinit var apiService: TMApi
         var geoHash: String = ""
-        lateinit var currLocation: Location
+        var currLocation: Location? = null
     }
 }
 

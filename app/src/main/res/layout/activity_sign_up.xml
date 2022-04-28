@@ -40,9 +40,9 @@
     <EditText
         android:id="@+id/Signup_Password"
         android:layout_width="300dp"
-        android:autofillHints="password"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:autofillHints="password"
         android:background="@drawable/loginbackground"
         android:ems="50"
         android:fontFamily="@font/roboto_bold"

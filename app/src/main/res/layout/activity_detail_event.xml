@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DetailEvent"
-    android:background="@drawable/gradient_bg">
+    android:background="@drawable/gradient_bg"
+    tools:context=".activities.DetailEvent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -31,7 +31,6 @@
                 android:layout_margin="10dp"
                 android:fontFamily="@font/opensans_bold"
                 android:letterSpacing="0.1"
-                android:maxLines="2"
                 android:textColor="@color/coBlue"
                 android:textSize="30sp"
                 android:transitionName="title"
@@ -52,9 +51,9 @@
             <ImageView
                 android:id="@+id/ivImage"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="175dp"
                 android:layout_margin="10dp"
-                android:contentDescription="Event Image"
+                android:contentDescription="@string/event_image"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,10 +63,9 @@
             <TextView
                 android:id="@+id/tvDetails"
                 android:layout_width="250dp"
-                android:fontFamily="@font/opensans_regular"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:maxLines="2"
+                android:fontFamily="@font/opensans_regular"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

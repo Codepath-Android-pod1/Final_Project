@@ -2,17 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/composeView"
-    android:background="@drawable/gradient_bg"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         app:cardBackgroundColor="@color/coEditText"
-        app:cardCornerRadius="5sp"
-        android:layout_marginTop="50dp">
+        app:cardCornerRadius="5sp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,15 +24,15 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:textColorHint="@color/coEditText"
                 android:layout_marginBottom="10dp"
                 android:autofillHints=""
                 android:background="@color/coBackgroundColor"
-                android:fontFamily="@font/opensans_bold"
                 android:ems="10"
+                android:fontFamily="@font/opensans_bold"
                 android:hint="@string/title"
                 android:inputType="text"
                 android:padding="15dp"
+                android:textColorHint="@color/coEditText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,34 +40,34 @@
                 android:id="@+id/etDescription"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/coEditText"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
                 android:autofillHints=""
                 android:background="@color/coBackgroundColor"
-                android:fontFamily="@font/opensans_bold"
                 android:ems="10"
+                android:fontFamily="@font/opensans_bold"
                 android:hint="@string/description"
                 android:inputType="text"
                 android:padding="15dp"
+                android:textColorHint="@color/coEditText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 
             <EditText
                 android:id="@+id/etPEDate"
                 android:layout_width="300dp"
-                android:textColorHint="@color/coEditText"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
                 android:autofillHints=""
                 android:background="@color/coBackgroundColor"
-                android:fontFamily="@font/opensans_bold"
                 android:ems="10"
                 android:focusable="false"
+                android:fontFamily="@font/opensans_bold"
                 android:hint="@string/date"
                 android:inputType="date"
                 android:padding="15dp"
+                android:textColorHint="@color/coEditText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
@@ -119,9 +119,9 @@
                 android:id="@+id/fragment_autocomplete"
                 android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                 android:layout_width="300dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/loginbackground"
                 android:textColorHint="@color/coBackgroundColor"
-                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@+id/etTime"
                 app:layout_constraintTop_toBottomOf="@+id/etTime" />
 

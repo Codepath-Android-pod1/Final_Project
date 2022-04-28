@@ -31,8 +31,8 @@ open class HomeFragment : Fragment() {
 
         tl.setupWithViewPager(vp)
         vp.offscreenPageLimit = 2
-        tl.addTab(tl.newTab().setText("Professional"))
         tl.addTab(tl.newTab().setText("Social"))
+        tl.addTab(tl.newTab().setText("Professional"))
         tl.tabGravity = TabLayout.GRAVITY_FILL
         val fragmentArray = arrayOf(TMEventFragment(), ParseEventFragment() as Fragment)
         val adapter = MyAdapter(childFragmentManager, fragmentArray)

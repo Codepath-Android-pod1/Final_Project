@@ -53,20 +53,26 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
         }
 
         fun bind(event: ParseEvent) {
-            val eventLocation = event.getLocation()
-            val currLocation = ParseGeoPoint(
-                MainActivity.currLocation.latitude,
-                MainActivity.currLocation.longitude
-            )
-            val distanceAway = eventLocation!!.distanceInMilesTo(currLocation).roundToInt()
-            val locationText = "$distanceAway miles away"
+            val eventLocation = event.getLocation() as ParseGeoPoint
+            var currLocation: ParseGeoPoint? = null
+            if (MainActivity.currLocation != null) {
+                currLocation = ParseGeoPoint(
+                    MainActivity.currLocation!!.latitude,
+                    MainActivity.currLocation!!.longitude
+                )
+                val distanceAway = eventLocation.distanceInMilesTo(currLocation).roundToInt()
+                val locationText = "$distanceAway miles away"
+                tvLocation.text = locationText
+            } else {
+                tvLocation.text = ""
+            }
+
             val parser = SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH)
 
             tvTitle.text = event.getTitle()
             val date = parser.parse(event.getDate().toString()) as Date
             tvDate.text = SimpleDateFormat("MMM d", Locale.ENGLISH).format(date)
             tvDayTime.text = SimpleDateFormat("E h:mma", Locale.ENGLISH).format(date)
-            tvLocation.text = locationText
         }
 
         override fun onClick(v: View?) {
@@ -84,5 +90,6 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
 
     companion object {
         const val EVENT_EXTRA = "EVENT_EXTRA"
+        const val TAG = "ParseEventAdapter"
     }
 }

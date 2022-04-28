@@ -14,16 +14,16 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:contentDescription="Profile Image"
             android:id="@+id/Profile_Image"
-            android:elevation="10dp"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_alignParentStart="true"
+            android:layout_marginTop="25dp"
             android:background="@drawable/white_background"
+            android:contentDescription="Profile Image"
+            android:elevation="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_profile"
-            android:layout_marginTop="25dp"
             app:layout_constraintBottom_toBottomOf="@id/card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,14 +36,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            app:cardCornerRadius="5dp"
             android:elevation="9dp"
+            app:cardBackgroundColor="@color/coEditText"
+            app:cardCornerRadius="5dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:cardBackgroundColor="@color/coEditText">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"

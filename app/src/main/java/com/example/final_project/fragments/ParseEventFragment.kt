@@ -10,7 +10,6 @@ import com.example.final_project.R
 import com.example.final_project.adapters.ParseEventAdapter
 import com.example.final_project.models.ParseEvent
 import com.parse.ParseQuery
-import java.lang.Exception
 import kotlin.properties.Delegates
 
 
@@ -62,7 +61,7 @@ class ParseEventFragment : TMEventFragment() {
 
     override fun queryEvents() {
         val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
-        numResults = 5
+        numResults = 10
         query.limit = numResults
         query.orderByAscending("date")
 

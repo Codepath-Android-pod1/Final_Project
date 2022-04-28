@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.WorkInProgressFragment">
 
 
@@ -14,29 +14,29 @@
 
         <TextView
             android:id="@+id/work"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
-            android:textSize="75sp"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/opensans_bold"
+            android:text="Work"
+            android:textColor="@color/coEditText"
+            android:textSize="75sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:fontFamily="@font/opensans_bold"
-            android:textColor="@color/coEditText"
-            android:text="Work" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/in"
-            app:layout_constraintTop_toBottomOf="@id/work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/opensans_bold"
+            android:text="In"
+            android:textColor="@color/coEditText"
+            android:textSize="40sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:textSize="40sp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/coEditText"
-            android:fontFamily="@font/opensans_bold"
-            android:text="In" />
+            app:layout_constraintTop_toBottomOf="@id/work" />
 
 
         <TextView
@@ -46,14 +46,13 @@
             android:layout_centerVertical="true"
             android:fontFamily="@font/opensans_bold"
             android:text="Progress"
-            android:textSize="75sp"
             android:textColor="@color/coEditText"
+            android:textSize="75sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/in" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </RelativeLayout>
