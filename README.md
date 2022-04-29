@@ -5,6 +5,7 @@
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 1. [Schema](#Schema)
+2. [Developer Comments](#Developer-Comments) 
 
 ## Overview
 ### Description: 
@@ -128,7 +129,7 @@ Briefly shows the current progress of the project.
 - Google Play Location
 - EasyPermissions
  
-## Developer's comments
+## Developer Comments
 ### Hou Chi
 I created most of the fragment and linking them from one to another along with the stylization for each fragment. This project was incredibly fun, it's also the most organized project I've done in a while. At the beginning of the project, I didn't want this project to fail, so I decided to gather everyone together and assigned different tasks to each one. Aaron Picked up Back-end, and I mostly updated the front-end; Andrew was helping out in both, filling up the gap between me and Aaron. I definitely learn a lot more in this 3 weeks than I ever did before. The most annoying part of this whole process was Android studio malfunctioning every so often for no apparent reasons. The GPS location is randomly turned off and the application will crash every so often. Besides that, this is an incredibly fun project. 
 ### Aaron Ang
