@@ -113,3 +113,9 @@ Briefly shows the current progress of the project.
  HTTP Verb | Endpoint | Description
  ----------|----------|------------
   `GET`    | /events.json?apikey={apikey}&{params} | gets all events (relevant parameters include `keyword`, `geoPoint`, `postalCode`, `radius`, `unit`, etc)
+ 
+#### Developer's comments
+##### Hou Chi
+##### Aaron Ang
+##### Andrew Cho
+I worked on the profile uploading the details user typed and getting user data and display whenever the userId is logged in. I had a hard time communicating with some of the individuals and interpreting their code. However, through them, I learned the new stuff such as tracking down the new code step by step with patience and finally was able to modify and improve into better version of the code!(was really happy to interpret). It was really fun to learn how to code the cloud code using java. I had to encounter multiple errors and debugging using the physical note pad(back4app did not have debugging for their cloud code. All they had was DEPLOY!(Run)). Plus, I had error that phone only saves the initial background data(so if I type name as Andrew and later change to Benjamin, it did not change), so I learned that I had to refresh in the background whenever the fragment is on the screen. Moreover, a lot of informations are written in java, so I had to manually convert some code to kotlin since things did not work out if I trusted Android Studio. I am looking forward to improve this application. 
