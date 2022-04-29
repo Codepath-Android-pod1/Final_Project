@@ -93,10 +93,6 @@ open class TMEventFragment : Fragment() {
 //                }
 //            }
 //        })
-    }
-
-    override fun onStart() {
-        super.onStart()
         queryEvents()
     }
 
