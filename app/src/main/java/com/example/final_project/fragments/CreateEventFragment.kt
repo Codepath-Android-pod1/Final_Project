@@ -10,10 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import com.example.final_project.R
 import com.example.final_project.activities.MainActivity
@@ -33,6 +31,21 @@ class CreateEventFragment : Fragment() {
     private var eventLocPoint: ParseGeoPoint? = null
     private lateinit var eventLocName: String
     private lateinit var eventAddress: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // This callback will only be called when MyFragment is at least Started.
+
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            parentFragmentManager
+                .beginTransaction()
+                .replace(R.id.FragmentContainer, HomeFragment())
+                .commit()
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
