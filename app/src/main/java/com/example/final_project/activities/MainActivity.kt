@@ -28,7 +28,6 @@ import com.google.android.gms.location.LocationServices.getFusedLocationProvider
 import com.google.android.libraries.places.api.Places
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.parse.Parse
 import com.parse.ParseUser
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.annotations.AfterPermissionGranted
@@ -58,6 +57,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
+
         supportActionBar?.title = " "
 
         // Drawer
@@ -107,6 +107,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startLocationUpdates()
         } else {
             requestLocationPermissions()
+        }
+
+        toolbar.setNavigationOnClickListener {
+            val user = ParseUser.getCurrentUser()
+            drawer.openDrawer(GravityCompat.START)
+            Log.i(ProfileActivity.TAG, "--------------------Drawer Button PUSHED")
+            if (user.getString("name") == null) {
+                findViewById<TextView>(R.id.profileName).text = "@Username"
+                findViewById<TextView>(R.id.profileEmail).text = "User Email"
+            } else {
+                findViewById<TextView>(R.id.profileName).text = "@${user.getString("name")}"
+                findViewById<TextView>(R.id.profileEmail).text = user.getString("email")
+            }
         }
     }
 
