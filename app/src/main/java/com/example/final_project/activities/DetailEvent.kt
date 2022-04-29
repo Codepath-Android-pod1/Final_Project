@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.final_project.R
 import com.example.final_project.adapters.EventAdapter.Companion.EVENT_EXTRA_IMAGE
 import com.example.final_project.adapters.EventAdapter.Companion.EVENT_EXTRA_NAME
+import com.example.final_project.adapters.EventAdapter.Companion.EVENT_EXTRA_URL
 import com.example.final_project.models.ImageX
 
 open class DetailEvent : AppCompatActivity() {
@@ -27,12 +28,14 @@ open class DetailEvent : AppCompatActivity() {
         btnRespond = findViewById(R.id.btnRespond)
         val eventName = intent.getStringExtra(EVENT_EXTRA_NAME)
         val eventImg = intent.getParcelableExtra<ImageX>(EVENT_EXTRA_IMAGE) as ImageX
+        val eventUrl = intent.getStringExtra(EVENT_EXTRA_URL)
         tvTitle.text = eventName
         btnRespond.text = "Buy tickets"
         Glide.with(this).load(eventImg.url).into(ivImage)
 
         btnRespond.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")))
+            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(eventUrl))
+            startActivity(webIntent)
         }
     }
 }

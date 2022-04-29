@@ -1,7 +1,5 @@
 package com.example.final_project.activities
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView

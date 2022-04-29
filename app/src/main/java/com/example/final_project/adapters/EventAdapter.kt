@@ -79,6 +79,7 @@ class EventAdapter(private val context: Context, private val events: MutableList
             intent.putExtra(EVENT_EXTRA_IMAGE, event.images[0])
             intent.putExtra(EVENT_EXTRA_VENUE, event._embedded.venues[0])
             intent.putExtra(EVENT_EXTRA_NAME, event.name)
+            intent.putExtra(EVENT_EXTRA_URL, event.url)
             val titlePair = Pair.create(tvTitle as View, "title")
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 context as Activity,
@@ -93,5 +94,6 @@ class EventAdapter(private val context: Context, private val events: MutableList
         const val EVENT_EXTRA_DATES = "EVENT_EXTRA_DATES"
         const val EVENT_EXTRA_VENUE = "EVENT_EXTRA_VENUE"
         const val EVENT_EXTRA_IMAGE = "EVENT_EXTRA_IMAGE"
+        const val EVENT_EXTRA_URL = "EVENT_EXTRA_URL"
     }
 }

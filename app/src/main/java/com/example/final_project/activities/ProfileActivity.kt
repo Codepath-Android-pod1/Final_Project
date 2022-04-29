@@ -17,7 +17,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_profile)
 
-        findViewById<Button>(R.id.Profile_SaveButton).setOnClickListener { view ->
+        findViewById<Button>(R.id.Profile_SaveButton).setOnClickListener {
             Toast.makeText(this, "At least button is clicked", Toast.LENGTH_SHORT).show()
             Log.i(TAG, "시발 버튼 눌렸다고 썅")
             val name = findViewById<EditText>(R.id.Profile_Name).text.toString()
