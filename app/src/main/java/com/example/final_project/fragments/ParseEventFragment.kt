@@ -38,6 +38,8 @@ class ParseEventFragment : TMEventFragment() {
         }
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright)
+
+        queryEvents()
     }
 
     override fun loadMoreData() {
