@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.addCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.final_project.R
 import com.example.final_project.activities.MainActivity
@@ -20,6 +21,8 @@ import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.parse.ParseGeoPoint
 import com.parse.ParseUser
 import java.text.SimpleDateFormat
@@ -37,14 +40,6 @@ class CreateEventFragment : Fragment() {
 
         // This callback will only be called when MyFragment is at least Started.
 
-
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            parentFragmentManager
-                .beginTransaction()
-                .replace(R.id.FragmentContainer, HomeFragment())
-                .commit()
-        }
-
     }
 
     override fun onCreateView(
@@ -57,6 +52,18 @@ class CreateEventFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            parentFragmentManager
+                .beginTransaction()
+                .replace(R.id.FragmentContainer, HomeFragment())
+                .commit()
+
+            requireActivity().findViewById<FloatingActionButton>(R.id.Main_FloatingButton)?.show()
+            requireActivity().findViewById<NavigationView>(R.id.main_nav_view)
+                .setCheckedItem(R.id.Home)
+        }
+
 
         pb = view.findViewById<View>(R.id.pbLoading) as ProgressBar
         val etDate = view.findViewById<EditText>(R.id.etPEDate)
