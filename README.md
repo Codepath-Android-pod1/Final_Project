@@ -65,7 +65,7 @@ https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 <img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/WireFrame3.png' />
 
 ## Video Walkthrough
-Breifly shows the current progress of the project.
+Briefly shows the current progress of the project.
 
 <img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/CP-3.gif' />
 
@@ -83,6 +83,10 @@ Breifly shows the current progress of the project.
 | distance      | Int/String    | Distance between event and user|
 | location      | String        | Latitude and longitude values of the user|
 | time          | String        | Start and end times of the event|
+| objectId      | userId        | Name of the user|
+| email         | String        | eamil of the user|
+| name          | String        | name of the user|
+| phonenum      | String        | phone number of the user|
 
 ### Networking
 #### List of network requests by screen
@@ -95,6 +99,12 @@ Breifly shows the current progress of the project.
     - (Create/POST) Send message
  - Create Event Feed Screen  
     - (Create/POST) Create a new event object
+ - Create Profile
+    - (Create/POST) Create a new user(objectId) with detail included
+ - Display Profile
+    - (Read/GET) Query details of the user(objectId) and display and profile
+ - Remove Profile
+    - (Delete) Delete the user(objectId) with detail permanently
 
 #### Existing API Endpoints
 ##### Ticketmaster Discovery API
