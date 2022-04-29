@@ -1,6 +1,9 @@
 package com.example.final_project.activities
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +16,7 @@ class DetailParseEvent : AppCompatActivity() {
     lateinit var tvTitle: TextView
     lateinit var tvDetails: TextView
     lateinit var ivImage: ImageView
+    lateinit var btnRespond: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +24,16 @@ class DetailParseEvent : AppCompatActivity() {
 
         tvTitle = findViewById(R.id.tvTitle)
         tvDetails = findViewById(R.id.tvDetails)
+        btnRespond = findViewById(R.id.btnRespond)
         val event = intent.getParcelableExtra<ParseEvent>(EVENT_EXTRA) as ParseEvent
         tvTitle.text = event.getTitle()
         tvDetails.text = event.getDescription()
         ivImage = findViewById(R.id.ivImage)
         ivImage.isVisible = false
+        btnRespond.text = "Register"
+
+        btnRespond.setOnClickListener {
+
+        }
     }
 }
