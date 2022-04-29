@@ -15,6 +15,8 @@ import com.example.final_project.activities.DetailParseEvent
 import com.example.final_project.activities.MainActivity
 import com.example.final_project.models.ParseEvent
 import com.parse.ParseGeoPoint
+import com.parse.ParseUser
+import java.text.ParsePosition
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -54,20 +56,13 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
 
         fun bind(event: ParseEvent) {
             val eventLocation = event.getLocation() as ParseGeoPoint
-            var currLocation: ParseGeoPoint? = null
-            if (MainActivity.currLocation != null) {
-                currLocation = ParseGeoPoint(
-                    MainActivity.currLocation!!.latitude,
-                    MainActivity.currLocation!!.longitude
-                )
-            }
-
+            val currLocation = ParseUser.getCurrentUser().getParseGeoPoint("Location")
             val distanceAway: String = if (currLocation != null) {
                 eventLocation.distanceInMilesTo(currLocation).roundToInt().toString()
             } else ""
 
-            val locationText = "$distanceAway miles away"
-            tvLocation.text = locationText
+            val locationText = "$distanceAway mile${if (distanceAway == "1") "s" else ""} away"
+            tvLocation.text = if (distanceAway == "") "" else locationText
 
             val parser = SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH)
 

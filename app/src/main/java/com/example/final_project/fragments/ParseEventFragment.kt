@@ -7,9 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.EndlessRecyclerViewScrollListener
 import com.example.final_project.R
+import com.example.final_project.activities.MainActivity
 import com.example.final_project.adapters.ParseEventAdapter
 import com.example.final_project.models.ParseEvent
+import com.parse.ParseGeoPoint
 import com.parse.ParseQuery
+import com.parse.ParseUser
 import kotlin.properties.Delegates
 
 
@@ -44,7 +47,9 @@ class ParseEventFragment : TMEventFragment() {
 
     override fun loadMoreData() {
         val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
+        val currLocation = ParseUser.getCurrentUser().getParseGeoPoint("Location")
         query.limit = 10
+        query.whereNear("location", currLocation)
         query.orderByAscending("date")
         query.skip = numResults
 
@@ -58,12 +63,15 @@ class ParseEventFragment : TMEventFragment() {
                 parseAdapter.notifyDataSetChanged()
             }
         }
+        ParseQuery.clearAllCachedResults()
     }
 
     override fun queryEvents() {
         val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
+        val currLocation = ParseUser.getCurrentUser().getParseGeoPoint("Location")
         numResults = 10
         query.limit = numResults
+        query.whereNear("location", currLocation)
         query.orderByAscending("date")
 
         parseAdapter.clear()
@@ -76,6 +84,7 @@ class ParseEventFragment : TMEventFragment() {
                 parseAdapter.notifyDataSetChanged()
             }
         }
+        ParseQuery.clearAllCachedResults()
     }
 
     companion object {

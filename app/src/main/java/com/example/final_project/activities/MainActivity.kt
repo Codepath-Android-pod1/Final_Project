@@ -28,6 +28,8 @@ import com.google.android.gms.location.LocationServices.getFusedLocationProvider
 import com.google.android.libraries.places.api.Places
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.parse.Parse
+import com.parse.ParseGeoPoint
 import com.parse.ParseUser
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.annotations.AfterPermissionGranted
@@ -136,9 +138,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val builder = LocationSettingsRequest.Builder()
         builder.addLocationRequest(mLocationRequest)
         val locationSettingsRequest = builder.build()
-
-        // Check whether location settings are satisfied
-        // https://developers.google.com/android/reference/com/google/android/gms/location/SettingsClient
         val settingsClient = LocationServices.getSettingsClient(this)
         settingsClient.checkLocationSettings(locationSettingsRequest)
 
@@ -270,7 +269,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {}
 
     private fun onLocationChanged(location: Location) {
-        currLocation = location
+        val currLocation = ParseGeoPoint(location.latitude, location.longitude)
+        val currUser = ParseUser.getCurrentUser()
+        currUser.put("Location", currLocation)
+        currUser.saveInBackground()
         geoHash = GeoFireUtils.getGeoHashForLocation(
             GeoLocation(location.latitude, location.longitude),
             9
@@ -309,7 +311,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         const val BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
         lateinit var apiService: TMApi
         var geoHash: String = ""
-        var currLocation: Location? = null
     }
 }
 

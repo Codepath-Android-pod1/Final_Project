@@ -24,11 +24,9 @@ class DeleteAccountFragment : DialogFragment() {
                     "Delete Account"
                 ) { _, _ ->
                     val user = ParseUser.getCurrentUser()
-
                     user.deleteInBackground()
                     ParseUser.logOutInBackground()
                     goToLogin()
-
                 }
                 .setNegativeButton(
                     "Cancel"

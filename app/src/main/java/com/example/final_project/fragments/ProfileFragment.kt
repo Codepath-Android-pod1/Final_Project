@@ -14,7 +14,11 @@ import androidx.fragment.app.Fragment
 import com.example.final_project.R
 import com.example.final_project.activities.ProfileActivity
 import com.example.final_project.databinding.FragmentProfileBinding
-import com.parse.*
+import com.parse.ParseCloud
+import com.parse.ParseException
+import com.parse.ParseObject
+import com.parse.ParseUser
+import java.util.regex.Pattern
 
 
 class ProfileFragment : Fragment() {
@@ -46,11 +50,10 @@ class ProfileFragment : Fragment() {
 //            ParseUser.logOutInBackground()
         }
         binding.ProfileSaveButton.setOnClickListener {
-            Log.i(ProfileActivity.TAG, "Tlqkf 버튼 눌렸다고")
             val name = getView()?.findViewById<EditText>(R.id.Profile_Name)?.text.toString()
             val email = getView()?.findViewById<EditText>(R.id.Profile_Email)?.text.toString()
             val phone = getView()?.findViewById<EditText>(R.id.Profile_PhoneNum)?.text.toString()
-            Log.i(ProfileActivity.TAG, "" + name + "/" + email + "/" + phone)
+            Log.i(ProfileActivity.TAG, "$name/$email/$phone")
             updateUser(name, email, phone)
         }
     }
@@ -60,16 +63,15 @@ class ProfileFragment : Fragment() {
         val user = ParseUser.getCurrentUser()
         Log.i(ProfileActivity.TAG, "" + user)
         // Set fields for the user to be created
+        val pattern =
+            ("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
         if (name == "" || email == "" || phone == "") {
             Toast.makeText(
                 context,
                 "Please Enter Name, Email, and Phone Number",
                 Toast.LENGTH_SHORT
             ).show()
-        } else if (!(email.endsWith(".org") || email.endsWith(".com") ||
-                    email.endsWith(".net") || email.endsWith(".edu") ||
-                    email.endsWith(".gov")) || !email.contains("@")
-        ) {
+        } else if (Pattern.matches(pattern, email)) {
             Toast.makeText(
                 context,
                 "Please Enter Valid Email address",
@@ -77,26 +79,27 @@ class ProfileFragment : Fragment() {
             ).show()
         } else {
             val params = HashMap<String, Any?>()
-            params.put("objectId", user.getObjectId())
-            params.put("newEmail", email)
-            params.put("newPhonenum", phone)
-            params.put("newName", name)
-            Log.i(ProfileActivity.TAG, "ObjectId --> " + user.getObjectId())
+            params["objectId"] = user.objectId
+            params["newEmail"] = email
+            params["newPhonenum"] = phone
+            params["newName"] = name
+            Log.i(ProfileActivity.TAG, "ObjectId --> " + user.objectId)
             Log.i(ProfileActivity.TAG, "" + params)
-            ParseCloud.callFunctionInBackground("editUserProperty", params,
-                FunctionCallback { String: Object, e: ParseException? ->
-                    if (e == null) {
-                        ParseUser.getCurrentUser().fetchInBackground<ParseObject> { user, e -> }
-                        Log.i(
-                            ProfileActivity.TAG,
-                            "It is null and it passed--> " + user.getString("email")
-                                    + " " + user.getString("name") + " " + user.getString("phonenum")
-                        )
-                        Toast.makeText(context, "Successfully Saved!", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
-                    }
-                })
+            ParseCloud.callFunctionInBackground(
+                "editUserProperty", params
+            ) { String: Any, e: ParseException? ->
+                if (e == null) {
+                    ParseUser.getCurrentUser().fetchInBackground<ParseObject> { user, e -> }
+                    Log.i(
+                        ProfileActivity.TAG,
+                        "User saved: " + user.getString("email")
+                                + " " + user.getString("name") + " " + user.getString("phonenum")
+                    )
+                    Toast.makeText(context, "Successfully Saved!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
     }
