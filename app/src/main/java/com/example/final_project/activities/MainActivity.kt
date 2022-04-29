@@ -6,9 +6,13 @@ import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
+import android.text.BoringLayout.make
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -27,6 +31,7 @@ import com.google.android.gms.location.LocationServices.getFusedLocationProvider
 import com.google.android.libraries.places.api.Places
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar.make
 import com.parse.ParseUser
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.annotations.AfterPermissionGranted
@@ -56,6 +61,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
+
         supportActionBar?.title = " "
 
         // Drawer
@@ -105,6 +111,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startLocationUpdates()
         } else {
             requestLocationPermissions()
+        }
+
+        toolbar.setNavigationOnClickListener {
+            val user = ParseUser.getCurrentUser()
+            drawer.openDrawer(GravityCompat.START);
+            Log.i(ProfileActivity.TAG, "--------------------Button PUSHED CUNMT")
+            if(user.getString("name")==null){
+                findViewById<TextView>(R.id.profileName).setText("@YourName")
+                findViewById<TextView>(R.id.profileEmail).setText("Your Email")
+            }else{
+                findViewById<TextView>(R.id.profileName).setText("@ ${user.getString("name")}")
+                findViewById<TextView>(R.id.profileEmail).setText(user.getString("email"))
+            }
         }
     }
 
