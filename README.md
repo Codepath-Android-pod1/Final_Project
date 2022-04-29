@@ -5,6 +5,7 @@
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 1. [Schema](#Schema)
+2. [Developer Comments](#Developer-Comments) 
 
 ## Overview
 ### Description: 
@@ -76,16 +77,21 @@ Briefly shows the current progress of the project.
 
 | Property(Key) | Type          | Description  |
 | ------------- |-------------  | ------------ |
-| eventId       | String        | Unique id for the event |
-| organizer     | String        | Event organizer |
-| eventName     | String        | Name of the event|
+| objectId      | String        | Unique id for the event |
+| user          | String        | Event organizer |
+| title     | String            | Name of the event|
 | description   | String        | Description of the event|
-| distance      | Int/String    | Distance between event and user|
-| location      | String        | Latitude and longitude values of the user|
-| time          | String        | Start and end times of the event|
-| objectId      | userId        | Name of the user|
-| email         | String        | eamil of the user|
-| name          | String        | name of the user|
+| location      | GeoPoint      | Latitude and longitude values of the event|
+| locationName      | String    | Google Maps name of event location|
+| date          | Date          | Date and start time of the event|
+
+#### User
+| Property(Key) | Type          | Description  |
+| ------------- |-------------  | ------------ |
+| objectId      | String        | Unique id for the user |
+| username      | String        | username from registering |
+| email         | String        | email of the user|
+| name          | String        | set by user after registering |
 | phonenum      | String        | phone number of the user|
 
 ### Networking
@@ -113,10 +119,19 @@ Briefly shows the current progress of the project.
  HTTP Verb | Endpoint | Description
  ----------|----------|------------
   `GET`    | /events.json?apikey={apikey}&{params} | gets all events (relevant parameters include `keyword`, `geoPoint`, `postalCode`, `radius`, `unit`, etc)
+  
+#### Dependencies
+- Material Design
+- Glide
+- Parse
+- Retrofit
+- GeoFire
+- Google Play Location
+- EasyPermissions
  
-#### Developer's comments
-##### Hou Chi
+## Developer Comments
+### Hou Chi
 I created most of the fragment and linking them from one to another along with the stylization for each fragment. This project was incredibly fun, it's also the most organized project I've done in a while. At the beginning of the project, I didn't want this project to fail, so I decided to gather everyone together and assigned different tasks to each one. Aaron Picked up Back-end, and I mostly updated the front-end; Andrew was helping out in both, filling up the gap between me and Aaron. I definitely learn a lot more in this 3 weeks than I ever did before. The most annoying part of this whole process was Android studio malfunctioning every so often for no apparent reasons. The GPS location is randomly turned off and the application will crash every so often. Besides that, this is an incredibly fun project. 
-##### Aaron Ang
-##### Andrew Cho
+### Aaron Ang
+### Andrew Cho
 I worked on the profile uploading the details user typed and getting user data and display whenever the userId is logged in. I had a hard time communicating with some of the individuals and interpreting their code. However, through them, I learned the new stuff such as tracking down the new code step by step with patience and finally was able to modify and improve into better version of the code!(was really happy to interpret). It was really fun to learn how to code the cloud code using java. I had to encounter multiple errors and debugging using the physical note pad(back4app did not have debugging for their cloud code. All they had was DEPLOY!(Run)). Plus, I had error that phone only saves the initial background data(so if I type name as Andrew and later change to Benjamin, it did not change), so I learned that I had to refresh in the background whenever the fragment is on the screen. Moreover, a lot of informations are written in java, so I had to manually convert some code to kotlin since things did not work out if I trusted Android Studio. I am looking forward to improve this application. 
