@@ -60,12 +60,14 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
                     MainActivity.currLocation!!.latitude,
                     MainActivity.currLocation!!.longitude
                 )
-                val distanceAway = eventLocation.distanceInMilesTo(currLocation).roundToInt()
-                val locationText = "$distanceAway miles away"
-                tvLocation.text = locationText
-            } else {
-                tvLocation.text = ""
             }
+
+            val distanceAway: String = if (currLocation != null) {
+                eventLocation.distanceInMilesTo(currLocation).roundToInt().toString()
+            } else ""
+
+            val locationText = "$distanceAway miles away"
+            tvLocation.text = locationText
 
             val parser = SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH)
 

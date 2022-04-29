@@ -93,7 +93,6 @@ open class TMEventFragment : Fragment() {
 //                }
 //            }
 //        })
-
         queryEvents()
     }
 

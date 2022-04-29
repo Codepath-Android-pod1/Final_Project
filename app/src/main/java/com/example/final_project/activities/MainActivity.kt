@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -21,8 +22,8 @@ import com.example.final_project.fragments.*
 import com.example.final_project.models.TMApi
 import com.firebase.geofire.GeoFireUtils
 import com.firebase.geofire.GeoLocation
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
+import com.google.android.gms.location.LocationServices.getFusedLocationProviderClient
 import com.google.android.libraries.places.api.Places
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -35,15 +36,15 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     EasyPermissions.PermissionCallbacks {
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-
     // Toolbar/Navbar Related stuff
     private lateinit var drawer: DrawerLayout
     private lateinit var fragmentManger: FragmentManager
     private var fragmentToShow: Fragment? = null
     private lateinit var navView: NavigationView
+    lateinit var mLocationRequest: LocationRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,10 +102,39 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         apiService = retrofit.create(TMApi::class.java)
 
         if (hasLocationPermission()) {
-            getLocation()
+            startLocationUpdates()
         } else {
             requestLocationPermissions()
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    @AfterPermissionGranted(FINE_COARSE_LOCATION_CODE)
+    private fun startLocationUpdates() {
+        // Create the location request to start receiving updates
+        mLocationRequest = LocationRequest.create()
+        mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        mLocationRequest.interval = UPDATE_INTERVAL
+        mLocationRequest.fastestInterval = FASTEST_INTERVAL
+
+        // Create LocationSettingsRequest object using location request
+        val builder = LocationSettingsRequest.Builder()
+        builder.addLocationRequest(mLocationRequest)
+        val locationSettingsRequest = builder.build()
+
+        // Check whether location settings are satisfied
+        // https://developers.google.com/android/reference/com/google/android/gms/location/SettingsClient
+        val settingsClient = LocationServices.getSettingsClient(this)
+        settingsClient.checkLocationSettings(locationSettingsRequest)
+
+        getFusedLocationProviderClient(this).requestLocationUpdates(
+            mLocationRequest, object : LocationCallback() {
+                override fun onLocationResult(locationResult: LocationResult) {
+                    onLocationChanged(locationResult.lastLocation)
+                }
+            },
+            Looper.myLooper()!!
+        )
     }
 
     // Misc stuff like Toolbar / Nav bar
@@ -224,38 +254,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {}
 
-    @SuppressLint("MissingPermission")
-    @AfterPermissionGranted(FINE_COARSE_LOCATION_CODE)
-    fun getLocation() {
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location: Location? ->
-                if (location != null) {
-                    onLocationChanged(location)
-                }
-            }
-            .addOnFailureListener { e: Exception ->
-                Log.d(TAG, "Error trying to get last GPS location")
-                e.printStackTrace()
-            }
-//        val placesClient = Places.createClient(this)
-//        val placeFields: List<Place.Field> = listOf(Place.Field.LAT_LNG)
-//        val request: FindCurrentPlaceRequest = FindCurrentPlaceRequest.newInstance(placeFields)
-//        val placeResponse = placesClient.findCurrentPlace(request)
-//        placeResponse.addOnCompleteListener { task ->
-//            if (task.isSuccessful) {
-//                val response = task.result
-//                val newLoc = response.placeLikelihoods[0].place.latLng
-//                onLocationChanged(newLoc!!)
-//            } else {
-//                val exception = task.exception
-//                if (exception is ApiException) {
-//                    Log.e(TAG, "Place not found: ${exception.statusCode}")
-//                }
-//            }
-//        }
-    }
-
     private fun onLocationChanged(location: Location) {
         currLocation = location
         geoHash = GeoFireUtils.getGeoHashForLocation(
@@ -287,6 +285,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     companion object {
+        const val UPDATE_INTERVAL: Long = 10 * 1000 /* 10 secs */
+        const val FASTEST_INTERVAL: Long = 2000 /* 2 sec */
         const val FINE_LOCATION_CODE = 123
         const val COARSE_LOCATION_CODE = 456
         const val FINE_COARSE_LOCATION_CODE = 789

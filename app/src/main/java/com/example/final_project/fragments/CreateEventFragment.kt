@@ -116,7 +116,7 @@ class CreateEventFragment : Fragment() {
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
                 Log.i(TAG, "Place: ${place.name}, ${place.address}")
-                eventLocPoint = ParseGeoPoint(place.latLng.latitude, place.latLng.latitude)
+                eventLocPoint = ParseGeoPoint(place.latLng.latitude, place.latLng.longitude)
                 eventLocName = place.name as String
                 eventAddress = place.address as String
             }
