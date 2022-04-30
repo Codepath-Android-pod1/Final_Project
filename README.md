@@ -64,7 +64,8 @@ Allows users to find events based on their location and interests. Events includ
 ### Design (Figma)
 https://www.figma.com/file/Op5T6MotwUd4ZTqTv5OCoz/Kotlin-Project?node-id=0%3A1
 <img src='https://github.com/Codepath-Android-pod1/Final_Project/blob/master/WireFrame3.png' />
-
+## PowerPoint Walkthrough
+https://docs.google.com/presentation/d/1da7IXtV4kkPxpi9mSwFok32b2ZYULYGRZ6Ag0Tb0H2A/edit?usp=sharing
 ## Video Walkthrough
 Briefly shows the current progress of the project.
 
