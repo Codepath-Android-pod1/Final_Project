@@ -71,7 +71,7 @@ class ProfileFragment : Fragment() {
                 "Please Enter Name, Email, and Phone Number",
                 Toast.LENGTH_SHORT
             ).show()
-        } else if (Pattern.matches(pattern, email)) {
+        } else if (!Pattern.matches(pattern, email)) {
             Toast.makeText(
                 context,
                 "Please Enter Valid Email address",

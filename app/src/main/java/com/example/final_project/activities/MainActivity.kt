@@ -282,8 +282,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     companion object {
-        const val UPDATE_INTERVAL: Long = 10 * 1000 /* 10 secs */
-        const val FASTEST_INTERVAL: Long = 2000 /* 2 sec */
         const val FINE_LOCATION_CODE = 123
         const val COARSE_LOCATION_CODE = 456
         const val FINE_COARSE_LOCATION_CODE = 789
