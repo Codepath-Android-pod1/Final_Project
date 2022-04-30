@@ -83,6 +83,8 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
         }
     }
 
+//    override fun on
+
     companion object {
         const val EVENT_EXTRA = "EVENT_EXTRA"
         const val TAG = "ParseEventAdapter"
