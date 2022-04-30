@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     val currLocation = ParseGeoPoint(location.latitude, location.longitude)
                     val currUser = ParseUser.getCurrentUser()
                     currUser.put("Location", currLocation)
-                    currUser.saveInBackground()
+                    currUser.save()
                     geoHash = GeoFireUtils.getGeoHashForLocation(
                         GeoLocation(location.latitude, location.longitude),
                         9

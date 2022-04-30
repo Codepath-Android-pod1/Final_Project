@@ -1,14 +1,21 @@
 package com.example.final_project.fragments
 
+import android.annotation.SuppressLint
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.EndlessRecyclerViewScrollListener
 import com.example.final_project.R
 import com.example.final_project.adapters.ParseEventAdapter
 import com.example.final_project.models.ParseEvent
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.parse.ParseGeoPoint
 import com.parse.ParseQuery
 import com.parse.ParseUser
 import kotlin.properties.Delegates
@@ -19,6 +26,7 @@ class ParseEventFragment : TMEventFragment() {
     private var allPEvents: MutableList<ParseEvent> = mutableListOf()
     private var numResults by Delegates.notNull<Int>()
 
+    @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         rvEvents = view.findViewById(R.id.rvEvent)
         parseAdapter = ParseEventAdapter(requireContext(), allPEvents)
@@ -53,7 +61,7 @@ class ParseEventFragment : TMEventFragment() {
 
         query.findInBackground { events, e ->
             if (e != null) {
-                Log.e(TAG, "Error fetching posts")
+                Log.e(TAG, "Error fetching events")
             } else {
                 if (events != null) swipeContainer.isRefreshing = false
                 allPEvents.addAll(events)
@@ -66,7 +74,11 @@ class ParseEventFragment : TMEventFragment() {
 
     override fun queryEvents() {
         val query: ParseQuery<ParseEvent> = ParseQuery.getQuery(ParseEvent::class.java)
-        val currLocation = ParseUser.getCurrentUser().getParseGeoPoint("Location")
+        val currLocation : ParseGeoPoint? = try {
+            ParseUser.getCurrentUser().getParseGeoPoint("Location")
+        } catch (e: Exception) {
+            null
+        }
         numResults = 10
         query.limit = numResults
         query.whereNear("location", currLocation)
@@ -75,7 +87,7 @@ class ParseEventFragment : TMEventFragment() {
         parseAdapter.clear()
         query.findInBackground { events, e ->
             if (e != null) {
-                Log.e(TAG, "Error fetching posts")
+                Log.e(TAG, "Error fetching events")
             } else {
                 if (events != null) swipeContainer.isRefreshing = false
                 allPEvents.addAll(events)
