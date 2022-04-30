@@ -166,7 +166,8 @@ class CreateEventFragment : Fragment() {
                 ).show()
             } else {
                 Log.i(MainActivity.TAG, "Successfully saved post")
-                Toast.makeText(requireContext(), "Successfully created event!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Successfully created event!", Toast.LENGTH_SHORT)
+                    .show()
                 startActivity(Intent(requireContext(), MainActivity::class.java))
             }
             pb.visibility = ProgressBar.INVISIBLE

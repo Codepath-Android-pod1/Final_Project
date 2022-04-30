@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.final_project.R
 import com.example.final_project.adapters.ParseEventAdapter.Companion.EVENT_EXTRA
-import com.example.final_project.models.Event
 import com.example.final_project.models.ParseEvent
 import com.google.android.material.snackbar.Snackbar
 import com.parse.ParseQuery
@@ -40,6 +39,7 @@ class DetailParseEvent : AppCompatActivity() {
         val event = intent.getParcelableExtra<ParseEvent>(EVENT_EXTRA) as ParseEvent
         val query = ParseQuery.getQuery(ParseEvent::class.java)
         val updatedEvent = query.get(event.objectId)
+        // Convert JSONArray to MutableList to allow searching
         registered = JsonToList(updatedEvent.getLogistics())
         val currUsername = ParseUser.getCurrentUser().username
         val eventCreator = event.getUser()!!.fetchIfNeeded().username
@@ -63,7 +63,6 @@ class DetailParseEvent : AppCompatActivity() {
             if (currUsername == eventCreator) {
                 // TODO Current user is event creator
             } else {
-                registered = JsonToList(event.getLogistics())
                 val currUserRegistered = registered!!.contains(currUsername)
                 // Check if `registered` field is empty. If so, create new object
                 if (registered!!.isEmpty()) {
@@ -101,18 +100,18 @@ class DetailParseEvent : AppCompatActivity() {
         }
     }
 
-    fun JsonToList(jsonArray: JSONArray?): MutableList<String> {
-        val list = mutableListOf<String>()
-        val data = jsonArray?.get(0) as JSONArray?
-        if (data != null) {
-            for (i in 0 until data.length()) {
-                list.add(data.get(i) as String)
-            }
-        }
-        return list
-    }
-
     companion object {
         const val TAG = "DetailParseEvent"
+
+        fun JsonToList(jsonArray: JSONArray?): MutableList<String> {
+            val list = mutableListOf<String>()
+            val data = jsonArray?.get(0) as JSONArray?
+            if (data != null) {
+                for (i in 0 until data.length()) {
+                    list.add(data.get(i) as String)
+                }
+            }
+            return list
+        }
     }
 }
