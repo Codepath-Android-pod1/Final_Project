@@ -28,7 +28,6 @@ import com.google.android.gms.location.LocationServices.getFusedLocationProvider
 import com.google.android.libraries.places.api.Places
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.parse.Parse
 import com.parse.ParseGeoPoint
 import com.parse.ParseUser
 import com.vmadalin.easypermissions.EasyPermissions
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var fragmentManger: FragmentManager
     private var fragmentToShow: Fragment? = null
     private lateinit var navView: NavigationView
-    lateinit var mLocationRequest: LocationRequest
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragmentManger = supportFragmentManager
 
         Places.initialize(this, BuildConfig.MAPS_API_KEY)
+        fusedLocationClient = getFusedLocationProviderClient(this)
 
         // Toolbar Init
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         apiService = retrofit.create(TMApi::class.java)
 
         if (hasLocationPermission()) {
-            startLocationUpdates()
+            queryLocation()
         } else {
             requestLocationPermissions()
         }
@@ -127,28 +127,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     @SuppressLint("MissingPermission")
     @AfterPermissionGranted(FINE_COARSE_LOCATION_CODE)
-    private fun startLocationUpdates() {
-        // Create the location request to start receiving updates
-        mLocationRequest = LocationRequest.create()
-        mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        mLocationRequest.interval = UPDATE_INTERVAL
-        mLocationRequest.fastestInterval = FASTEST_INTERVAL
-
-        // Create LocationSettingsRequest object using location request
-        val builder = LocationSettingsRequest.Builder()
-        builder.addLocationRequest(mLocationRequest)
-        val locationSettingsRequest = builder.build()
-        val settingsClient = LocationServices.getSettingsClient(this)
-        settingsClient.checkLocationSettings(locationSettingsRequest)
-
-        getFusedLocationProviderClient(this).requestLocationUpdates(
-            mLocationRequest, object : LocationCallback() {
-                override fun onLocationResult(locationResult: LocationResult) {
-                    onLocationChanged(locationResult.lastLocation)
+    private fun queryLocation() {
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                if (location != null) {
+                    val currLocation = ParseGeoPoint(location.latitude, location.longitude)
+                    val currUser = ParseUser.getCurrentUser()
+                    currUser.put("Location", currLocation)
+                    currUser.saveInBackground()
+                    geoHash = GeoFireUtils.getGeoHashForLocation(
+                        GeoLocation(location.latitude, location.longitude),
+                        9
+                    )
+                    Log.i(TAG, "Current geoHash: $geoHash")
                 }
-            },
-            Looper.myLooper()!!
-        )
+            }
     }
 
     // Misc stuff like Toolbar / Nav bar
@@ -267,18 +260,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {}
-
-    private fun onLocationChanged(location: Location) {
-        val currLocation = ParseGeoPoint(location.latitude, location.longitude)
-        val currUser = ParseUser.getCurrentUser()
-        currUser.put("Location", currLocation)
-        currUser.saveInBackground()
-        geoHash = GeoFireUtils.getGeoHashForLocation(
-            GeoLocation(location.latitude, location.longitude),
-            9
-        )
-        Log.i(TAG, "Current geoHash: $geoHash")
-    }
 
     private fun goToLogin() {
         val intent = Intent(this, LoginActivity::class.java)

@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.example.final_project.R
 import com.example.final_project.adapters.EventAdapter.Companion.EVENT_EXTRA_IMAGE
@@ -32,6 +33,10 @@ open class DetailEvent : AppCompatActivity() {
         tvTitle.text = eventName
         btnRespond.text = "Buy tickets"
         Glide.with(this).load(eventImg.url).into(ivImage)
+
+        findViewById<TextView>(R.id.tvDetails).isVisible = false
+        findViewById<TextView>(R.id.tvDetailLoc1).isVisible = false
+        findViewById<TextView>(R.id.tvDetailLoc2).isVisible = false
 
         btnRespond.setOnClickListener {
             val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(eventUrl))

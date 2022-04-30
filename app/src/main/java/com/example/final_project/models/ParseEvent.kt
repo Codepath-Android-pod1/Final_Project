@@ -64,6 +64,14 @@ class ParseEvent : ParseObject() {
         put(KEY_LOCATION_ADDRESS, address)
     }
 
+    fun getLogistics() : ParseObject? {
+        return getParseObject(KEY_LOGISTICS)
+    }
+
+    fun setLogistics(logistics: ParseObject) {
+        put(KEY_LOGISTICS, logistics)
+    }
+
     companion object {
         const val KEY_TITLE = "title"
         const val KEY_DESCRIPTION = "description"
@@ -72,5 +80,6 @@ class ParseEvent : ParseObject() {
         const val KEY_LOCATION = "location"
         const val KEY_LOCATION_NAME = "locationName"
         const val KEY_LOCATION_ADDRESS = "locationAddress"
+        const val KEY_LOGISTICS = "logistics"
     }
 }
