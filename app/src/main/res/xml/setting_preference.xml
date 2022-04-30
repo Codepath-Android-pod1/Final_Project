@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Preference />
 
     <Preference
         android:key="UI"
         android:summary="Set appearance for your application"
-        android:title="User Interface" />
+        android:title="User Interface"/>
 
     <SwitchPreferenceCompat
+        app:icon="@drawable/ic_baseline_dark_mode_24"
         android:key="darkTheme"
         android:title="Dark Mode" />
 
@@ -19,14 +21,17 @@
 
     <SwitchPreferenceCompat
         android:key="voice"
+        app:icon="@drawable/ic_baseline_textsms_24"
         android:title="Text to Speech" />
 
     <SwitchPreferenceCompat
         android:key="size"
+        app:icon="@drawable/ic_baseline_format_size_24"
         android:title="Increase text sizes" />
 
     <SwitchPreferenceCompat
         android:key="color"
+        app:icon="@drawable/ic_baseline_invert_colors_24"
         android:title="Color Blind Mode" />
 
 

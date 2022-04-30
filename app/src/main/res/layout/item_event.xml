@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_more_vert_24"
                 app:layout_constraintBottom_toBottomOf="@id/tvDate"
-                app:layout_constraintLeft_toRightOf="@id/tvTitle" />
+                app:layout_constraintRight_toRightOf="@id/tvTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
