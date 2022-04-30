@@ -12,11 +12,9 @@ import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.R
 import com.example.final_project.activities.DetailParseEvent
-import com.example.final_project.activities.MainActivity
 import com.example.final_project.models.ParseEvent
 import com.parse.ParseGeoPoint
 import com.parse.ParseUser
-import java.text.ParsePosition
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt

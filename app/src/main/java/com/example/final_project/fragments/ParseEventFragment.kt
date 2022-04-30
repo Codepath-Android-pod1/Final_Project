@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.EndlessRecyclerViewScrollListener
 import com.example.final_project.R
-import com.example.final_project.activities.MainActivity
 import com.example.final_project.adapters.ParseEventAdapter
 import com.example.final_project.models.ParseEvent
-import com.parse.ParseGeoPoint
 import com.parse.ParseQuery
 import com.parse.ParseUser
 import kotlin.properties.Delegates

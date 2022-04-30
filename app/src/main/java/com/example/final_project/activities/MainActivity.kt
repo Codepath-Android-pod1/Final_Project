@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
-import android.os.Looper
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -23,7 +22,7 @@ import com.example.final_project.fragments.*
 import com.example.final_project.models.TMApi
 import com.firebase.geofire.GeoFireUtils
 import com.firebase.geofire.GeoLocation
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices.getFusedLocationProviderClient
 import com.google.android.libraries.places.api.Places
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -129,7 +128,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @AfterPermissionGranted(FINE_COARSE_LOCATION_CODE)
     private fun queryLocation() {
         fusedLocationClient.lastLocation
-            .addOnSuccessListener { location : Location? ->
+            .addOnSuccessListener { location: Location? ->
                 if (location != null) {
                     val currLocation = ParseGeoPoint(location.latitude, location.longitude)
                     val currUser = ParseUser.getCurrentUser()

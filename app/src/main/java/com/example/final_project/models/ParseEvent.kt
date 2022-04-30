@@ -64,7 +64,7 @@ class ParseEvent : ParseObject() {
         put(KEY_LOCATION_ADDRESS, address)
     }
 
-    fun getLogistics() : ParseObject? {
+    fun getLogistics(): ParseObject? {
         return getParseObject(KEY_LOGISTICS)
     }
 

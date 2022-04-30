@@ -89,7 +89,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDetails"
-                tools:text="Location1"/>
+                tools:text="Location1" />
 
             <TextView
                 android:id="@+id/tvDetailLoc2"
@@ -101,7 +101,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDetailLoc1"
-                tools:text="Location2"/>
+                tools:text="Location2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
