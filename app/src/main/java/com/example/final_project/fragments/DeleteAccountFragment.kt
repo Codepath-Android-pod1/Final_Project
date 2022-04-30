@@ -20,6 +20,7 @@ class DeleteAccountFragment : DialogFragment() {
 
             builder.setView(inflater.inflate(R.layout.fragment_delete_account, null))
                 .setTitle("Account Removal")
+                .setMessage("Are you sure? This action cannot be undone.")
                 .setPositiveButton(
                     "Delete Account"
                 ) { _, _ ->
