@@ -1,6 +1,7 @@
 package com.example.final_project.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -26,7 +27,7 @@ class DetailParseEvent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_event)
-        val parentView = findViewById<View>(R.id.activity_detail_event)
+        val parentView: View = findViewById(R.id.activity_detail_event)
 
         tvTitle = findViewById(R.id.tvTitle)
         tvDetails = findViewById(R.id.tvDetails)
@@ -54,17 +55,18 @@ class DetailParseEvent : AppCompatActivity() {
         btnRespond.text = btnText
 
         btnRespond.setOnClickListener {
-            registered = event.getLogistics()?.getList("registered")
-            val currUserRegistered = registered?.contains(currUsername)
             if (currUsername == eventCreator) {
                 // TODO Current user is event creator
             } else {
+                registered = event.getLogistics()?.getList("registered")
+                val currUserRegistered = registered?.contains(currUsername)
                 // Check if `registered` field is empty. If so, create new object
                 if (registered == null) {
                     btnRespond.text = "Registered"
                     val logs = ParseObject("logistics")
                     logs.put("registered", mutableListOf(currUsername))
                     event.setLogistics(logs)
+                    saveEvent(event)
                     Snackbar.make(parentView, "Successfully registered!", Snackbar.LENGTH_SHORT)
                         .show()
                 } else {
@@ -75,17 +77,34 @@ class DetailParseEvent : AppCompatActivity() {
                         val newLogs = event.getLogistics()!!
                         newLogs.put("registered", registered!!.remove(currUsername))
                         event.setLogistics(newLogs)
+                        saveEvent(event)
                     } else {
                         // Register user
                         btnRespond.text = "Registered"
                         val newLogs = event.getLogistics()!!
                         newLogs.put("registered", registered!!.add(currUsername))
                         event.setLogistics(newLogs)
+                        saveEvent(event)
                         Snackbar.make(parentView, "Successfully registered!", Snackbar.LENGTH_SHORT)
                             .show()
                     }
                 }
             }
         }
+    }
+
+    private fun saveEvent(event: ParseEvent) {
+        event.saveEventually { e ->
+            if (e != null) {
+                Log.e(TAG, "Error while updating logistics")
+                e.printStackTrace()
+            } else {
+                Log.i(TAG, "Successfully updated logistics")
+            }
+        }
+    }
+
+    companion object {
+        const val TAG = "DetailParseEvent"
     }
 }

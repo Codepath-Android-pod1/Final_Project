@@ -22,6 +22,6 @@ data class Event(
     val seatmap: Seatmap,
     val test: Boolean,
     val type: String,
-    val units: String,
+    val units: String?,
     val url: String
 ) : Parcelable

@@ -157,16 +157,16 @@ class CreateEventFragment : Fragment() {
         event.setLocAddress(eventAddress)
         event.saveInBackground { e ->
             if (e != null) {
-                Log.e(MainActivity.TAG, "Error while saving post")
+                Log.e(MainActivity.TAG, "Error while creating event.")
                 e.printStackTrace()
                 Toast.makeText(
                     requireContext(),
-                    "Post unsuccessful. Ensure all field are filled in",
+                    "Event creation unsuccessful. Please ensure all field are filled in.",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
                 Log.i(MainActivity.TAG, "Successfully saved post")
-                Toast.makeText(requireContext(), "Post successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Successfully created event!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(requireContext(), MainActivity::class.java))
             }
             pb.visibility = ProgressBar.INVISIBLE

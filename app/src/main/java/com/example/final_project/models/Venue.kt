@@ -21,6 +21,6 @@ data class Venue(
     val test: Boolean,
     val timezone: String,
     val type: String,
-    val units: String,
+    val units: String?,
     val upcomingEvents: UpcomingEventsX
 ) : Parcelable
