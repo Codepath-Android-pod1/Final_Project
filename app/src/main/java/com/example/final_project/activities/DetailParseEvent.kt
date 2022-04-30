@@ -10,10 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.final_project.R
 import com.example.final_project.adapters.ParseEventAdapter.Companion.EVENT_EXTRA
+import com.example.final_project.models.Event
 import com.example.final_project.models.ParseEvent
 import com.google.android.material.snackbar.Snackbar
-import com.parse.ParseObject
+import com.parse.ParseQuery
 import com.parse.ParseUser
+import org.json.JSONArray
 
 class DetailParseEvent : AppCompatActivity() {
     private lateinit var tvTitle: TextView
@@ -36,10 +38,13 @@ class DetailParseEvent : AppCompatActivity() {
         tvDetailLoc2 = findViewById(R.id.tvDetailLoc2)
 
         val event = intent.getParcelableExtra<ParseEvent>(EVENT_EXTRA) as ParseEvent
-        registered = event.getLogistics()?.getList("registered")
+        val query = ParseQuery.getQuery(ParseEvent::class.java)
+        val updatedEvent = query.get(event.objectId)
+        registered = JsonToList(updatedEvent.getLogistics())
         val currUsername = ParseUser.getCurrentUser().username
         val eventCreator = event.getUser()!!.fetchIfNeeded().username
-        val userRegistered = registered?.contains(currUsername)
+        val userRegistered = registered!!.contains(currUsername)
+        Log.i(TAG, "User registered: $userRegistered")
 
         tvTitle.text = event.getTitle()
         tvDetails.text = event.getDescription()
@@ -49,7 +54,7 @@ class DetailParseEvent : AppCompatActivity() {
         ivImage.isVisible = false
         val btnText = when {
             currUsername == eventCreator -> "Edit"
-            userRegistered == true -> "Registered"
+            userRegistered -> "Registered"
             else -> "Register"
         }
         btnRespond.text = btnText
@@ -58,50 +63,53 @@ class DetailParseEvent : AppCompatActivity() {
             if (currUsername == eventCreator) {
                 // TODO Current user is event creator
             } else {
-                registered = event.getLogistics()?.getList("registered")
-                val currUserRegistered = registered?.contains(currUsername)
+                registered = JsonToList(event.getLogistics())
+                val currUserRegistered = registered!!.contains(currUsername)
                 // Check if `registered` field is empty. If so, create new object
-                if (registered == null) {
-                    btnRespond.text = "Registered"
-                    val logs = ParseObject("logistics")
-                    logs.put("registered", mutableListOf(currUsername))
+                if (registered!!.isEmpty()) {
+                    val logs = JSONArray()
+                    registered!!.add(currUsername)
+                    logs.put(0, registered)
                     event.setLogistics(logs)
-                    saveEvent(event)
+                    event.saveInBackground()
                     Snackbar.make(parentView, "Successfully registered!", Snackbar.LENGTH_SHORT)
                         .show()
+                    btnRespond.text = "Registered"
                 } else {
                     // Check if current user is registered and update UI accordingly
-                    if (currUserRegistered == true) {
+                    if (currUserRegistered) {
                         // Remove user from registration list
-                        btnRespond.text = "Register"
                         val newLogs = event.getLogistics()!!
-                        newLogs.put("registered", registered!!.remove(currUsername))
+                        registered!!.remove(currUsername)
+                        newLogs.put(0, registered)
                         event.setLogistics(newLogs)
-                        saveEvent(event)
+                        event.saveInBackground()
+                        btnRespond.text = "Register"
                     } else {
                         // Register user
-                        btnRespond.text = "Registered"
                         val newLogs = event.getLogistics()!!
-                        newLogs.put("registered", registered!!.add(currUsername))
+                        registered!!.add(currUsername)
+                        newLogs.put(0, registered)
                         event.setLogistics(newLogs)
-                        saveEvent(event)
+                        event.saveInBackground()
                         Snackbar.make(parentView, "Successfully registered!", Snackbar.LENGTH_SHORT)
                             .show()
+                        btnRespond.text = "Registered"
                     }
                 }
             }
         }
     }
 
-    private fun saveEvent(event: ParseEvent) {
-        event.saveEventually { e ->
-            if (e != null) {
-                Log.e(TAG, "Error while updating logistics")
-                e.printStackTrace()
-            } else {
-                Log.i(TAG, "Successfully updated logistics")
+    fun JsonToList(jsonArray: JSONArray?): MutableList<String> {
+        val list = mutableListOf<String>()
+        val data = jsonArray?.get(0) as JSONArray?
+        if (data != null) {
+            for (i in 0 until data.length()) {
+                list.add(data.get(i) as String)
             }
         }
+        return list
     }
 
     companion object {

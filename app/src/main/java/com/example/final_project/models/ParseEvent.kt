@@ -4,6 +4,7 @@ import com.parse.ParseClassName
 import com.parse.ParseGeoPoint
 import com.parse.ParseObject
 import com.parse.ParseUser
+import org.json.JSONArray
 import java.util.*
 
 @ParseClassName("Event")
@@ -64,11 +65,11 @@ class ParseEvent : ParseObject() {
         put(KEY_LOCATION_ADDRESS, address)
     }
 
-    fun getLogistics(): ParseObject? {
-        return getParseObject(KEY_LOGISTICS)
+    fun getLogistics(): JSONArray? {
+        return getJSONArray(KEY_LOGISTICS)
     }
 
-    fun setLogistics(logistics: ParseObject) {
+    fun setLogistics(logistics: JSONArray) {
         put(KEY_LOGISTICS, logistics)
     }
 
