@@ -10,7 +10,7 @@
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="25dp"
-        android:text="Are you sure you want to delete your account?" />
+        android:textSize="20sp"
+        android:text="Are you sure? This action cannot be undone." />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

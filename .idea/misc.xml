@@ -49,7 +49,6 @@
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_chat.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_compose.xml" value="0.25" />
-        <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_delete_account.xml" value="0.25" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_edit.xml" value="0.25" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_event_rv.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/layout/fragment_feed_back.xml" value="0.24682971014492755" />
@@ -69,6 +68,7 @@
         <entry key="..\:/Users/houch/StudioProjects/Final_Project/app/src/main/res/xml/setting_preference.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/activity_detail_event.xml" value="0.3148148148148148" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/fragment_delete_account.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_event_rv.xml" value="0.27794871794871795" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.31979166666666664" />
