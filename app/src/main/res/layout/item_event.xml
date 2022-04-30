@@ -23,6 +23,7 @@
             <View
                 android:layout_width="10dp"
                 android:layout_height="0dp"
+                android:id="@+id/Ticket"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:background="@color/coOrange"
@@ -63,7 +64,7 @@
                 android:textSize="20dp"
                 android:transitionName="title"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/Ticket"
                 app:layout_constraintTop_toBottomOf="@+id/tvDate"
                 tools:text="TextView" />
 
@@ -79,7 +80,7 @@
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/Ticket"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle"
                 tools:text="TextView" />
 
