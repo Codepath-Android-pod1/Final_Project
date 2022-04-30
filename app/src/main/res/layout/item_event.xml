@@ -20,6 +20,16 @@
             android:layout_height="match_parent"
             android:paddingVertical="10dp">
 
+            <View
+                android:layout_width="10dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@color/coOrange"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+            </View>
+
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
