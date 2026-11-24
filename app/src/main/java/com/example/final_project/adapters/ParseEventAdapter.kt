@@ -71,7 +71,9 @@ class ParseEventAdapter(private val context: Context, private val events: Mutabl
         }
 
         override fun onClick(v: View?) {
-            val event = events[absoluteAdapterPosition]
+            val position = absoluteAdapterPosition
+            if (position == RecyclerView.NO_POSITION) return
+            val event = events[position]
             val intent = Intent(context, DetailParseEvent::class.java)
             intent.putExtra(EVENT_EXTRA, event)
             val titlePair = Pair.create(tvTitle as View, "title")

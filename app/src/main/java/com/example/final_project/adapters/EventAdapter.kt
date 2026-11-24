@@ -73,7 +73,9 @@ class EventAdapter(private val context: Context, private val events: MutableList
         }
 
         override fun onClick(v: View?) {
-            val event = events[absoluteAdapterPosition]
+            val position = absoluteAdapterPosition
+            if (position == RecyclerView.NO_POSITION) return
+            val event = events[position]
             val intent = Intent(context, DetailEvent::class.java)
             intent.putExtra(EVENT_EXTRA_DATES, event.dates)
             intent.putExtra(EVENT_EXTRA_IMAGE, event.images[0])
